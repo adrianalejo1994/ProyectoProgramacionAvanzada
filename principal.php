@@ -6,7 +6,12 @@ if ( isset( $_SESSION['usuarioactivo'] ) ) {
 } else {
     header("Location: login.php");
 }
+
+//commit probar 6
+// el macho digo yo-.....
+=======
 //prueba Alejandro
+
 ?>
 
 
