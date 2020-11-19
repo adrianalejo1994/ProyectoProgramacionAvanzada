@@ -6,10 +6,7 @@ if ( isset( $_SESSION['usuarioactivo'] ) ) {
 } else {
     header("Location: login.php");
 }
-<<<<<<< HEAD
 //commit alejo nuevo
-=======
->>>>>>> parent of 812eeb5... Update principal.php
 ?>
 
 
