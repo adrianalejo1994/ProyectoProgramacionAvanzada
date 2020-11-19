@@ -6,7 +6,7 @@ if ( isset( $_SESSION['usuarioactivo'] ) ) {
 } else {
     header("Location: login.php");
 }
-//commit probar 5
+//commit probar 6
 ?>
 
 
