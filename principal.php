@@ -9,8 +9,6 @@ if ( isset( $_SESSION['usuarioactivo'] ) ) {
 //commit Darling
 ?>
 
-
-
 <html>
 <head>
 <title>User Login</title>
