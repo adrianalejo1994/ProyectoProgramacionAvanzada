@@ -23,9 +23,3 @@ Welcome <?php echo $_SESSION["usuarioactivo"]; ?>. Bienvenido <a href="logout.ph
 ?>
 </body>
 </html>
-
-
-
-<?php
-//commit nuevo
-?>
