@@ -6,7 +6,6 @@ if ( isset( $_SESSION['usuarioactivo'] ) ) {
 } else {
     header("Location: login.php");
 }
-//commit Darling
 ?>
 
 <html>
@@ -24,10 +23,3 @@ Welcome <?php echo $_SESSION["usuarioactivo"]; ?>. Bienvenido <a href="logout.ph
 ?>
 </body>
 </html>
-
-
-
-
-<?php
-//commit nuevo
-?>
