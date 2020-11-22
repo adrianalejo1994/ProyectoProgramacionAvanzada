@@ -1,5 +1,5 @@
 <?php
-$PathImg = "http://localhost/web/crud/Imagenes";
+$PathImg = "http://localhost/web/crud/Imagenes"; //para usar el pat de imagenes cuando se deba... 
 
 
 function Conectar()
@@ -15,6 +15,6 @@ function Desconectar()
     global $conn;
     $conn = null;
 }
-
+?>
 
 

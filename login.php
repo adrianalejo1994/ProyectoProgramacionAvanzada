@@ -1,11 +1,45 @@
+<!DOCTYPE HTML>
 <html>
-  <body>
-    <form action="" method="post">
-    <input type="text" name="IDUSUARIO" placeholder="Enter your IDUSUARIO" required>
-    <input type="password" name="CLAVE" placeholder="Enter your CLAVE" required>
-    <input type="submit" value="Submit">
-    </form>
-  </body>
+	<head>
+		<title>Futuro Imperfecto</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="single is-preload">
+
+<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a>Futuro Imperfecto Answers</a></h1>
+						<nav class="links">
+							<ul>
+								<li><a href="inicio.php">Inicio</a></li>
+							</ul>
+						</nav>
+					</header>
+
+
+                <div class="login">
+                  <div class="form">
+                    <link rel ="stylesheet" href ="assets/css/CSS.css" />
+
+                    <h2>Bienvenido</h2>
+                    <form action="" method="post">
+
+                    <input type="text" name="IDUSUARIO" placeholder="Usuario" required>
+                    <input type="password" name="CLAVE" placeholder="Contraseña" required>
+                    <input type="submit" value="Ingresar" class="submit">
+                  </div>
+                </div>
+                <!-- Footer -->
+                <section id="footer">
+                  <p class="copyright">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
+                </section>
+
+            </div>
+	</body>
 </html>
 
 <?php
