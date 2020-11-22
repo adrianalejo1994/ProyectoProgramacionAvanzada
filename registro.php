@@ -1,0 +1,67 @@
+<html>
+  <body>
+    <form action="" method="post">
+    <table>
+    <tr>
+        <td>Nombre(s)</td>
+        <td><input type="text" value="" name="nombre" required/><td>
+    </tr>
+    <tr>
+        <TD>Apellido(s)</td>
+        <TD><input type="text" value="" name="apellido" required/><td>
+    </tr>
+    <tr>
+        <td>Fecha Nacimiento</td>
+        <td><input type="date" value="" name="fechanacimiento" required/><td>
+    </tr>
+    <tr>
+        <td>Nickname</td>
+        <td><input type="text" value="" name="nickname" required/><td>
+    </tr>
+    <tr>
+        <td>Clave</td>
+        <td><input type="password" value="" name="clave" required/><td>
+    </tr>
+    <tr>
+        <td>Sexo</td>
+        <td><select name="sexo" id="sexo" required>
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Fermenino</option>
+            </select><td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td><input type="email" value="" name="email" required/><td>
+    </tr>
+    <tr>
+        <td>Foto</td>
+        <td><input type="file" value="" name="foto" required/><td>
+    </tr>
+    </table>
+    <input type="submit" value="Registrarse">
+    </form>
+</body>
+</html>
+
+
+
+<?php
+include("functions.php");
+
+if ( ! empty( $_POST ) ) {
+
+      $nombre = $_POST['nombre'];
+      $apellido = $_POST['apellido'];
+      $fechanacimiento = $_POST['fechanacimiento'];
+      $nickname = $_POST['nickname'];
+      $clave = $_POST['clave'];
+      $sexo = $_POST['sexo'];
+      $email = $_POST['email'];
+      $foto = $_POST['foto'];
+
+Conectar();
+      $sql = "INSERT INTO `usuario` VALUES ('".$nickname."', '".$nombre."', '".$apellido."', '".$fechanacimiento."', '".$clave."', '".$sexo."', '".$email."','".$foto."')";
+      $res = $conn->query($sql); 
+Desconectar();
+}
+?>
