@@ -53,7 +53,7 @@ create table USUARIO
    IDUSUARIO            varchar(50) not null,
    NOMBRE               varchar(50) not null,
    APELLIDO             varchar(50) not null,
-   FECHANACIMIENTO      datetime not null,
+   FECHANACIMIENTO      date not null,
    CLAVE                varchar(60) not null,
    SEXO                 varchar(50) not null,
    EMAIL                varchar(255) not null,
