@@ -13,7 +13,7 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a>Futuro Imperfecto Answers</a></h1>
+						<h1><a>TELL ME HOW</a></h1>
 						<nav class="links">
 							<ul>
 								<li><a href="inicio.php">Inicio</a></li>
