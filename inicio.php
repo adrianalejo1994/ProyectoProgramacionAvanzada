@@ -1,7 +1,11 @@
+<?php include("functions.php"); 
+
+	  ?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Futuro Imperfecto</title>
+		<title>TELL ME HOW</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" /> <!-- directorio para usar css-->
@@ -13,7 +17,7 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a>Futuro Imperfecto Answers </a></h1>
+						<h1><a>TELL ME HOW</a></h1>
 						<nav class="links">
 							<ul>
 								<li><a href="#">Inicio</a></li>
@@ -49,18 +53,35 @@
 										<p>ultimas preguntas</p>
 									</div>
 									<div class="meta">
-										<time class="published" datetime="2020-11-20">November 1, 2015</time> <!-- Programar la fecha desde el servidor para que sea automatica XD -->
+										<time class="published" datetime="2020-11-20"><?php $t=time(); echo(date("Y-m-d",$t)) ?></time> <!-- Programar la fecha desde el servidor para que sea automatica XD -->
 									</div>
 								</header>
-								
-								<p>Aqui van las preguntas !!!!!!!!!!!!!!!!!!</p>
+
 								<footer>
 
 								</footer>
 							</article>
 
-						
-						
+						<!-- Preguntas -->
+										<?php
+										$pregunta;
+										
+
+										for($i=0;$i<20;$i++)
+										{
+										?>
+										<div class="post">
+										<time class="published" datetime="2020-11-20"><?php 
+										echo("Pregunta ".($i+1));
+										
+										?></div><?php
+										}
+										?>
+									</time> 
+
+
+
+
 
 						<!-- Pagination -->
 							<ul class="actions pagination">
@@ -75,9 +96,9 @@
 
 						<!-- Intro -->
 							<section id="intro">
-								<a href="#" ><img src="images/pensando.png" alt="" /></a> <!-- agregar la clase logo si se quiere redimencionar--->
+								<a href="#" ><img src="images/pensando.png" alt="" class="logo"/></a> <!-- agregar la clase logo si se quiere redimencionar--->
 								<header>
-									<h2>Futuro Imperfecto Answers</h2>
+									<h2>DIME COMO</h2>
 									<p>Un lugar para responder preguntas frecuentes</p>
 								</header>
 							</section>
@@ -91,20 +112,44 @@
 								</div>
 							</section>
 
-						<!-- Posts List -->
-							<section>
-								<ul class="posts">
-									<li>
-										<article>
-											<header>
-												<h3><a href="single.html">Lorem ipsum fermentum ut nisl vitae</a></h3>
-												<time class="published" datetime="2015-10-20">October 20, 2015</time>
+						<!-- Categorias -->
+
+											
+							<?php
+
+										
+								for($i=0;$i<5;$i++){
+									$categoria;	
+
+									Conectar();
+									$sql = "SELECT * FROM categoria WHERE IDCATEGORIA ='".($i+1)."'";
+									$res = $conn->query($sql);
+									foreach($res as $fila)
+									{
+										$categoria = $fila["NAMECATEGORIA"];
+							  
+									}
+									Desconectar();
+
+							?>
+								<section>
+									<ul class="posts">
+										<li>
+											<article>
+												<header>
+													<h3><a href="single.html">
+												<?php		
+												echo($categoria); 
+												?>
+												</a></h3>
 											</header>
 											<a href="single.html" class="image"><img src="images/pic08.jpg" alt="" /></a>
 										</article>
 									</li>
-									
 								</ul>
+								<?php
+								}
+								?> 
 							</section>
 
 						<!-- About -->
