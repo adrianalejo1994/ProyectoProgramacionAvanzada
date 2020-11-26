@@ -1,4 +1,4 @@
-<?php include("functions.php"); 
+<?php //include("functions.php"); 
 
 	  ?>
 
@@ -113,43 +113,10 @@
 							</section>
 
 						<!-- Categorias -->
-
-											
-							<?php
-
-										
-								for($i=0;$i<5;$i++){
-									$categoria;	
-
-									Conectar();
-									$sql = "SELECT * FROM categoria WHERE IDCATEGORIA ='".($i+1)."'";
-									$res = $conn->query($sql);
-									foreach($res as $fila)
-									{
-										$categoria = $fila["NAMECATEGORIA"];
-							  
-									}
-									Desconectar();
-
-							?>
-								<section>
-									<ul class="posts">
-										<li>
-											<article>
-												<header>
-													<h3><a href="single.html">
-												<?php		
-												echo($categoria); 
-												?>
-												</a></h3>
-											</header>
-											<a href="single.html" class="image"><img src="images/pic08.jpg" alt="" /></a>
-										</article>
-									</li>
-								</ul>
-								<?php
-								}
-								?> 
+			
+							<?php 
+							include("fcategorias.php"); 
+							?> 
 							</section>
 
 						<!-- About -->

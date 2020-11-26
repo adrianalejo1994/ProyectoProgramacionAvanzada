@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Futuro Imperfecto</title>
+		<title>TELL ME HOW</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -12,7 +12,7 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a>Futuro Imperfecto Answers</a></h1>
+						<h1><a>TELL ME HOW</a></h1>
 						<nav class="links">
 							<ul>
 								<li><a href="inicio.php">Inicio</a></li>
@@ -33,6 +33,11 @@
                     <input type="submit" value="Ingresar" class="submit">
                   </div>
                 </div>
+
+
+
+
+                
                 <!-- Footer -->
                 <section id="footer">
                   <p class="copyright">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
