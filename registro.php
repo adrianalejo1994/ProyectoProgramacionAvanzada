@@ -14,6 +14,7 @@
 				<!-- Header -->
 					<header id="header" style="background-color:black;">
 						<h1><a>Futuro Imperfecto Answers</a></h1>
+
 						<nav class="links">
 							<ul class="subtitulos">
 								<li><a href="inicio.php">Inicio</a></li>
