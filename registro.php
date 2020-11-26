@@ -12,10 +12,10 @@
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header">
+					<header id="header" style="background-color:black;">
 						<h1><a>Futuro Imperfecto Answers</a></h1>
 						<nav class="links">
-							<ul>
+							<ul class="subtitulos">
 								<li><a href="inicio.php">Inicio</a></li>
 							</ul>
 						</nav>
@@ -78,7 +78,7 @@
 					</div>
 
 				<!-- Footer -->
-					<section id="footer">
+					<section id="footer" class="final"> 
 						<p class="copyright">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
 					</section>
 

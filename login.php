@@ -11,11 +11,11 @@
 <div id="wrapper">
 
 				<!-- Header -->
-					<header id="header">
-						<h1><a>Futuro Imperfecto Answers</a></h1>
+					<header id="header" style="background-color:black;" >
+						<h1  ><a>Futuro Imperfecto Answers</a></h1>
 						<nav class="links">
-							<ul>
-								<li><a href="inicio.php">Inicio</a></li>
+							<ul class="subtitulos">
+								<li ><a href="inicio.php">Inicio</a></li>
 							</ul>
 						</nav>
 					</header>
@@ -34,8 +34,8 @@
                   </div>
                 </div>
                 <!-- Footer -->
-                <section id="footer">
-                  <p class="copyright">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
+                <section id="footer" class="final">
+                  <p class="copyright" style="color:white">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
                 </section>
 
             </div>
