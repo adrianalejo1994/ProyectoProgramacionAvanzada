@@ -1,5 +1,4 @@
 <!DOCTYPE HTML>
-
 <html>
 
 <head>
@@ -15,8 +14,7 @@
 		<!-- Header -->
 		<header id="header">
 			<?php
-			$categoria = $_GET['var'];
-
+			$categoria=$_GET['var'];
 			?>
 			<h1><a>TELL ME HOW</a></h1>
 			<nav class="links">
@@ -40,43 +38,35 @@
 						echo (date("Y-m-d", $t)) ?></time> <!-- Programar la fecha desde el servidor para que sea automatica XD -->
 				</div>
 			</header>
-
 			<?php
-			$pregunta;
-
-
-			for ($i = 0; $i < 10; $i++) {
+			//include("fpreguntas.php");
+			
 			?>
-				<div class="post">
-					<time class="published" datetime="2020-11-20"><?php
-						echo ("Pregunta " . ($i + 1));
-						?></div><?php
-						}
-						?>
-				</time>
+			</time>
 
 
-
+			<!-- Pie -->				
 			<footer>
 			<ul class="actions pagination">
-								<li><a href="" class="disabled button large previous">Anterior Pagina</a></li>
-								<li><a href="#" class="button large next">Siguiente Pagina</a></li>
+				<li><a href="" class="disabled button large previous">Anterior Pagina</a></li>
+				<li><a href="#" class="button large next">Siguiente Pagina</a></li>
 			</ul>
 			</footer>
 			</article>
-		</div>					
+		</div>		
+
 		<!-- Slidebar -->
 		<section id="sidebar">
 		<section>
-		<div class="mini-posts">
-			<header>
-				<h2>Categorías</h2>
+			<div class="mini-posts">
+				<header>
+					<h2>Categorías</h2>
 				</header>
 			</div>
-			</section>
-			<section>
+		</section>
+		<section>
 			<?php 
-								include("fcategorias.php"); 
+				include("fcategorias.php"); 
 			?> 
 			</section>
 
