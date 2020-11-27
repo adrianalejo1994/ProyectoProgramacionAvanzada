@@ -1,5 +1,6 @@
 <?php 
 include("functions.php");
+session_start();
 Conectar();
 $idpregunta=$_GET['var']; //obtencion del nombre de categoria
 //echo$idpregunta;

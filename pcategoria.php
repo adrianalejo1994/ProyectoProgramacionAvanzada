@@ -2,7 +2,7 @@
 <!-- Se muestran las preguntas por categoria -->
 <html>
 <?php 
-				$categoria=$_GET['var'];
+$categoria=$_GET['var'];
 
 ?>
 <head>
