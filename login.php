@@ -11,15 +11,9 @@
 <div id="wrapper">
 
 				<!-- Header -->
-					<header id="header" style="background-color:#789dca;" >
-						<h1  ><a>Futuro Imperfecto Answers</a></h1>
-
-						<nav class="links">
-							<ul class="subtitulos">
-								<li ><a href="inicio.php">Inicio</a></li>
-							</ul>
-						</nav>
-					</header>
+        <?php
+				include("header.php"); 
+				?>
 
 
                 <div class="login">
@@ -34,17 +28,13 @@
                     <input type="submit" value="Ingresar" class="submit">
                   </div>
                 </div>
-
-
-
-
-                
-               <!-- Footer -->
-                <section id="footer" class="final" >
-                      <p class="copyright" style="color:white">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
-                </section>
-
             </div>
+
+             <!-- Footer -->
+             <?php
+			        	include("footer.php"); 
+            ?>
+            
 	</body>
 </html>
 
@@ -64,7 +54,7 @@ if ( ! empty( $_POST ) ) {
           if (  $_POST['CLAVE']==$pass && $_POST['IDUSUARIO']==$nombre  ) {
             $_SESSION['usuarioactivo'] = $nombre;
             Desconectar();
-            header('Location: principal.php');
+            header('Location: inicio.php');
           }
       }
     echo "acceso incorrecto";
