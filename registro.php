@@ -12,15 +12,9 @@
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header" style="background-color:#789dca;">
-						<h1><a>Futuro Imperfecto Answers</a></h1>
-
-						<nav class="links">
-							<ul class="subtitulos">
-								<li><a href="inicio.php">Inicio</a></li>
-							</ul>
-						</nav>
-					</header>
+				<?php
+				include("header.php"); 
+				?>
 
 
 				<!-- Main -->
@@ -78,13 +72,13 @@
 							</article>
 					</div>
 
-				<!-- Footer -->
-				<section id="footer" class="final" >
-								<p class="copyright" style="color:white">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
-					</section>
-
-			</div>
-
+				
+            </div>
+            				<!-- Footer -->
+            <?php
+			include("footer.php"); 
+            ?>
+            
 	</body>
 </html>
 

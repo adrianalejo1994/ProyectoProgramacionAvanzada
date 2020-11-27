@@ -31,7 +31,7 @@ echo("
 
 										if ( isset( $_SESSION['usuarioactivo'] ) ) {
 											
-											echo("<a href=\"registro.php\" class=\"links\">".$_SESSION['usuarioactivo']."</a>
+											echo("<a href=\"\" class=\"links\">".$_SESSION['usuarioactivo']."</a>
 											<a href=\"logout.php\" class=\"links\">Salir</a>");
 
 
