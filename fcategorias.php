@@ -1,6 +1,6 @@
 <?php
-include("functions.php");
-Conectar();
+include("functionscopy.php");
+ConectarCat();
 
     $sql = "SELECT COUNT(*) FROM categoria"; //Conteo Categorias
     $res = $conn->query($sql);
@@ -14,23 +14,28 @@ Conectar();
         foreach ($res as $fila) {
             $categoria = $fila["NAMECATEGORIA"];
         }
-
+ 
+        $sql2 = "SELECT IDCATEGORIA FROM categoria WHERE IDCATEGORIA ='" . ($i) . "'";
+        $ncat = $conn->query($sql2);
+        foreach ($ncat as $fila) {
+            $ncategoria = $fila["IDCATEGORIA"];
+        }
 
        echo("<section>
             <ul class=\"posts\">
                 <li>
                     <article>
                         <header>
-                        <h3><a href=\"pcategoria.php?var=$categoria\">".($categoria)."</a></h3>
+                        <h3><a href=\"pcategoria.php?var=$categoria&id=$ncategoria\">".($categoria)."</a></h3>
                         </header>
-                        <a href=\"pcategoria.php?var=$categoria\" class=\"image\"><img src=\"images/pic08.jpg\" alt=\"\" /></a>
+                        <a href=\"pcategoria.php?var=$categoria&id=$ncategoria\" class=\"image\"><img src=\"images/pic08.jpg\" alt=\"\" /></a>
                         <form action=\"pcategoria.php\" method=\"get\">
                         
                         </article>
                 </li>
             </ul>");
     }
-    Desconectar();
+    DesconectarCat();
 
 ?>
 

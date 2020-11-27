@@ -1,7 +1,16 @@
-<?php //include("functions.php"); 
+<?php 
+include("functions.php");
+Conectar();
+$idpregunta=$_GET['var']; //obtencion del nombre de categoria
+echo$idpregunta;
+$sql = "SELECT pregunta.TITULO, pregunta.DESCRIPCIONPREGUNTA  FROM pregunta WHERE pregunta.IDPREGUNTA = $idpregunta"; //selecciona la id de la pregunta perteneciente a la categoria
+$idpre = $conn->query($sql);
 
-	  ?>
-
+foreach ($idpre as $fila) {
+    $pregunta = $fila["TITULO"]; //almacena las ids de las preguntas
+    $descri = $fila["DESCRIPCIONPREGUNTA"];
+}
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -20,7 +29,7 @@
 						<h1 style="color:white"><a>TELL ME HOW</a></h1>
 						<nav class="links">
 							<ul class="subtitulos">
-								<li><a href="#">Inicio</a></li>
+								<li><a href="inicio.php">Inicio</a></li>
 								<li><a href="#">Creditos</a></li>
 							</ul>
 						</nav>
@@ -49,8 +58,8 @@
 							<article class="post">
 								<header>
 									<div class="title">
-										<h2>Descubrir</h2>
-										<p>ultimas preguntas</p>
+										<h2><?php echo$pregunta ?></h2>
+										<p><?php echo$descri ?></p>
 									</div>
 									<div class="meta">
 										<time class="published" datetime="2020-11-20"><?php $t=time(); echo(date("Y-m-d",$t)) ?></time> <!-- Programar la fecha desde el servidor para que sea automatica XD -->
@@ -63,14 +72,21 @@
 							</article>
 
 						<!-- Preguntas -->
-						<?php 
-						include_once("paleatorias.php"); //se cargan las preguntas aleatorias 
-						?>
+										<?php
+										$pregunta;
+										
 
-
-
-
-
+										for($i=0;$i<5;$i++)
+										{
+										?>
+										<div class="post">
+										<time class="published" datetime="2020-11-20"><?php 
+										echo("Respuesta ".($i+1));
+										
+										?></div><?php
+										}
+										?>
+									</time> 
 
 						<!-- Pagination -->
 							<ul class="actions pagination">
@@ -125,3 +141,13 @@
 			</div>
 	</body>
 </html>
+
+
+
+
+
+
+
+<?php 
+        Desconectar();
+?>
