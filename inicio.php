@@ -63,21 +63,10 @@
 							</article>
 
 						<!-- Preguntas -->
-										<?php
-										$pregunta;
-										
+						<?php 
+						include_once("paleatorias.php"); //se cargan las preguntas aleatorias 
+						?>
 
-										for($i=0;$i<20;$i++)
-										{
-										?>
-										<div class="post">
-										<time class="published" datetime="2020-11-20"><?php 
-										echo("Pregunta ".($i+1));
-										
-										?></div><?php
-										}
-										?>
-									</time> 
 
 
 

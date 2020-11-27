@@ -29,7 +29,7 @@ foreach ($idpre as $fila) {
 						<h1 style="color:white"><a>TELL ME HOW</a></h1>
 						<nav class="links">
 							<ul class="subtitulos">
-								<li><a href="#">Inicio</a></li>
+								<li><a href="inicio.php">Inicio</a></li>
 								<li><a href="#">Creditos</a></li>
 							</ul>
 						</nav>
