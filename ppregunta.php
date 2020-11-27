@@ -2,7 +2,7 @@
 include("functions.php");
 Conectar();
 $idpregunta=$_GET['var']; //obtencion del nombre de categoria
-echo$idpregunta;
+//echo$idpregunta;
 $sql = "SELECT pregunta.TITULO, pregunta.DESCRIPCIONPREGUNTA  FROM pregunta WHERE pregunta.IDPREGUNTA = $idpregunta"; //selecciona la id de la pregunta perteneciente a la categoria
 $idpre = $conn->query($sql);
 
@@ -25,32 +25,11 @@ foreach ($idpre as $fila) {
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header"  style="background-color:#789dca;" >
+				<?php
+				include("header.php"); 
+				?>
 
-						<h1 style="color:white"><a>TELL ME HOW</a></h1>
-						<nav class="links">
-							<ul class="subtitulos">
-								<li><a href="inicio.php">Inicio</a></li>
-								<li><a href="#">Creditos</a></li>
-							</ul>
-						</nav>
-
-							<!-- Barra de busqueda -->
-							
-							<div class="links">
-										<form class="flexsearch--form" action="#" method="post">
-												<input class="flexsearch--input" type="search" placeholder="Buscar en respuestas">
-												<input class="links" type="submit" value="&#10140;"/>
-										</form>
-							</div>
-											
-						<nav >
-							<ul class="subtitulos">
-								<a href="login.php" class="links">Ingresar</a>
-								<a href="registro.php" class="links">Registrarse</a>
-							</ul>
-						</nav>
-					</header>					
+									
 
 				<!-- Main -->
 					<div id="main">
@@ -134,14 +113,16 @@ foreach ($idpre as $fila) {
 								</ul>
 							</section>
 
-						<!-- Footer -->
-
-            <section id="footer" class="final" >
-								<p class="copyright" style="color:white">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
-						</section>
+						
 
 					</section>
 			</div>
+			<!-- Footer -->
+
+			<?php
+			include("footer.php"); 
+			?>
+
 	</body>
 </html>
 

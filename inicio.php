@@ -16,31 +16,9 @@
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header"  style="background-color:#789dca;" >
-						<h1 style="color:white"><a>TELL ME HOW</a></h1>
-						<nav class="links">
-							<ul class="subtitulos">
-								<li><a href="#">Inicio</a></li>
-								<li><a href="#">Creditos</a></li>
-							</ul>
-						</nav>
-
-							<!-- Barra de busqueda -->
-							
-							<div class="links">
-										<form class="flexsearch--form" action="#" method="post">
-												<input class="flexsearch--input" type="search" placeholder="Buscar en respuestas">
-												<input class="links" type="submit" value="&#10140;"/>
-										</form>
-							</div>
-											
-						<nav >
-							<ul class="subtitulos">
-								<a href="login.php" class="links">Ingresar</a>
-								<a href="registro.php" class="links">Registrarse</a>
-							</ul>
-						</nav>
-					</header>					
+				<?php
+				include("header.php"); 
+				?>
 
 				<!-- Main -->
 					<div id="main">
@@ -62,14 +40,12 @@
 								</footer>
 							</article>
 
+
+
 						<!-- Preguntas -->
 						<?php 
 						include_once("paleatorias.php"); //se cargan las preguntas aleatorias 
 						?>
-
-
-
-
 
 
 						<!-- Pagination -->
@@ -79,6 +55,10 @@
 							</ul>
 
 					</div>
+
+
+
+					
 
 				<!-- Sidebar izquierdo -->
 					<section id="sidebar">
@@ -122,9 +102,9 @@
 					
 			</div>
 			<!-- Footer -->
-				<section id="footer" class="final" >
-								<p class="copyright" style="color:white">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
-					</section>
+			<?php
+				include("footer.php"); 
+			?>
 
 	</body>
 </html>

@@ -2,6 +2,7 @@
 <!-- Se muestran las preguntas por categoria -->
 <html>
 <?php 
+				$categoria=$_GET['var'];
 
 ?>
 <head>
@@ -15,17 +16,10 @@
 	<div id="wrapper">
 
 		<!-- Header -->
-		<header id="header" style="background-color:#789dca;">
-			<?php
-			$categoria=$_GET['var'];
-			?>
-			<h1><a>TELL ME HOW</a></h1>
-			<nav class="links">
-				<ul>
-					<li><a href="inicio.php">Inicio</a></li>
-				</ul>
-			</nav>
-		</header>
+		<?php
+		include("header.php"); 
+		?>
+
 
 		<!-- Main -->
 		<!-- Preguntas -->
@@ -72,13 +66,12 @@
 				require_once("fcategorias.php"); 
 
 			?> 
-			</section>
+		</div>
 
 			<!-- Footer -->
-					<section id="footer" class="final" >
-								<p class="copyright" style="color:white">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
-					</section>
-		</section>
-	</div>
+		<?php
+		include("header.php"); 
+		?>
+
 </body>
 </html>
