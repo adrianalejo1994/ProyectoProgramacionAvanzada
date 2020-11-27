@@ -7,9 +7,17 @@ Conectar();
     $res->execute(); 
     $number_of_rows = $res->fetchColumn(); //Numero de Categorias
 
+    $sql = "SELECT categoria.NAMECATEGORIA FROM pregunta,categoria WHERE categoria.NAMECATEGORIA ='$categoria'";
+    $rescat = $conn->query($sql);
+    foreach ($rescat as $fila) {
+        $cat = $fila["NAMECATEGORIA"];
+    }
+
+    echo$cat;
+    echo$categoria;
     for ($i = 1; $i <= $number_of_rows; $i++) {
  
-        $sql = "SELECT pregunta.TITULO FROM pregunta,categoria WHERE categoria.NAMECATEGORIA ='$categoria'";
+        $sql = "SELECT pregunta.TITULO FROM pregunta JOIN categoria WHERE categoria.NAMECATEGORIA ='".$categoria."'";
         $res = $conn->query($sql);
         foreach ($res as $fila) {
             $preguntas = $fila["TITULO"];
