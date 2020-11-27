@@ -63,21 +63,10 @@
 							</article>
 
 						<!-- Preguntas -->
-										<?php
-										$pregunta;
-										
+						<?php 
+						include_once("paleatorias.php"); //se cargan las preguntas aleatorias 
+						?>
 
-										for($i=0;$i<20;$i++)
-										{
-										?>
-										<div class="post">
-										<time class="published" datetime="2020-11-20"><?php 
-										echo("Pregunta ".($i+1));
-										
-										?></div><?php
-										}
-										?>
-									</time> 
 
 
 
@@ -126,11 +115,15 @@
 								<ul class="actions">
 									<li><a href="#" class="button">Leer mas</a></li>
 								</ul>
-							</section>	
+							</section>
+
+						
+					</section>
+					
 			</div>
 			<!-- Footer -->
-					<section id="footer" class="final"  > 
-						<p class="copyright" style="color:white"><font size="3">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</font></p>
+				<section id="footer" class="final" >
+								<p class="copyright" style="color:white">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
 					</section>
-		</body>
+	</body>
 </html>

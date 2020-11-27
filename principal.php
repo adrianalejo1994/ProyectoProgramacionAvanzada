@@ -1,7 +1,9 @@
+
+
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Future Imperfecto</title>
+		<title>TELL ME HOW</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -42,7 +44,6 @@
 									<div class="meta">
 										<time class="published" datetime="2015-11-01">November 1, 2015</time> <!-- Programar la hora automatica con el servidor y la imagen con el nombre del nick name -->
 										<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
-										
 									</div>
 
 									<?php
@@ -75,9 +76,9 @@
 					</div>
 
 				<!-- Footer -->
-						<section id="footer" class="final"  > 
-							<p class="copyright" style="color:white"><font size="3">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</font></p>
-						</section>
+					<section id="footer" class="final" >
+								<p class="copyright" style="color:white">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
+					</section>
 
 			</div>
 
