@@ -11,11 +11,11 @@
 	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
 
-<body class="is-preload">
+<body class="is-preload" style="background-color:#c4d2e7;">
 	<div id="wrapper">
 
 		<!-- Header -->
-		<header id="header">
+		<header id="header" style="background-color:#789dca;">
 			<?php
 			$categoria=$_GET['var'];
 			?>
@@ -75,9 +75,9 @@
 			</section>
 
 			<!-- Footer -->
-			<section id="footer">
-			<p class="copyright">&copy; Arroyo - Arteaga - Guanuche - López </a>. -- "Proyecto Final" -- </a>.</p>
-			</section>
+					<section id="footer" class="final" >
+								<p class="copyright" style="color:white">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
+					</section>
 		</section>
 	</div>
 </body>
