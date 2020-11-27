@@ -6,13 +6,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
-	<body class="single is-preload">
+	<body class="single is-preload" style="background-color:#c4d2e7;">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header" style="background-color:black;">
+					<header id="header" style="background-color:#789dca;">
 						<h1><a>Futuro Imperfecto Answers</a></h1>
 
 						<nav class="links">
@@ -79,9 +79,9 @@
 					</div>
 
 				<!-- Footer -->
-					<section id="footer" class="final"> 
-						<p class="copyright">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
-					</section>
+                    <section id="footer" class="final"  > 
+							<p class="copyright" style="color:white"><font size="3">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</font></p>
+						</section>
 
 			</div>
 
