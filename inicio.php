@@ -16,10 +16,10 @@
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header">
-						<h1><a>TELL ME HOW</a></h1>
+					<header id="header"  style="background-color:black;" >
+						<h1 style="color:white"><a>TELL ME HOW</a></h1>
 						<nav class="links">
-							<ul>
+							<ul class="subtitulos">
 								<li><a href="#">Inicio</a></li>
 								<li><a href="#">Creditos</a></li>
 							</ul>
@@ -35,7 +35,7 @@
 							</div>
 											
 						<nav >
-							<ul>
+							<ul class="subtitulos">
 								<a href="login.php" class="links">Ingresar</a>
 								<a href="registro.php" class="links">Registrarse</a>
 							</ul>
@@ -129,8 +129,8 @@
 							</section>
 
 						<!-- Footer -->
-							<section id="footer">
-								<p class="copyright">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
+							<section id="footer" style="background-color:black;" >
+								<p class="copyright" style="color:white">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
 							</section>
 					</section>
 			</div>
