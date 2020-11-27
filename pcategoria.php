@@ -1,6 +1,9 @@
 <!DOCTYPE HTML>
+<!-- Se muestran las preguntas por categoria -->
 <html>
+<?php 
 
+?>
 <head>
 	<title>Futuro Imperfecto</title>
 	<meta charset="utf-8" />
@@ -39,8 +42,8 @@
 				</div>
 			</header>
 			<?php
-			include("fpreguntas.php");
-			
+			//Ingreso a la pagina donde se programan las preguntas
+			require_once("fpreguntas.php");
 			?>
 			</time>
 
@@ -66,9 +69,8 @@
 		</section>
 		<section>
 			<?php 
+				require_once("fcategorias.php"); 
 
-				//include("fcategorias.php"); 
-				
 			?> 
 			</section>
 

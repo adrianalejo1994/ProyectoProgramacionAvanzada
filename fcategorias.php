@@ -1,6 +1,6 @@
 <?php
-include("functions.php");
-Conectar();
+include("functionscopy.php");
+ConectarCat();
 
     $sql = "SELECT COUNT(*) FROM categoria"; //Conteo Categorias
     $res = $conn->query($sql);
@@ -35,7 +35,7 @@ Conectar();
                 </li>
             </ul>");
     }
-    Desconectar();
+    DesconectarCat();
 
 ?>
 
