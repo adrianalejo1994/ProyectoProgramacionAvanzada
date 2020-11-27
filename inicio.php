@@ -132,10 +132,7 @@
 							<section id="footer">
 								<p class="copyright">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
 							</section>
-
 					</section>
-
 			</div>
-	
 	</body>
 </html>
