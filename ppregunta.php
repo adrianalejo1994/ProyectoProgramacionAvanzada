@@ -26,6 +26,7 @@ foreach ($idpre as $fila) {
 
 				<!-- Header -->
 					<header id="header"  style="background-color:#789dca;" >
+
 						<h1 style="color:white"><a>TELL ME HOW</a></h1>
 						<nav class="links">
 							<ul class="subtitulos">
@@ -134,9 +135,11 @@ foreach ($idpre as $fila) {
 							</section>
 
 						<!-- Footer -->
-						<section id="footer" class="final" >
+
+            <section id="footer" class="final" >
 								<p class="copyright" style="color:white">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
 						</section>
+
 					</section>
 			</div>
 	</body>
