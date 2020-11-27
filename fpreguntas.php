@@ -14,7 +14,7 @@ Conectar();
         foreach ($res as $fila) {
             $preguntas = $fila["TITULO"];
         }
-
+        echo$categoria;
 
        echo("<section>
             <ul class=\"posts\">
@@ -30,6 +30,6 @@ Conectar();
             </ul>");
     }
     Desconectar();
-
+    
 ?>
 

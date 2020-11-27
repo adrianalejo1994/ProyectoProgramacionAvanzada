@@ -39,7 +39,7 @@
 				</div>
 			</header>
 			<?php
-			//include("fpreguntas.php");
+			include("fpreguntas.php");
 			
 			?>
 			</time>
@@ -66,7 +66,9 @@
 		</section>
 		<section>
 			<?php 
-				include("fcategorias.php"); 
+
+				//include("fcategorias.php"); 
+				
 			?> 
 			</section>
 
