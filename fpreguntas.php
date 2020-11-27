@@ -2,6 +2,7 @@
 include("functions.php");
 Conectar();
     $categoria=$_GET['var'];
+    $ncategoria=$_GET['id'];
     $sql = "SELECT COUNT(*) FROM pregunta"; //Conteo Categorias
     $res = $conn->query($sql);
     $res->execute(); 
@@ -9,7 +10,7 @@ Conectar();
 
     for ($i = 1; $i <= $number_of_rows; $i++) {
  
-        $sql = "SELECT pregunta.TITULO FROM pregunta,categoria WHERE categoria.NAMECATEGORIA ='$categoria'";
+        $sql = "SELECT pregunta.TITULO FROM pregunta JOIN categoria WHERE pregunta.IDCATEGORIA = $ncategoria";
         $res = $conn->query($sql);
         foreach ($res as $fila) {
             $preguntas = $fila["TITULO"];
