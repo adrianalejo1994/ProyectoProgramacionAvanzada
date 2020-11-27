@@ -126,28 +126,11 @@
 								<ul class="actions">
 									<li><a href="#" class="button">Leer mas</a></li>
 								</ul>
-							</section>
-
-<<<<<<< Updated upstream
-						<!-- Footer -->
-							<section id="footer" style="background-color:black;" >
-								<p class="copyright" style="color:white">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
-							</section>
-
-=======
-						
->>>>>>> Stashed changes
-					</section>
-
+							</section>	
 			</div>
-<<<<<<< Updated upstream
-	
-	</body>
-=======
 			<!-- Footer -->
 					<section id="footer" class="final"  > 
 						<p class="copyright" style="color:white"><font size="3">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</font></p>
 					</section>
 		</body>
->>>>>>> Stashed changes
 </html>
