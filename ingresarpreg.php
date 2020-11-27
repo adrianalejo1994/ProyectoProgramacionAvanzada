@@ -106,7 +106,7 @@ if ( ! empty( $_POST ) ) {
       $FECHACREACIONPREGUNTA = $_POST['FECHACREACIONPREGUNTA'];
 
 Conectar();
-      $sql = "INSERT INTO `pregunta` VALUES ('".$IDPREGUNTA."', '".$IDUSUARIO ."', '".$IDCATEGORIA."', '".$TITULO."', '".$DESCRIPCION."', '".$estado."', '".$FECHACREACIONPREGUNTA."')";
+      $sql = "INSERT INTO `pregunta` VALUES ('".$IDPREGUNTA."', '".$IDUSUARIO ."', '".$IDCATEGORIA."', '".$TITULO."', '".$DESCRIPCIONPREGUNTA."', '".$estado."', '".$FECHACREACIONPREGUNTA."')";
       $res = $conn->query($sql); 
 Desconectar();
 }
