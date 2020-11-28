@@ -16,7 +16,7 @@ echo("
 				<!-- boton preguntar  agregar link-->
 
 						<ul class=\"subtitulos\">
-						<a href=\"ingresarpreg.php\"  value=\"Preguntar +\"><li>Preguntar</li></a>
+						<a href=\"ingresarpreg.php\"  value=\"Preguntar +\"><li>Preguntar</li></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 						</ul>
 
 							<!-- Barra de busqueda -->

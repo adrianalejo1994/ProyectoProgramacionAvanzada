@@ -29,9 +29,6 @@ foreach ($idpre as $fila) {
 				<?php
 				include("header.php"); 
 				?>
-
-									
-
 				<!-- Main -->
 					<div id="main">
 
@@ -60,28 +57,10 @@ foreach ($idpre as $fila) {
 										<div class="post">
 										<time class="published" datetime="2020-11-20"><?php 
 										//echo("Respuesta ".($i+1));
-										
-										?>
-										</div>
-											<div id="container">	
-												<div id="demo"></div>
-												<div class="post" style="border-radius:10px">
-													<form name="form"  id="form" method="POST">
-														<input type="text" name="name" placeholder="Name..." id="name"></br></br>
-														<textarea name="comments" placeholder="Insertar tu respuesta aqui..." id="comment" style="width:635px; height:100px;"></textarea></br></br>
-														<button type="submit" name="submit" id="submit" class="button" style="outline: none;border:none;">Responder</button></br>
-													</form>
-												</div>
-												<div id="comment_logs">
-												<?php require("mostrarlogs.php");
-													
-													//echo "<span style='color:red ;'>$message</span>";
-												?>	 
-											<?php
-										//}
-										?>
-										
 
+										?>
+										<?php include("respuesta.php")
+										//require("mostrarlogs.php");?>	 
 									</time> 
 
 						<!-- Pagination -->
@@ -114,11 +93,11 @@ foreach ($idpre as $fila) {
 							</section>
 
 						<!-- Categorias -->
-			
+						<section>			
 							<?php 
 							include("fcategorias.php"); 
 							?> 
-							</section>
+						</section>
 
 						<!-- About -->
 							<section class="blurb">
@@ -128,9 +107,6 @@ foreach ($idpre as $fila) {
 									<li><a href="#" class="button">Leer mas</a></li>
 								</ul>
 							</section>
-
-						
-
 					</section>
 			</div>
 			<!-- Footer -->

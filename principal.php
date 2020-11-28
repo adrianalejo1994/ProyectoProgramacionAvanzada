@@ -17,7 +17,7 @@ session_start();
 
 				<!-- Header -->
 					<header id="header" style="background-color:#789dca;">
-						<h1><a>Futuro Imperfecto Answers</a></h1>
+						<h1><a>TELL ME HOW</a></h1>
 						<nav class="links">
 							<ul class="subtitulos">
 								<li><a href="inicio.php">Inicio</a></li>
