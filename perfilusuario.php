@@ -12,7 +12,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
                                 
-$sql = "SELECT IDPREGUNTA, IDUSUARIO, IDCATEGORIA,TITULO, DESCRIPCIONPREGUNTA, ESTADO FROM PREGUNTA";
+$sql = "SELECT IDPREGUNTA, IDUSUARIO, IDCATEGORIA,TITULO, DESCRIPCIONPREGUNTA, ESTADO, FECHACREACIONPREGUNTA FROM PREGUNTA";
 //echo $sql;
 $res=mysqli_query($conn,$sql);
 //$res = $conn->query($sql); 
@@ -118,7 +118,7 @@ session_start();
                             <td><?php echo($row["DESCRIPCIONPREGUNTA"]); ?></td>
                             <td><?php echo($row["ESTADO"]); ?></td>
                             
-                            <td></td>
+                            <td><?php echo($row["FECHACREACIONPREGUNTA"]);?></td>
                             <td><?php echo"<a href='eliminarpreg.php?IDPREGUNTA=".$row["IDPREGUNTA"]."'"?><button type="button" class="btn btn-danger">Eliminar</button></a></td>
                             <td>   
                             <td>

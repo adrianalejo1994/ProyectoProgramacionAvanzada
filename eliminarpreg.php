@@ -2,10 +2,10 @@
 include("functionscopy.php");
 session_start();
 
-EliminarProducto($_GET['IDPREGUNTA']);
+EliminarPregunta($_POST['IDPREGUNTA']);
 
-function EliminarProducto($IDPREGUNTA){
-    $sql="DELETE  FROM PREGUNTA WHERE IDPREGUNTA='".$IDPREGUNTA."'";
+function EliminarPregunta($IDPREGUNTA){
+    $sql="DELETE IDPREGUNTA, IDUSUARIO, IDCATEGORIA,TITULO, DESCRIPCIONPREGUNTA, ESTADO, FECHACREACIONPREGUNTA  FROM PREGUNTA WHERE IDPREGUNTA='".$IDPREGUNTA."'";
     mysqli_query($sql);
 }
 ?>
