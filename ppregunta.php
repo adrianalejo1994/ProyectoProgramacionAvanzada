@@ -59,8 +59,10 @@ foreach ($idpre as $fila) {
 										//echo("Respuesta ".($i+1));
 
 										?>
+										<article>
 										<?php include("respuesta.php")
 										//require("mostrarlogs.php");?>	 
+										</article>
 									</time> 
 
 						<!-- Pagination -->
@@ -68,8 +70,8 @@ foreach ($idpre as $fila) {
 								<li><a href="" class="disabled button large previous">Anterior Pagina</a></li>
 								<li><a href="#" class="button large next">Siguiente Pagina</a></li>
 							</ul>
-
 					</div>
+
 
 				<!-- Sidebar izquierdo -->
 					<section id="sidebar">
@@ -108,6 +110,7 @@ foreach ($idpre as $fila) {
 								</ul>
 							</section>
 					</section>
+			    </div>
 			</div>
 			<!-- Footer -->
 
