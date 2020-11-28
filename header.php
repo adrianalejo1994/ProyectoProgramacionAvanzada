@@ -47,7 +47,6 @@ else
 				<!-- boton preguntar  agregar link-->
 
 						<ul class=\"subtitulos\">
-						<a href=\"ingresarpreg.php\"  value=\"Preguntar +\">Preguntar</t></a>
 						</ul>
 
 							<!-- Barra de busqueda -->
