@@ -1,4 +1,22 @@
 <?php 
+include("functionscopy.php");
+ConectarCat();
+    $k=1;
+    $sql = "SELECT COUNT(*) FROM categoria"; //Conteo Categorias
+    $resc = $conn->query($sql);
+    $resc->execute(); 
+    $number_of_rows = $resc->fetchColumn(); //Numero de Categorias
+
+    for ($i = 1; $i <= $number_of_rows; $i++) {
+ 
+        $sql = "SELECT NAMECATEGORIA FROM categoria WHERE IDCATEGORIA = $i";
+        $res = $conn->query($sql);
+        foreach ($res as $fila) {
+            $categoria[$k] = $fila["NAMECATEGORIA"];
+            $k++;
+        }
+
+    }
 session_start();
 ?>
 
@@ -20,7 +38,7 @@ session_start();
 
 				<!-- Header -->
 					<header id="header" style="background-color:#789dca;">
-						<h1><a>Futuro Imperfecto Answers</a></h1>
+						<h1><a>TELL ME HOW</a></h1>
 
 						<nav class="links">
 							<ul class="subtitulos">
@@ -51,8 +69,16 @@ session_start();
                                             <TD><input type="text" value="" name="IDUSUARIO" required/><td>
                                         </tr>
                                         <tr>
-                                            <td>Categoria:</td>
-                                            <td><input type="int" value="" name="IDCATEGORIA" required/><td>
+
+                                            <td>Categoria</td>
+                                            <td><select name="categoria" id="categoria" required>
+                                            <?php  
+                                            for($i=1;$i<=$number_of_rows;$i++)
+                                            {
+                                            echo"<option value=\"$i\" >$categoria[$i]</option>";     //la $i es la id de la categoria                
+                                            }        
+                                            ?>
+                                            </select><td>
                                         </tr>
                                         <tr>
                                             <td>Titulo:</td>
@@ -63,11 +89,11 @@ session_start();
                                             <td><input type="text" value="" name="DESCRIPCIONPREGUNTA" required/><td>
                                         </tr>
                                         <tr>
-                                            <td>Estado</td>
+                                            <?php /* <td>Estado</td>
                                             <td><select name="estado" id="estado" required>
                                                 <option value="1">Tiene Respuesta</option>
                                                 <option value="0">No tiene Respuesta</option>
-                                                </select><td>
+                                                </select><td>*/ ?>
                                         </tr>
                                         <tr>
                                             <td>Fecha Creación de Pregunta:</td>
@@ -93,7 +119,7 @@ session_start();
 </html>
 
 <?php
-include("functions.php");
+
 
 if ( ! empty( $_POST ) ) {
 
@@ -104,10 +130,10 @@ if ( ! empty( $_POST ) ) {
       $DESCRIPCIONPREGUNTA = $_POST['DESCRIPCIONPREGUNTA'];
       $estado = $_POST['estado'];
       $FECHACREACIONPREGUNTA = $_POST['FECHACREACIONPREGUNTA'];
-
-Conectar();
-      $sql = "INSERT INTO `pregunta` VALUES ('".$IDPREGUNTA."', '".$IDUSUARIO ."', '".$IDCATEGORIA."', '".$TITULO."', '".$DESCRIPCIONPREGUNTA."', '".$estado."', '".$FECHACREACIONPREGUNTA."')";
+      $sql = "INSERT INTO `pregunta` VALUES ('".$IDPREGUNTA."', '".$IDUSUARIO ."', '".$IDCATEGORIA."', '".$TITULO."', '".$DESCRIPCIONPREGUNTA."', '0', '".$FECHACREACIONPREGUNTA."')";
       $res = $conn->query($sql); 
+
+
 Desconectar();
 }
 ?>
