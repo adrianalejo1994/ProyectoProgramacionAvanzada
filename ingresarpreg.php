@@ -106,7 +106,7 @@ session_start();
 
 				<!-- Footer -->
 					<section id="footer" class="final"  > 
-						<p class="copyright" style="color:white"><font size="3">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</font></p>
+						<p class="copyright" style="color:white"><font size="3.5">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</font></p>
 					</section>
 
 			</div>
