@@ -61,12 +61,8 @@ session_start();
                                     <form action="" method="post">
                                         <table>
                                         <tr>
-                                            <td>Pregunta N°:</td>
-                                            <td><input type="int" value="" name="IDPREGUNTA" required/><td>
-                                        </tr>
-                                        <tr>
                                             <TD>Usuario:</td>
-                                            <TD><input type="text" value="" name="IDUSUARIO" required/><td>
+                                            <TD><?php echo $_SESSION["usuarioactivo"]; ?><td>
                                         </tr>
                                         <tr>
 
@@ -97,7 +93,7 @@ session_start();
                                         </tr>
                                         <tr>
                                             <td>Fecha Creación de Pregunta:</td>
-                                            <td><input type="date" value="" name="FECHACREACIONPREGUNTA" required/><td>
+                                            <td><time class="published" datetime="2020-11-20"><?php $t=time(); echo(date("Y-m-d",$t)) ?></time></td>
                                         </tr>
                                         
                                         </table>
@@ -120,17 +116,16 @@ session_start();
 
 <?php
 
-
+$NombreUsuario=$_SESSION["usuarioactivo"];
 if ( ! empty( $_POST ) ) {
 
       $IDPREGUNTA = $_POST['IDPREGUNTA'];
-      $IDUSUARIO = $_POST['IDUSUARIO'];
+      $IDUSUARIO = $NombreUsuario;
       $IDCATEGORIA = $_POST['IDCATEGORIA'];
       $TITULO = $_POST['TITULO'];
       $DESCRIPCIONPREGUNTA = $_POST['DESCRIPCIONPREGUNTA'];
-      $estado = $_POST['estado'];
       $FECHACREACIONPREGUNTA = $_POST['FECHACREACIONPREGUNTA'];
-      $sql = "INSERT INTO `pregunta` VALUES ('".$IDPREGUNTA."', '".$IDUSUARIO ."', '".$IDCATEGORIA."', '".$TITULO."', '".$DESCRIPCIONPREGUNTA."', '0', '".$FECHACREACIONPREGUNTA."')";
+      $sql = "INSERT INTO `pregunta` VALUES (0, '".$IDUSUARIO ."', '".$IDCATEGORIA."', '".$TITULO."', '".$DESCRIPCIONPREGUNTA."', '0', '".$FECHACREACIONPREGUNTA."')";
       $res = $conn->query($sql); 
 
 
