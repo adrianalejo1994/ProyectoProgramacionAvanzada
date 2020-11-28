@@ -71,7 +71,7 @@ session_start();
                                         <tr>
 
                                             <td>Categoria</td>
-                                            <td><select name="categoria" id="categoria" required>
+                                            <td><select name="IDCATEGORIA" id="categoria" required>
                                             <?php  
                                             for($i=1;$i<=$number_of_rows;$i++)
                                             {
