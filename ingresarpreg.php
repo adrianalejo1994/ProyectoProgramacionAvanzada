@@ -128,9 +128,6 @@ if ( ! empty( $_POST ) ) {
       $sql = "INSERT INTO `pregunta` VALUES ( null,'".$IDUSUARIO ."', '".$IDCATEGORIA."', '".$TITULO."', '".$DESCRIPCIONPREGUNTA."', '0', '".$FECHACREACIONPREGUNTA."')";
       echo $sql;
       $res = $conn->query($sql); 
-    
-
-
 }
 DesconectarCat();
 ?>

@@ -36,9 +36,9 @@ foreach ($idpre as $fila) {
 					<div id="main">
 
 						<!-- Post -->
-							<article class="post">
+							<article class="post"  style="border-radius:10px">
 								<header>
-									<div class="title">
+									<div class="title" >
 										<h2><?php echo$pregunta ?></h2>
 										<p><?php echo$descri ?></p>
 									</div>
@@ -47,9 +47,6 @@ foreach ($idpre as $fila) {
 									</div>
 								</header>
 
-								<footer>
-
-								</footer>
 							</article>
 
 						<!-- Preguntas -->
@@ -66,9 +63,9 @@ foreach ($idpre as $fila) {
 										
 										?>
 										</div>
-											<div id="container" style="box-shadow: 0px 0px 10px 5px #ddd;border-radius:20px">	
+											<div id="container">	
 												<div id="demo"></div>
-												<div class="comment_input" style="border-radius:10px;box-shadow: 0px 0px 5px 2px #ddd;">
+												<div class="post" style="border-radius:10px">
 													<form name="form"  id="form" method="POST">
 														<input type="text" name="name" placeholder="Name..." id="name"></br></br>
 														<textarea name="comments" placeholder="Insertar tu respuesta aqui..." id="comment" style="width:635px; height:100px;"></textarea></br></br>

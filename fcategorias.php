@@ -22,7 +22,7 @@ ConectarCat();
         }
 
        echo("<section>
-            <ul class=\"posts\">
+            <ul border-radius:10px class=\"posts\">
                 <li>
                     <article>
                         <header>
@@ -30,7 +30,6 @@ ConectarCat();
                         </header>
                         <a href=\"pcategoria.php?var=$categoria&id=$ncategoria\" class=\"image\"><img src=\"images/pic08.jpg\" alt=\"\" /></a>
                         <form action=\"pcategoria.php\" method=\"get\">
-                        
                         </article>
                 </li>
             </ul>");

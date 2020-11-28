@@ -41,7 +41,7 @@ $k=0;
         //echo$preguntas[$aux];
         
         echo("<section>
-        <div class=\"post\">
+        <div style=\"border-radius:10px\" class=\"post\">
         <ul>
                 <article>
                     <header>

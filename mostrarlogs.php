@@ -1,4 +1,6 @@
-<?php //require("functions.php");
+<?php
+/*echo"Aqui";
+//require("functions.php");
 $result = mysqli_query($conn, "SELECT * FROM pregunta");
 while($row = mysqli_fetch_assoc($result)){
 //echo "<div class='proyectofinal'>";
@@ -7,5 +9,5 @@ while($row = mysqli_fetch_assoc($result)){
 	echo "<h2 style='color:black; margin-top:10px;'>" . $row['FECHACREACIONPREGUNTA'] . "</h2></br></br>";
 	//echo "<h3  style='color:black;font-size:14px;'>" . $row['comments'] . "</h3>";
 echo "</div>";
-}
+}*/
 ?>
