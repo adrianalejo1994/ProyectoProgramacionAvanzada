@@ -57,16 +57,34 @@ foreach ($idpre as $fila) {
 										$pregunta;
 										
 
-										for($i=0;$i<5;$i++)
-										{
+										//for($i=0;$i<5;$i++)
+										//{
 										?>
 										<div class="post">
 										<time class="published" datetime="2020-11-20"><?php 
-										echo("Respuesta ".($i+1));
+										//echo("Respuesta ".($i+1));
 										
-										?></div><?php
-										}
 										?>
+										</div>
+											<div id="container" style="box-shadow: 0px 0px 10px 5px #ddd;border-radius:20px">	
+												<div id="demo"></div>
+												<div class="comment_input" style="border-radius:10px;box-shadow: 0px 0px 5px 2px #ddd;">
+													<form name="form"  id="form" method="POST">
+														<input type="text" name="name" placeholder="Name..." id="name"></br></br>
+														<textarea name="comments" placeholder="Insertar tu respuesta aqui..." id="comment" style="width:635px; height:100px;"></textarea></br></br>
+														<button type="submit" name="submit" id="submit" class="button" style="outline: none;border:none;">Responder</button></br>
+													</form>
+												</div>
+												<div id="comment_logs">
+												<?php require("mostrarlogs.php");
+													
+													//echo "<span style='color:red ;'>$message</span>";
+												?>	 
+											<?php
+										//}
+										?>
+										
+
 									</time> 
 
 						<!-- Pagination -->
