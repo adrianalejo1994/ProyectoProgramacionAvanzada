@@ -16,11 +16,7 @@ echo("
 				<!-- boton preguntar  agregar link-->
 
 						<ul class=\"subtitulos\">
-<<<<<<< HEAD
 						<a href=\"ingresarpreg.php\"  value=\"Preguntar +\"><li>Preguntar</li></a>
-=======
-						<a href=\"ingresarpreg.php\"  value=\"Preguntar +\">Preguntar</t></a>
->>>>>>> origin/davis
 						</ul>
 
 							<!-- Barra de busqueda -->

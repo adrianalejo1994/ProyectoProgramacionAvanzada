@@ -14,7 +14,6 @@ Conectar();
     $sql = "SELECT pregunta.TITULO FROM pregunta WHERE pregunta.IDCATEGORIA = $ncategoria "; //separa las categorias
     $res = $conn->query($sql);
 
-<<<<<<< HEAD
     foreach ($res as $fila) {
         $preguntas[$k] = $fila["TITULO"]; //alamacena las preguntas de la categoria
         $k++;
@@ -23,23 +22,6 @@ Conectar();
         // echo$categoria;
         $sql = "SELECT pregunta.IDPREGUNTA FROM pregunta WHERE pregunta.IDCATEGORIA = $ncategoria"; //selecciona la id de la pregunta perteneciente a la categoria
         $idpre = $conn->query($sql);
-=======
-    $sql = "SELECT categoria.NAMECATEGORIA FROM pregunta,categoria WHERE categoria.NAMECATEGORIA ='$categoria'";
-    $rescat = $conn->query($sql);
-    foreach ($rescat as $fila) {
-        $cat = $fila["NAMECATEGORIA"];
-    }
-
-    echo$cat;
-    echo$categoria;
-    for ($i = 1; $i <= $number_of_rows; $i++) {
- 
-        $sql = "SELECT pregunta.TITULO FROM pregunta JOIN categoria WHERE categoria.NAMECATEGORIA ='".$categoria."'";
-        $res = $conn->query($sql);
-        foreach ($res as $fila) {
-            $preguntas = $fila["TITULO"];
-        }
->>>>>>> Darling
 
         foreach ($idpre as $fila) {
             $idpregunta[$k2] = $fila["IDPREGUNTA"]; //almacena las ids de las preguntas
