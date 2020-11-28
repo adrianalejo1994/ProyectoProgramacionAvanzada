@@ -1,5 +1,24 @@
 <?php 
+include("functionscopy.php");
+$conn = mysqli_connect('localhost', 'root', '');  
+if (! $conn) {  
+die("Connection failed" . mysqli_connect_error());  
+}  
+else {  
+mysqli_select_db($conn, 'proyectofinal');  
+}  
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+                                
+$sql = "SELECT IDPREGUNTA, IDUSUARIO, IDCATEGORIA,TITULO, DESCRIPCIONPREGUNTA, ESTADO FROM PREGUNTA";
+//echo $sql;
+$res=mysqli_query($conn,$sql);
+//$res = $conn->query($sql); 
+ConectarCat();
 session_start();
+
 ?>
 
 <!DOCTYPE HTML>
@@ -43,11 +62,13 @@ session_start();
 										<p>Todas tus preguntas</p>
 										
 									</div>
-									<div class="meta">
-										<?php//<time class="published" datetime="2015-11-01">November 1, 2015</time>?> <!-- Programar la hora automatica con el servidor y la imagen con el nombre del nick name -->
+									
+                                    <div class="meta">
+                                    <!-- Programar la hora automatica con el servidor y la imagen con el nombre del nick name -->
 										<a href="#" class="author"><span class="name"><?php echo $_SESSION['usuarioactivo']; ?></span><img src="images/avatar.jpg" alt="" /></a>
 									</div>
-
+                                           
+                                        
 									<?php
 										//session_start();
 
@@ -64,24 +85,57 @@ session_start();
 									<?php
 									if($_SESSION["usuarioactivo"]) {
 									?>
-									<?php echo $_SESSION["usuarioactivo"]; ?> 
+									
 									<?php
 									}else echo "<h1>Please login first .</h1>";
 									?>
-
-
-
-								</header>
-								</footer>
-							</article>
-					</div>
-
+                            </article>
+                            <table>
+                            <tr class="CabeceraTR">
+                                 <td><b>IDPREGUNTA</b></td>
+                                 <td><b>IDUSUARIO</b></td>
+                                 <td><b>IDCATEGORIA</b></td>
+                                 <td><b>TITULO</b></td>
+                                 <td><b>DESCRIPCIONPREGUNTA</b></td>
+                                 <td><b>ESTADO</b></td>
+                                 <td><b>FECHACREACIONPREGUNTA</b></td>
+                                 <td><b>Eliminar</b></td>
+                            </tr>
+                                              
+                          <?php
+                                $nombreusuario=($_SESSION["usuarioactivo"]);
+                                while($row=mysqli_fetch_array($res)){
+                                if( $row["IDUSUARIO"] == $nombreusuario){
+                                
+                           
+                            ?>
+                           
+                          <tr>
+                            <td><?php echo($row["IDPREGUNTA"]); ?></td>                           
+                            <td><?php echo($row["IDUSUARIO"]); ?></td>
+                            <td><?php echo($row["IDCATEGORIA"]); ?></td>
+                            <td><?php echo($row["TITULO"]); ?></td>
+                            <td><?php echo($row["DESCRIPCIONPREGUNTA"]); ?></td>
+                            <td><?php echo($row["ESTADO"]); ?></td>
+                            
+                            <td></td>
+                            <td><?php echo"<a href='eliminarpreg.php?IDPREGUNTA=".$row["IDPREGUNTA"]."'"?><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+                            <td>   
+                            <td>
+                                        
+                            </tr>
+                            
+                        <?php
+                        }
+                    }
+                        ?>
+                     </table>
+			</div>
+            
 				<!-- Footer -->
 					<section id="footer" class="final" >
 								<p class="copyright" style="color:white">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
 					</section>
 
-			</div>
-
 	</body>
-</html>
+</html> 
