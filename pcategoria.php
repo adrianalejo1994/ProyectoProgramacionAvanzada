@@ -36,8 +36,13 @@ $categoria=$_GET['var'];
 				</div>
 			</header>
 			<?php
+<<<<<<< HEAD
 			//Ingreso a la pagina donde se programan las preguntas
 			require_once("fpreguntas.php");
+=======
+			include("fpreguntas.php");
+			
+>>>>>>> Darling
 			?>
 			</time>
 
@@ -63,8 +68,12 @@ $categoria=$_GET['var'];
 		</section>
 		<section>
 			<?php 
+<<<<<<< HEAD
 				require_once("fcategorias.php"); 
 
+=======
+				//include("fcategorias.php"); 
+>>>>>>> Darling
 			?> 
 		</div>
 
