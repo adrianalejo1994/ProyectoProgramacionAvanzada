@@ -1,5 +1,6 @@
 <?php
 
+if(isset( $_SESSION['usuarioactivo'] ) ) {
 echo("
 
 
@@ -15,7 +16,11 @@ echo("
 				<!-- boton preguntar  agregar link-->
 
 						<ul class=\"subtitulos\">
+<<<<<<< HEAD
 						<a href=\"ingresarpreg.php\"  value=\"Preguntar +\"><li>Preguntar</li></a>
+=======
+						<a href=\"ingresarpreg.php\"  value=\"Preguntar +\">Preguntar</t></a>
+>>>>>>> origin/davis
 						</ul>
 
 							<!-- Barra de busqueda -->
@@ -28,7 +33,37 @@ echo("
 						
 							<ul class=\"subtitulos\">
 ");
+}
+else
+{
+	echo("
 
+
+<header id=\"header\"  style=\"background-color:#789dca;\" >
+						<h1 style=\"color:white\" ><a href=\"inicio.php\">TELL ME HOW</a></h1>
+						<nav class=\"links\">
+							<ul class=\"subtitulos\">
+								<li><a href=\"inicio.php\">Inicio</a></li>
+								<li><a href=\"#\">Creditos</a></li>
+							</ul>
+						</nav>
+						
+				<!-- boton preguntar  agregar link-->
+
+						<ul class=\"subtitulos\">
+						</ul>
+
+							<!-- Barra de busqueda -->
+							
+							<form  action=\"#\" method=\"post\">
+							<input  type=\"search\" placeholder=\"\" >
+							<input  type=\"submit\" value=\"Buscar\"/>
+							</form>
+							
+						
+							<ul class=\"subtitulos\">
+");
+}
 										if ( isset( $_SESSION['usuarioactivo'] ) ) {
 											
 											echo("<a href=\"\" class=\"links\">".$_SESSION['usuarioactivo']."</a>
