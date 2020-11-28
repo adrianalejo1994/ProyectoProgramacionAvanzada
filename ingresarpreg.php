@@ -18,6 +18,7 @@ ConectarCat();
 
     }
 session_start();
+
 ?>
 
 
@@ -106,7 +107,7 @@ session_start();
 
 				<!-- Footer -->
 					<section id="footer" class="final"  > 
-						<p class="copyright" style="color:white"><font size="3.5">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</font></p>
+						<p class="copyright" style="color:white"><font size="3">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</font></p>
 					</section>
 
 			</div>
@@ -117,18 +118,19 @@ session_start();
 <?php
 
 $NombreUsuario=$_SESSION["usuarioactivo"];
+$FECHACREACIONPREGUNTA=date("Y-m-d",$t);
 if ( ! empty( $_POST ) ) {
 
-      $IDPREGUNTA = $_POST['IDPREGUNTA'];
       $IDUSUARIO = $NombreUsuario;
       $IDCATEGORIA = $_POST['IDCATEGORIA'];
       $TITULO = $_POST['TITULO'];
       $DESCRIPCIONPREGUNTA = $_POST['DESCRIPCIONPREGUNTA'];
-      $FECHACREACIONPREGUNTA = $_POST['FECHACREACIONPREGUNTA'];
-      $sql = "INSERT INTO `pregunta` VALUES ( '".$IDUSUARIO ."', '".$IDCATEGORIA."', '".$TITULO."', '".$DESCRIPCIONPREGUNTA."', '0', '".$FECHACREACIONPREGUNTA."')";
+      $sql = "INSERT INTO `pregunta` VALUES ( null,'".$IDUSUARIO ."', '".$IDCATEGORIA."', '".$TITULO."', '".$DESCRIPCIONPREGUNTA."', '0', '".$FECHACREACIONPREGUNTA."')";
+      echo $sql;
       $res = $conn->query($sql); 
+    
 
 
-Desconectar();
 }
+DesconectarCat();
 ?>
