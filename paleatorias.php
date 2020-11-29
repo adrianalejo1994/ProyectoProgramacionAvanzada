@@ -21,7 +21,10 @@ $k=0;
         $k3++;
         
     }
+    
+    $cant[shuffle($cant)];
 
+    //echo$aux."</br>";
     //echo$number_of_rows."</br>";
     /*for ($i = 0; $i < 20 ; $i++)
     {
@@ -31,7 +34,7 @@ $k=0;
         //echo$listanumeros[$i]."</br>";
     }*/
     //echo$aleatorio;
-    for ($i = 0; $i <$number_of_rows; $i++) {
+    for ($i = 0; $i <20; $i++) {
         // echo$categoria;
 
         $sql = "SELECT pregunta.TITULO FROM pregunta WHERE pregunta.IDPREGUNTA = $cant[$i] "; //separa las categorias
