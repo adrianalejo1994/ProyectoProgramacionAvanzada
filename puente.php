@@ -25,9 +25,10 @@ $FECHACREACIONRESPUESTA = date("Y-m-d",$t);
 if($DESCRIPCIONRESPUESTA!=" ")
 {
 $sql = "INSERT INTO respuesta VALUES ( null,'".$IDPREGUNTA ."', '".$IDUSUARIO."', '".$DESCRIPCIONRESPUESTA."','1', now())"; //selecciona la id de la pregunta perteneciente a la categoria
-}
 $idpre = $conn->query($sql);
-
+$sql2 = "UPDATE punto SET PUNTAJE= PUNTAJE+2 WHERE IDUSUARIO='$IDUSUARIO'"; //selecciona la id de la pregunta perteneciente a la categoria
+$idpre2 = $conn->query($sql2);
+}
 //fin de verificacion de respuestas
 $respuesta="";
 Desconectarco();
