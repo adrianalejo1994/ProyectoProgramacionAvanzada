@@ -1,55 +1,108 @@
 <?php 
 include("functionsco.php");
 Conectarco();
+
 $idpregunta=$_GET['var']; //obtencion del nombre de categoria
 //echo$idpregunta;
+$k=0;
+$sql = "SELECT COUNT(*) FROM respuesta WHERE IDPREGUNTA = $idpregunta"; //Conteo Categorias
+$cont = $conn->query($sql);
+$cont->execute(); 
+$number_of_rows = $cont->fetchColumn(); //Numero de Categorias
 
+$sql = "SELECT IDUSUARIO, DESCRIPCIONRESPUESTA FROM respuesta WHERE respuesta.IDPREGUNTA = $idpregunta"; //separa las categorias
+$res = $conn->query($sql);
 
-foreach ($idpre as $fila) {
-    $pregunta = $fila["TITULO"]; //almacena las ids de las preguntas
-    $descri = $fila["DESCRIPCIONPREGUNTA"];
+foreach ($res as $fila) {
+    $usu[$k] = $fila["IDUSUARIO"]; //almacena la respuesta
+    $resp[$k] = $fila["DESCRIPCIONRESPUESTA"]; //alamacena el usuario 
+
+    $k++;
 }
+Desconectarco();
 
-if(isset( $_SESSION['usuarioactivo'] ) ){
+
+
+if($number_of_rows>0) //verificacion de la existenca de respuestas
+{
+
+    for($i=0; $i<$number_of_rows;$i++)
+    {
+    echo("
+            <div class=\"post\" style=\"border-radius:10px\">
+            <h1>$usu[$i]</h1>
+                <form name=\"form\"  id=\"form\" method=\"POST\">$resp[$i]       
+                </form>
+            </div>
+
+    ");
+
+    }
+
+if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion 
+    
 ?>
 
+<h2>Responde:</h2>
 <div style="border-radius:10px" id="container">	
 	<div style="border-radius:10px" id="demo"></div>
         <div class="post" style="border-radius:10px">
         <h1><?php echo$_SESSION['usuarioactivo']?></h1>
-			<form name="form"  id="form" method="POST">
-					<textarea style="border-radius:10px" name="comments" placeholder="Insertar tu respuesta aqui..." id="comment" style="width:635px; height:100px;"></textarea></br></br>
-				<button type="submit"  name="respuesta" id="submit" class="button" style="outline: none;border:none;">Responder</button></br>
-			</form>
+			<form name="form" action="puente.php?<?php echo$idpregunta; ?>" id="form" method="post">
+					<textarea required style="border-radius:10px" name="comments" placeholder="Insertar tu respuesta aqui..." id="comment" style="width:635px; height:100px;"> </textarea></br></br>
+                    <input type="hidden" id="oculto" name="ocultoID" value="<?php echo$idpregunta ?>">
+                    <button name="respuesta" id="submit" class="button" style="outline: none;border:none;">Responder</button></br>
+                
+            </form>
         </div>
     </div>
 </div>
 <?php 
 }
-else{
-?>
-<div style="border-radius:10px" id="container">	
-	<div style="border-radius:10px" id="demo"></div>
 
+else{ //si no esta iniciado sesion 
+        ?>
+        <div style="border-radius:10px" id="container">	
+	<div style="border-radius:10px" id="demo"></div>
     </div>
 </div>
 <?php 
+
+}
 }
 
-if (isset($_POST['comments'])) {
-    $respuesta=$_POST['comments'];
- }
- else{
-    $respuesta=null;
- }
-$t=time();
-$IDPREGUNTA=$_GET['var'];
-$IDUSUARIO=$_SESSION['usuarioactivo'];
-$DESCRIPCIONRESPUESTA=$respuesta;
-$FECHACREACIONRESPUESTA = date("Y-m-d",$t);
-$sql = "INSERT INTO respuesta VALUES ( null,'".$IDPREGUNTA ."', '".$IDUSUARIO."', '".$DESCRIPCIONRESPUESTA."','1', '".$FECHACREACIONRESPUESTA."')"; //selecciona la id de la pregunta perteneciente a la categoria
-$idpre = $conn->query($sql);
+else
+{
 
-
-Desconectarco();
+    if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion 
+        {
+           ?>
+           <h2>Se el primero en responder</h2>
+            <div style="border-radius:10px" id="container">	
+                <div style="border-radius:10px" id="demo"></div>
+                    <div class="post" style="border-radius:10px">
+                    <h1><?php echo$_SESSION['usuarioactivo']?></h1>
+                        <form name="form" action="puente.php?<?php echo$idpregunta; ?>" id="form" method="post">
+                                <textarea required style="border-radius:10px" name="comments" placeholder="Insertar tu respuesta aqui..." id="comment" style="width:635px; height:100px;"> </textarea></br></br>
+                                <input type="hidden" id="oculto" name="ocultoID" value="<?php echo$idpregunta ?>">
+                                <button name="respuesta" id="submit" class="button" style="outline: none;border:none;">Responder</button></br>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+           <?php
+        }
+    }
+    else
+    echo(
+        "<div style=\"border-radius:10px\" id=\"container\"><h1>Registrate o Inicia Sesión para poder responder</h1>
+         <a class=\"button\" href=\"registro.php\">Registrarse</a>	
+         <a class=\"button\" href=\"login.php\">Iniciar Sesión</a>	
+        <div style=\"border-radius:10px\" id=\"demo\"></div>
+        </div>
+        </div>"
+    
+        );
+}
 ?>
