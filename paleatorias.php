@@ -1,6 +1,7 @@
 <?php
 include("functions.php");
 Conectar();
+$k3=0;
 $k2=0;
 $k=0;
 
@@ -10,42 +11,47 @@ $k=0;
     $number_of_rows = $res->fetchColumn(); //Numero de Categorias
     //echo$number_of_rows;
 
+    $sql = "SELECT pregunta.IDPREGUNTA FROM pregunta"; //selecciona la id de la pregunta perteneciente a la categoria
+    $idpre = $conn->query($sql);
 
-    for ($i = 1; $i <= $number_of_rows ; $i++)
-    {
-        $aleatorio= mt_rand(1,20);
-        //echo$aleatorio."<br/>";
-        $listanumeros[$i] = $aleatorio;
+    foreach ($idpre as $fila) {
+        $cant[$k3] = $fila["IDPREGUNTA"]; //almacena las ids de las preguntas
+        //echo$idpregunta[$k2]."</br>";
+        //echo$cant[$k3]."</br>";
+        $k3++;
         
     }
+
+    //echo$number_of_rows."</br>";
+    /*for ($i = 0; $i < 20 ; $i++)
+    {
+        $aleatorio= mt_rand(1,$number_of_rows);
+        //echo$aleatorio."<br/>";
+        $listanumeros[$i] = $aleatorio;
+        //echo$listanumeros[$i]."</br>";
+    }*/
     //echo$aleatorio;
-    for ($i = 1; $i <= 20; $i++) {
+    for ($i = 0; $i <$number_of_rows; $i++) {
         // echo$categoria;
-        $sql = "SELECT pregunta.IDPREGUNTA FROM pregunta WHERE pregunta.IDPREGUNTA = $listanumeros[$i]"; //selecciona la id de la pregunta perteneciente a la categoria
-        $idpre = $conn->query($sql);
 
-        foreach ($idpre as $fila) {
-            $idpregunta[$k2] = $fila["IDPREGUNTA"]; //almacena las ids de las preguntas
-            $k2++;
-        }
-
-        $sql = "SELECT pregunta.TITULO FROM pregunta WHERE pregunta.IDPREGUNTA = $listanumeros[$i] "; //separa las categorias
+        $sql = "SELECT pregunta.TITULO FROM pregunta WHERE pregunta.IDPREGUNTA = $cant[$i] "; //separa las categorias
         $res = $conn->query($sql);
     
         foreach ($res as $fila) {
             $preguntas[$k] = $fila["TITULO"]; //alamacena las preguntas de la categoria
+            //echo$preguntas[$k]."</br>";
             $k++;
+            
         }
-        $aux=$i-1;
-        //echo$idpregunta[$i];
-        //echo$preguntas[$aux];
-        
+        //echo$i;
+        //echo$preguntas[$i];
+
         echo("<section>
         <div style=\"border-radius:10px\" class=\"post\">
         <ul>
                 <article>
                     <header>
-                    <h3><a href=\"ppregunta.php?var=$idpregunta[$aux]\">".($preguntas[$aux])."</a></h3>
+                    <h3><a href=\"ppregunta.php?var=$cant[$i]\">".($preguntas[$i])."</a></h3>
                     </header>
                     <form action=\"ppregunta.php\" method=\"get\">                  
                 </article>
