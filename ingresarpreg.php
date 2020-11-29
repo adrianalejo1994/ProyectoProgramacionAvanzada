@@ -121,13 +121,38 @@ $NombreUsuario=$_SESSION["usuarioactivo"];
 $FECHACREACIONPREGUNTA=date("Y-m-d",$t);
 if ( ! empty( $_POST ) ) {
 
+
       $IDUSUARIO = $NombreUsuario;
       $IDCATEGORIA = $_POST['IDCATEGORIA'];
       $TITULO = $_POST['TITULO'];
       $DESCRIPCIONPREGUNTA = $_POST['DESCRIPCIONPREGUNTA'];
+      
+      //control puntaje minimo
+      $sql3 = "SELECT `PUNTAJE` FROM `punto` WHERE IDUSUARIO='$IDUSUARIO'";
+      $res3 = $conn->query($sql3); 
+        foreach ($res3 as $fila) {
+            $puntaje = $fila["PUNTAJE"]; //almacena el puntaje
+        }
+
+    if($puntaje>10)
+    {
       $sql = "INSERT INTO `pregunta` VALUES ( null,'".$IDUSUARIO ."', '".$IDCATEGORIA."', '".$TITULO."', '".$DESCRIPCIONPREGUNTA."', '0', '".$FECHACREACIONPREGUNTA."')";
       echo $sql;
+
+      $sql2 = "UPDATE punto SET PUNTAJE= PUNTAJE-10 WHERE IDUSUARIO='$IDUSUARIO'"; //selecciona la id de la pregunta perteneciente a la categoria
+      $idpre2 = $conn->query($sql2);
       $res = $conn->query($sql); 
+      echo("<script type=\"text/javascript\"> alert(\"Se ha ingresado la pregunta exitosamente\");
+      window.location.href='inicio.php';
+      </script>");
+    }
+      
+    else
+    {echo("<script type=\"text/javascript\"> alert(\"No tienes el puntaje suficiente para realizar preguntas\");
+      window.location.href='inicio.php';
+      </script>");
+    } 
 }
+
 DesconectarCat();
 ?>
