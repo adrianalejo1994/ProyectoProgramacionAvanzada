@@ -29,16 +29,13 @@ foreach ($idpre as $fila) {
 				<?php
 				include("header.php"); 
 				?>
-
-									
-
 				<!-- Main -->
 					<div id="main">
 
 						<!-- Post -->
-							<article class="post">
+							<article class="post"  style="border-radius:10px">
 								<header>
-									<div class="title">
+									<div class="title" >
 										<h2><?php echo$pregunta ?></h2>
 										<p><?php echo$descri ?></p>
 									</div>
@@ -47,9 +44,6 @@ foreach ($idpre as $fila) {
 									</div>
 								</header>
 
-								<footer>
-
-								</footer>
 							</article>
 
 						<!-- Preguntas -->
@@ -57,16 +51,16 @@ foreach ($idpre as $fila) {
 										$pregunta;
 										
 
-										for($i=0;$i<5;$i++)
-										{
+										//for($i=0;$i<5;$i++)
+										//{
 										?>
 										<div class="post">
 										<time class="published" datetime="2020-11-20"><?php 
-										echo("Respuesta ".($i+1));
-										
-										?></div><?php
-										}
+										//echo("Respuesta ".($i+1));
+
 										?>
+										<?php include("respuesta.php")
+										//require("mostrarlogs.php");?>	 
 									</time> 
 
 						<!-- Pagination -->
@@ -99,11 +93,11 @@ foreach ($idpre as $fila) {
 							</section>
 
 						<!-- Categorias -->
-			
+						<section>			
 							<?php 
 							include("fcategorias.php"); 
 							?> 
-							</section>
+						</section>
 
 						<!-- About -->
 							<section class="blurb">
@@ -113,9 +107,6 @@ foreach ($idpre as $fila) {
 									<li><a href="#" class="button">Leer mas</a></li>
 								</ul>
 							</section>
-
-						
-
 					</section>
 			</div>
 			<!-- Footer -->

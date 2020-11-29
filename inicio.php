@@ -1,5 +1,7 @@
 <?php //include("functions.php"); 
 session_start();
+
+
 ?>
 
 <!DOCTYPE HTML>
@@ -24,7 +26,7 @@ session_start();
 					<div id="main">
 
 						<!-- Post -->
-							<article class="post">
+							<article  style="border-radius:10px" class="post">
 								<header>
 									<div class="title">
 										<h2>Descubrir</h2>
