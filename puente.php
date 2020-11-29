@@ -22,8 +22,10 @@ $DESCRIPCIONRESPUESTA=$respuesta;
 echo$aux;
 
 $FECHACREACIONRESPUESTA = date("Y-m-d",$t);
-
+if($DESCRIPCIONRESPUESTA!=" ")
+{
 $sql = "INSERT INTO respuesta VALUES ( null,'".$IDPREGUNTA ."', '".$IDUSUARIO."', '".$DESCRIPCIONRESPUESTA."','1', '".$FECHACREACIONRESPUESTA."')"; //selecciona la id de la pregunta perteneciente a la categoria
+}
 $idpre = $conn->query($sql);
 
 //fin de verificacion de respuestas
