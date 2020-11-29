@@ -119,7 +119,7 @@ session_start();
                             <td><?php echo($row["ESTADO"]); ?></td>
                             
                             <td><?php echo($row["FECHACREACIONPREGUNTA"]);?></td>
-                            <td><?php echo"<a href='eliminarpreg.php?IDPREGUNTA=".$row["IDPREGUNTA"]."'"?><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+                            <td> <a href="eliminarpreg.php?IDPREGUNTA=<?php echo $row['IDPREGUNTA']?>&idborrar=2">Eliminar</a></td>
                             <td>   
                             <td>
                                         
