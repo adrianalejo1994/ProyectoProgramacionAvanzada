@@ -49,7 +49,7 @@ session_start();
 										<h2><a href="#">Actualizar tu Usuario y Contraseña</a></h2>
 										<p>Modificar NickName y Clave</p>
 									</div>
-                                    <form action="" method="post">
+                                    <form action="" method="POST">
                                         <table>
                                         <?php
                                           $nombreusuario=($_SESSION["usuarioactivo"]);
@@ -74,13 +74,13 @@ session_start();
                                             <td>Foto</td>
                                             <td><input type="file"  name="foto" value=" <?php echo($row["FOTO"]);?>"required/><td>
                                         </tr>
-                                        <a href="feditarus.php?IDUSUARIO=<?php echo $row["IDUSUARIO"]?>&idborrar=3">MODIFICAR</a>
+                                        
                                         <?php
                                           }
                                         }
                                         ?>
                                         </table>
-                                        
+                                        <input type="submit" value="Modificar">
                                         </form>
 								</header>
 								</footer>
@@ -96,7 +96,23 @@ session_start();
             
 	</body>
 </html>
-
 <?php
+include("functionscopy.php");
+
+
+
+      $nombre = $_POST["nombre"];
+      $nickname = $_POST["nickname"];
+      $clave = $_POST["clave"];
+      $foto = $_POST["foto"];
+
+ConectarCat();   
+      $sql = "UPDATE USUARIO SET nombre='".$nombre."',nickname='".$nickname."',clave='".$clave."',foto='".$foto."'";
+      echo $sql;
+      $res = $conn->query($sql); 
+     // $sql2 = "INSERT INTO `punto` VALUES ( NULL, '$nickname', 20, NULL)";
+     // $res2 = $conn->query($sql2); 
+DesconectarCat();
 
 ?>
+<script type="text/javascript"> alert("Se ha modificado exitosamente");
