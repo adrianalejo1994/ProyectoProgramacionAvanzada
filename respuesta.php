@@ -10,13 +10,13 @@ $cont = $conn->query($sql);
 $cont->execute(); 
 $number_of_rows = $cont->fetchColumn(); //Numero de Categorias
 
-$sql = "SELECT IDUSUARIO, DESCRIPCIONRESPUESTA FROM respuesta WHERE respuesta.IDPREGUNTA = $idpregunta"; //separa las categorias
+$sql = "SELECT IDUSUARIO, DESCRIPCIONRESPUESTA,FECHACREACIONRESPUESTA1 FROM respuesta WHERE respuesta.IDPREGUNTA = $idpregunta"; //separa las categorias
 $res = $conn->query($sql);
 
 foreach ($res as $fila) {
     $usu[$k] = $fila["IDUSUARIO"]; //almacena la respuesta
     $resp[$k] = $fila["DESCRIPCIONRESPUESTA"]; //alamacena el usuario 
-
+    $fecha[$k] = $fila["FECHACREACIONRESPUESTA1"]; //almacena la fecha
     $k++;
 }
 Desconectarco();
@@ -32,6 +32,8 @@ if($number_of_rows>0) //verificacion de la existenca de respuestas
             <div class=\"post\" style=\"border-radius:10px\">
             <h1>$usu[$i]</h1>
                 <form name=\"form\"  id=\"form\" method=\"POST\">$resp[$i]       
+                </form>
+                <form class=\"mini-post\" name=\"form\"  id=\"form\" method=\"POST\">$fecha[$i]       
                 </form>
             </div>
 
@@ -67,8 +69,7 @@ else{ //si no esta iniciado sesion
          <a class=\"button\" href=\"login.php\">Iniciar Sesión</a>	
         <div style=\"border-radius:10px\" id=\"demo\"></div>
         </div>
-        </div>"
-    
+        </div>"    
         );
 
 }
