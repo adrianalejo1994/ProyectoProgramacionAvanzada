@@ -61,12 +61,15 @@ if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion
 }
 
 else{ //si no esta iniciado sesion 
-        ?>
-        <div style="border-radius:10px" id="container">	
-	<div style="border-radius:10px" id="demo"></div>
-    </div>
-</div>
-<?php 
+    echo(
+        "<div style=\"border-radius:10px\" id=\"container\"><h1>Registrate o Inicia Sesión para poder responder</h1>
+         <a class=\"button\" href=\"registro.php\">Registrarse</a>	
+         <a class=\"button\" href=\"login.php\">Iniciar Sesión</a>	
+        <div style=\"border-radius:10px\" id=\"demo\"></div>
+        </div>
+        </div>"
+    
+        );
 
 }
 }
