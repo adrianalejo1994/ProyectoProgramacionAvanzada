@@ -74,13 +74,17 @@ session_start();
                                             <td>Foto</td>
                                             <td><input type="file"  name="foto" value=" <?php echo($row["FOTO"]);?>"required/><td>
                                         </tr>
-                                        
+                                        <tr>
+                                
+                                          <td><input class="btn-success" type="submit" name="actualizar" value="Actualizar" /></td>
+                                        </tr>
+                                        <input type="hidden" name="sw" value="1" /> 
                                         <?php
                                           }
                                         }
                                         ?>
                                         </table>
-                                        <input type="submit" value="Modificar">
+                                       
                                         </form>
 								</header>
 								</footer>
@@ -96,23 +100,17 @@ session_start();
             
 	</body>
 </html>
-<?php
-include("functionscopy.php");
-
-
-
-      $nombre = $_POST["nombre"];
-      $nickname = $_POST["nickname"];
-      $clave = $_POST["clave"];
-      $foto = $_POST["foto"];
-
-ConectarCat();   
-      $sql = "UPDATE USUARIO SET nombre='".$nombre."',nickname='".$nickname."',clave='".$clave."',foto='".$foto."'";
-      echo $sql;
-      $res = $conn->query($sql); 
-     // $sql2 = "INSERT INTO `punto` VALUES ( NULL, '$nickname', 20, NULL)";
-     // $res2 = $conn->query($sql2); 
-DesconectarCat();
-
+<?PHP
+if(isset($_POST['sw']) == 1){ //si se ha presionado el boton "Actualizar" 
+ 
+	//cadena con la orden de actualizacion a la tabla "users" con los valores de los inputs enviados por POST
+    $query2 = "UPDATE USUARIO SET NOMBRE='".$_POST['nombre']."', IDUSUARIO='".$_POST['nickname']."', CLAVE='".$_POST['clave']."', FOTO='".$_POST['foto']."' WHERE IDUSUARIO=".$_POST['IDUSUARIO'];
+    echo($squery2);
+	if(mysqli_query($conn, $query2)){ //si la consulta se ejecuta con exito
+		echo "La informacion se actualizo con exito"; //mensaje de exito
+		header('Location: perfilusuario.php'); //redireccion a index.php
+	}else{ //si ocurrio un error
+		echo "Ocurrio un error al intentar actualizar"; //mensaje de error
+	}
+}
 ?>
-<script type="text/javascript"> alert("Se ha modificado exitosamente");
