@@ -28,7 +28,13 @@ $sql3 = "SELECT MAX(ESTADORESPUESTA) Votos FROM respuesta WHERE IDPREGUNTA = $id
 $vots = $conn->query($sql3);
 foreach ($vots as $fila) {
 $canvotos=$fila["Votos"];
+}	
+//SELECT MAX(ESTADORESPUESTA) Votos FROM respuesta WHERE IDPREGUNTA = 5
+//sumar 8ptos
 
+
+if($number_of_rows>0) //verificacion de la existenca de respuestas
+{
 $sql4 = "SELECT IDUSUARIO, DESCRIPCIONRESPUESTA,FECHACREACIONRESPUESTA1, IDRESPUESTA, ESTADORESPUESTA FROM respuesta WHERE ESTADORESPUESTA = $canvotos"; //separa las categorias
 $infovots = $conn->query($sql4);
 foreach ($infovots as $fila) {
@@ -39,14 +45,10 @@ foreach ($infovots as $fila) {
     $votosv = $fila["ESTADORESPUESTA"];  //almacena la id de respuesta
     $k2++;
 }	
-Desconectarco();
-}	
-//SELECT MAX(ESTADORESPUESTA) Votos FROM respuesta WHERE IDPREGUNTA = 5
 
+    
 
-if($number_of_rows>0) //verificacion de la existenca de respuestas
-{
-
+if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion 
     if($canvotos>1){
         echo("
         <div class=\"post\" style=\"border-radius:10px\">
@@ -82,10 +84,7 @@ if($number_of_rows>0) //verificacion de la existenca de respuestas
             </div>
 
     ");
-    }
-
-if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion 
-    
+    }  
 ?>
 
 <h2>Responde:</h2>
@@ -106,6 +105,42 @@ if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion
 }
 
 else{ //si no esta iniciado sesion 
+    if($canvotos>1){
+        echo("
+        <div class=\"post\" style=\"border-radius:10px\">
+        <h1>Mejor Puntuado</h1>
+        <h1>$usuv</h1>
+            <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$respv 
+            </br>    
+            </br>   
+            <form class=\"mini-post\" name=\"form\"  id=\"form\" method=\"POST\"><h4>Fecha de publicacion: $fechav</br>
+            Votos: $votosv</h4>    
+            <input id=\"prodId2\" name=\"idresp\" value=".$idrespv." type=\"hidden\">   
+            <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
+            </form>
+        </div>
+
+    ");
+    }
+    for($i=0; $i<$number_of_rows;$i++)
+    {
+    echo("
+            <div class=\"post\" style=\"border-radius:10px\">
+            <h1>$usu[$i]</h1>
+                <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$resp[$i] 
+                </br>    
+                </br>   
+                <form class=\"mini-post\" name=\"form\"  id=\"form\" method=\"POST\"><h4>Fecha de publicacion: $fecha[$i] </br>
+                Votos: $votos[$i]</h4>    
+                <input id=\"prodId2\" name=\"idresp\" value=".$idresp[$i]." type=\"hidden\">   
+                <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
+                </form>
+            </div>
+
+    ");
+    }  
+    
+    
     echo(
         "<div style=\"border-radius:10px\" id=\"container\"><h1>Registrate o Inicia Sesión para poder responder</h1>
          <a class=\"button\" href=\"registro.php\">Registrarse</a>	
@@ -116,6 +151,16 @@ else{ //si no esta iniciado sesion
         );
 
 }
+
+$sql4 = "SELECT IDUSUARIO FROM respuesta WHERE ESTADORESPUESTA = $canvotos"; //separa las categorias
+$ptos = $conn->query($sql4);
+foreach ($ptos as $fila) {
+$idmvp=$fila["IDUSUARIO"];
+}	
+$sql2 = "UPDATE punto SET PUNTAJE= PUNTAJE+8 WHERE IDUSUARIO='$idmvp'";
+$res2 = $conn->query($sql2); 
+
+
 }
 
 else
@@ -152,4 +197,5 @@ else
     
         );
 }
+Desconectarco();
 ?>
