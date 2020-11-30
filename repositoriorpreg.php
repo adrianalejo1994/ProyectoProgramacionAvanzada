@@ -12,7 +12,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
                                 
-$sql = "SELECT *FROM USUARIO";
+$sql = "SELECT IDPREGUNTA, IDUSUARIO, IDCATEGORIA,TITULO, DESCRIPCIONPREGUNTA, ESTADO, FECHACREACIONPREGUNTA FROM PREGUNTA";
 //echo $sql;
 $res=mysqli_query($conn,$sql);
 //$res = $conn->query($sql); 
@@ -35,9 +35,20 @@ session_start();
 			<div id="wrapper">
 
 				<!-- Header -->
-                <?php
-				include("header.php"); 
-				?>
+					<header id="header" style="background-color:#789dca;">
+						<h1><a>TELL ME HOW</a></h1>
+						<nav class="links">
+							<ul class="subtitulos">
+								<li><a href="inicio.php">Inicio</a></li>
+							</ul>
+							
+						</nav>
+						<nav >
+							<ul class="subtitulos">
+								<a href="logout.php" class="links">SALIR</a>
+							</ul>
+						</nav>
+					</header>
 
 
 				<!-- Main -->
@@ -47,8 +58,8 @@ session_start();
 							<article class="post">
 								<header>
 									<div class="title">
-										<h2><a href="#">Repositorio de Respuestas</a></h2>
-										<p>Todas tus Respuestas</p>
+										<h2><a href="#">Repositorio de Preguntas</a></h2>
+										<p>Todas tus preguntas</p>
 										
 									</div>
 									
@@ -80,7 +91,16 @@ session_start();
 									?>
                             </article>
                             <table>
-                            
+                            <tr class="CabeceraTR">
+                                 <td><b>IDPREGUNTA</b></td>
+                                 <td><b>IDUSUARIO</b></td>
+                                 <td><b>IDCATEGORIA</b></td>
+                                 <td><b>TITULO</b></td>
+                                 <td><b>DESCRIPCIONPREGUNTA</b></td>
+                                 <td><b>ESTADO</b></td>
+                                 <td><b>FECHACREACIONPREGUNTA</b></td>
+                                 <td><b>Eliminar</b></td>
+                            </tr>
                                               
                           <?php
                                 $nombreusuario=($_SESSION["usuarioactivo"]);
@@ -91,41 +111,15 @@ session_start();
                             ?>
                            
                           <tr>
-						  <tr>
-                                            <td>IDUSUARIO</td>
-                                            <td><?php echo($row["IDUSUARIO"]); ?><td>
-                            </tr>
-						                          
-						  <tr>
-								<td>NOMBRE</td>
-						  		<td><?php echo($row["NOMBRE"]); ?></td>
-						  </tr>
-						  <tr>
-						  		<td>APELLIDO</td>
-						 		 <td><?php echo($row["APELLIDO"]); ?></td>
-						  </tr>
-						  <tr>
-						  		<td>FECHA DE NACIMIENTO</td>
-						  		<td><?php echo($row["FECHANACIMIENTO"]); ?></td>
-						  </tr>
-						  <tr>
-						  		<td>CLAVE</td>
-						  		<td><?php echo($row["CLAVE"]); ?></td>
-						  </tr>
-						  <tr>
-						  		<td>SEXO</td>
-						  		<td><?php echo($row["SEXO"]); ?></td>
-						  </tr>
-						  <tr>
-						 		 <td>EMAIL</td>
-						  		<td><?php echo($row["EMAIL"]); ?></td>
-						  </tr>
-						  <tr>
-						  		<td>FOTO</td>
-						  		<td><?php echo($row["FOTO"]); ?></td>
-						  </tr>
+                            <td><?php echo($row["IDPREGUNTA"]); ?></td>                           
+                            <td><?php echo($row["IDUSUARIO"]); ?></td>
+                            <td><?php echo($row["IDCATEGORIA"]); ?></td>
+                            <td><?php echo($row["TITULO"]); ?></td>
+                            <td><?php echo($row["DESCRIPCIONPREGUNTA"]); ?></td>
+                            <td><?php echo($row["ESTADO"]); ?></td>
                             
-                            <td> <a href="Editarusuario.php?IDUSUARIO=<?php echo $row["IDUSUARIO"]?>&ideditar=3">Editar</a></td>
+                            <td><?php echo($row["FECHACREACIONPREGUNTA"]);?></td>
+                            <td> <a href="eliminarpreg.php?IDPREGUNTA=<?php echo $row['IDPREGUNTA']?>&idborrar=2">Eliminar</a></td>
                             <td>   
                             <td>
                                         
