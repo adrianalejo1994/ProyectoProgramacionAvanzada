@@ -13,6 +13,36 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
+$pagina = 0;
+if (isset($_GET['pagina']))
+    if ($_GET['pagina'] > 0)
+        $pagina = $_GET['pagina'];
+
+$redireccion = 'perfilusuario.php';
+if(isset($_SERVER['HTTP_REFERER'])) {
+    $redireccion = $_SERVER['HTTP_REFERER'];
+} else if (isset($_GET['pagina'])) {
+    $redireccion = 'perfilusuario.php?pagina='.$pagina;
+}
+
+if (isset($_GET['id'])) {
+    try {
+        $id = $_GET['id'];
+        $existe = false;
+        $usuario= buscarUsuario($id);
+        echo($usuario);
+        if ($usuario) {
+            $existe = true;
+            $idusuario = $usuario['IDUSUARIO'];
+            $nombre = $usuario['NOMBRE'];
+            $clave = $usuario['CLAVE'];
+            $foto = $usuario['FOTO'];
+        }
+    } catch (PDOException $e) {
+        echo 'Error! '.$e->getMessage().'<br>';
+    }
+}
+
 $sql = "SELECT IDUSUARIO,NOMBRE, CLAVE, FOTO FROM USUARIO";
 //echo $sql;
 $res=mysqli_query($conn,$sql);
@@ -49,7 +79,7 @@ session_start();
 										<h2><a href="#">Actualizar tu Usuario y Contraseña</a></h2>
 										<p>Modificar NickName y Clave</p>
 									</div>
-                                    <form action="" method="POST">
+                                    <form action="editar.php" method="POST" enctype="multipart/form-data">
                                         <table>
                                         <?php
                                           $nombreusuario=($_SESSION["usuarioactivo"]);
@@ -58,33 +88,35 @@ session_start();
                                           
                                      
                                       ?>
-                                        <tr>
-                                            <td>Nombre(s)</td>
-                                            <td><input type="text"  name="nombre" value="<?php echo($row["NOMBRE"]);?>" ><td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nickname</td>
-                                            <td><input type="text"  name="nickname" value="<?php echo ($row["IDUSUARIO"])?>" ><td>
-                                        </tr>
-                                        <tr>
-                                            <td>Clave</td>
-                                            <td><input type="text" name="clave"value="<?php echo($row["CLAVE"]);?>" ><td>
-                                        </tr>
-                                        <tr>
-                                            <td>Foto</td>
-                                            <td><input type="file"  name="foto" value=" <?php echo($row["FOTO"]);?>"required/><td>
-                                        </tr>
-                                        <tr>
-                                
-                                          <td><input class="btn-success" type="submit" name="actualizar" value="Actualizar" /></td>
-                                        </tr>
+                                         <p align="center">IDUSUARIO: </p>
+                                                    <input type="text" name="idusuario" value="<?php echo $idusuario ?>"> 
+                                                    <p align="centerS">NOMBRE: </p>
+                                                    <input type="text" name="nombre" value="<?php echo $row["NOMBRE"] ?>"> <br><br>
+                                                    <p align="center">CLAVE: </p>
+                                                    <input type="text" name="clave" value="<?php echo $row["CLAVE"] ?>"> <br><br>
+                                                    <p align="center">Foto: </p>
+                                                    <div style="text-align:center;">
+                                                    <img width="150" src="<?php echo $row["FOTO"]; ?>"> <br>
+                                                    
+                                                    <input type="file" name="foto"> <br><br>
+                                                    </select> <br><br>
+                                                    
+                                                    <input type="hidden" name="accion" value="EditarMascota">
+                                                    <input type="hidden" name="idusuario" value="<?php echo $idusuario; ?>">
+                                                    <input type="hidden" name="nombre" value="<?php echo $nombre; ?>">
+                                                    <input type="hidden" name="clave" value="<?php echo $clave; ?>">
+                                                    <input type="hidden" name="foto" value="<?php echo $foto; ?>">
+                                                    <input type="hidden" name="pagina" value="<?php echo $pagina; ?>">
+                                                    </div>
+                                                    <input type="submit" value="Editar Usuario"></br>
+                                                    <button><a href="<?php echo $redireccion; ?>">Regresar</a></button>
                                         
                                         <?php
                                           }
                                         }
                                         ?>
                                         </table>
-                                       
+                                        <input type="hidden" name="accion" value="Editar Usuario">
                                         </form>
 								</header>
 								</footer>
@@ -100,17 +132,23 @@ session_start();
             
 	</body>
 </html>
-<?PHP
-if(isset($_POST['sw']) == 1){ //si se ha presionado el boton "Actualizar" 
- 
-	//cadena con la orden de actualizacion a la tabla "users" con los valores de los inputs enviados por POST
-    $query2 = "UPDATE USUARIO SET NOMBRE='".$_POST['nombre']."', IDUSUARIO='".$_POST['nickname']."', CLAVE='".$_POST['clave']."', FOTO='".$_POST['foto']."' WHERE IDUSUARIO=".$_POST['IDUSUARIO'];
-    echo($squery2);
-	if(mysqli_query($conn, $query2)){ //si la consulta se ejecuta con exito
-		echo "La informacion se actualizo con exito"; //mensaje de exito
-		header('Location: perfilusuario.php'); //redireccion a index.php
-	}else{ //si ocurrio un error
-		echo "Ocurrio un error al intentar actualizar"; //mensaje de error
-	}
-}
+<?php
+include("functionscopy.php");
+
+
+
+      $nombre = $_POST["nombre"];
+      $nickname = $_POST["nickname"];
+      $clave = $_POST["clave"];
+      $foto = $_POST["foto"];
+
+ConectarCat();   
+      $sql = "UPDATE USUARIO SET nombre='".$nombre."',nickname='".$nickname."',clave='".$clave."',foto='".$foto."'";
+      echo $sql;
+      $res = $conn->query($sql); 
+     // $sql2 = "INSERT INTO `punto` VALUES ( NULL, '$nickname', 20, NULL)";
+     // $res2 = $conn->query($sql2); 
+DesconectarCat();
+
 ?>
+<script type="text/javascript"> alert("Se ha modificado exitosamente");
