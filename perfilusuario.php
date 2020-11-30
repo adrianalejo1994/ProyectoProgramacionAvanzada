@@ -47,8 +47,8 @@ session_start();
 							<article class="post">
 								<header>
 									<div class="title">
-										<h2><a href="#">Repositorio de Respuestas</a></h2>
-										<p>Todas tus Respuestas</p>
+										<h2><a href="#">PERFIL DE USUARIO</a></h2>
+										<p>Datos del Usuario</p>
 										
 									</div>
 									
