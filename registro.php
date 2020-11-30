@@ -7,12 +7,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-        <script src="sweetalert2.all.min.js"></script>
-<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
-<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
-
-
-
+ 
 	</head>
 	<body class="single is-preload" style="background-color:#c4d2e7;">
 
@@ -21,7 +16,8 @@
 
 				<!-- Header -->
 				<?php
-				include("header.php"); 
+                include("header.php"); 
+
 				?>
 
 
@@ -35,15 +31,17 @@
 										<h2><a href="#">Registro</a></h2>
 										<p>Llena los campos para tu registro</p>
 									</div>
-                                    <form action="" method="post">
+
+
+                                    <form action="registro.php" method="post" enctype="multipart/form-data">
                                         <table>
                                         <tr>
                                             <td>Nombre(s)</td>
-                                            <td><input type="text" value="" name="nombre" required/><td>
+                                            <td><input type="text" value="" name="nombre" maxlength=50 required/><td>
                                         </tr>
                                         <tr>
                                             <TD>Apellido(s)</td>
-                                            <TD><input type="text" value="" name="apellido" required/><td>
+                                            <TD><input type="text" value="" name="apellido" maxlength=50 required/><td>
                                         </tr>
                                         <tr>
                                             <td>Fecha Nacimiento</td>
@@ -55,7 +53,7 @@
                                         </tr>
                                         <tr>
                                             <td>Clave</td>
-                                            <td><input type="password" value="" name="clave" required/><td>
+                                            <td><input type="password" value="" name="clave" maxlength=60 required/><td>
                                         </tr>
                                         <tr>
                                             <td>Sexo</td>
@@ -66,11 +64,12 @@
                                         </tr>
                                         <tr>
                                             <td>Email</td>
-                                            <td><input type="email" value="" name="email" required/><td>
+                                            <td><input type="email" value="" name="email" maxlength=255 required/><td>
                                         </tr>
                                         <tr>
                                             <td>Foto</td>
-                                            <td><input type="file" value="" name="foto" required/><td>
+                                            <td> <input name="userfile"  type="file" required><td>
+                                            <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                                         </tr>
                                         </table>
                                         <input type="submit" value="Registrarse">
@@ -90,7 +89,11 @@
 	</body>
 </html>
 
+
+
+
 <?php
+
 include("functions.php");
 
 if ( ! empty( $_POST ) ) {
@@ -102,8 +105,7 @@ if ( ! empty( $_POST ) ) {
       $clave = $_POST['clave'];
       $sexo = $_POST['sexo'];
       $email = $_POST['email'];
-      $foto = $_POST['foto'];
-
+      $imagen = addslashes(file_get_contents($_FILES['userfile']['tmp_name']));
 
 
       $patron_texto = '/\b[[:alpha:]]/';//inicia con una letra
@@ -131,25 +133,87 @@ if ( ! empty( $_POST ) ) {
 
       
       if ($nickbase=="") {
-    
-        Conectar();
-        $sql = "INSERT INTO `usuario` VALUES ('".$nickname."', '".$nombre."', '".$apellido."', '".$fechanacimiento."', '".$clave."', '".$sexo."', '".$email."','".$foto."')";
-        $res = $conn->query($sql); 
-        Desconectar();
-        }else{
-echo("
+        $nombre_archivo = $_FILES['userfile']['name'];
+        $tipo_archivo = $_FILES['userfile']['type'];
+        $tamano_archivo = $_FILES['userfile']['size'];
+        $nombre_archivo.trim(" ");
 
-<script>
-window.alert(\"mensaje\")
-</script>
-");
+
+
+
+        if( strpos($tipo_archivo, "image/jpeg") && $tamano_archivo<100000)
+        {
+
+            echo("
+            <script>
+            window.alert(\"ERROR: El archivo no cumple con los requisitos\")
+            </script>
+            ");
+
+
+            exit();
+        }
+        else
+        {
+
+
+
+
+            $emailencontrado="";
+            Conectar();
+            $sql = "SELECT * FROM `USUARIO` WHERE `EMAIL`='".$email."'";
+            $res = $conn->query($sql);
+            foreach($res as $fila)
+        {
+            $emailencontrado = $fila["EMAIL"];
+        }
+            Desconectar();
+
+
+if ($emailencontrado == $email) {
+   
+    echo("<script>
+    window.alert(\"EMAIL YA REGISTRADO\")
+    </script>
+    ");
+    
+    
+}
+else{
+    Conectar();
+    $sql = "INSERT INTO `usuario` VALUES ('".$nickname."', '".$nombre."', '".$apellido."', '".$fechanacimiento."', '".$clave."', '".$sexo."', '".$email."','".$imagen."')";
+    $res = $conn->query($sql); 
+
+    $sql2 = "INSERT INTO `punto` VALUES ( NULL, '$nickname', 20, NULL)";
+    $res2 = $conn->query($sql2); 
+
+    Desconectar();
+   
+    
+    echo("
+    <script>
+    window.alert(\"USUARIO CREADO\")
+    </script>
+    ");
+
+
+}
+
+
+}
+
+
+        }else{
+
+        echo("
+        <script>
+        window.alert(\"ERROR: El Nickname ya se encuentra registrado\")
+        </script>
+        ");
+
         }
                     
-        }else{
-                        $aErrores = "El nombre sólo puede contener letras y espacios";
-            }
-
-
+        }
 
 }
 ?>
