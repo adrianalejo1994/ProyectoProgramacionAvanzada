@@ -13,7 +13,6 @@ echo("
 							</ul>
 						</nav>
 						
-				<!-- boton preguntar  agregar link-->
 
 						<ul class=\"subtitulos\">
 						<a href=\"ingresarpreg.php\"  value=\"Preguntar +\"><li>Preguntar</li></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -28,6 +27,16 @@ echo("
 							
 						
 							<ul class=\"subtitulos\">
+
+
+
+
+							<a href=\"repositoriorpreg.php\" class=\"links\">Repositorio de Preguntas</a>
+							<a href=\"repositorioresp.php\" class=\"links\">Repositorio de Respuestas</a>
+							<a href=\"perfilusuario.php\" class=\"links\">".$_SESSION['usuarioactivo']."</a>
+							
+							<a href=\"logout.php\" class=\"links\">Salir</a>
+
 ");
 }
 else
@@ -58,23 +67,16 @@ else
 							
 						
 							<ul class=\"subtitulos\">
+
+
+							<a href=\"registro.php\" class=\"links\">Registrarse</a>
+							<a href=\"login.php\" class=\"links\">Iniciar Sesión</a>
+
+
+
 ");
 }
-										if ( isset( $_SESSION['usuarioactivo'] ) ) {
-											
-											echo("<a href=\"perfilusuario.php\" class=\"links\">Perfil de Usuario</a>
-											<a href=\"repositoriorpreg.php\" class=\"links\">Repositorio de Preguntas</a>
-											<a href=\"repositorioresp.php\" class=\"links\">Repositorio de Respuestas</a>
-											<a href=\"\" class=\"links\">".$_SESSION['usuarioactivo']."</a>
-											
-											<a href=\"logout.php\" class=\"links\">Salir</a>");
-
-
-										} else {
-											echo("<a href=\"registro.php\" class=\"links\">Registrarse</a>
-											<a href=\"login.php\" class=\"links\">Iniciar Sesión</a>");
-										}
-									
+										
 							?>
 							</ul>
 						</nav>

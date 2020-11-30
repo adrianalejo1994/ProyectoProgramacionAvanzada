@@ -13,14 +13,10 @@
 
 		<!-- Wrapper -->
 			<div id="wrapper">
-
 				<!-- Header -->
 				<?php
                 include("header.php"); 
-
 				?>
-
-
 				<!-- Main -->
 					<div id="main">
 
@@ -31,7 +27,6 @@
 										<h2><a href="#">Registro</a></h2>
 										<p>Llena los campos para tu registro</p>
 									</div>
-
 
                                     <form action="registro.php" method="post" enctype="multipart/form-data">
                                         <table>
@@ -78,14 +73,12 @@
 								</footer>
 							</article>
 					</div>
-
-				
+                 </div>
+                <!-- Footer -->
+                <?php
+                include("footer.php"); 
+                ?>
             </div>
-            				<!-- Footer -->
-            <?php
-			include("footer.php"); 
-            ?>
-            
 	</body>
 </html>
 
@@ -98,95 +91,100 @@ include("functions.php");
 
 if ( ! empty( $_POST ) ) {
 
-      $nombre = $_POST['nombre'];
-      $apellido = $_POST['apellido'];
-      $fechanacimiento = $_POST['fechanacimiento'];
-      $nickname = $_POST['nickname'];
-      $clave = $_POST['clave'];
-      $sexo = $_POST['sexo'];
-      $email = $_POST['email'];
-      $imagen = addslashes(file_get_contents($_FILES['userfile']['tmp_name']));
+//carga de datos ingresados
+        $nombre = $_POST['nombre'];
+        $apellido = $_POST['apellido'];
+        $fechanacimiento = $_POST['fechanacimiento'];
+        $nickname = $_POST['nickname'];
+        $clave = $_POST['clave'];
+        $sexo = $_POST['sexo'];
+        $email = $_POST['email'];
 
 
-      $patron_texto = '/\b[[:alpha:]]/';//inicia con una letra
-      $patron_texto2 = '/[\'\/~`\!@#\$%\^&\*\(\)+=\{\}\[\]\|;:"\<\>,\?\\\]]/';//caracteres especiales
-      $patron_texto3 = '/\s/';//espacios en blanco
-
-
-     $letra = preg_match($patron_texto, $nickname);
-     $especiales = preg_match($patron_texto2, $nickname);
-     $espacios = preg_match($patron_texto3, $nickname);
-
-
-      if( $letra=="1" && $especiales=="0" && $espacios=="0"){
-
-        
-        Conectar();
-        $nickbase="";
-        $sql = "SELECT * FROM `usuario` WHERE `IDUSUARIO`='".$nickname."'";
-        $res = $conn->query($sql);
-        foreach($res as $fila)
-        {
-            $nickbase = $fila["IDUSUARIO"];
-        }
-        Desconectar();
-
-      
-      if ($nickbase=="") {
+//carga de datos imagen
         $nombre_archivo = $_FILES['userfile']['name'];
         $tipo_archivo = $_FILES['userfile']['type'];
         $tamano_archivo = $_FILES['userfile']['size'];
         $nombre_archivo.trim(" ");
+        $imagen = addslashes(file_get_contents($_FILES['userfile']['tmp_name']));
+
+//expresiones regualres
+        $patron_texto = '/\b[[:alpha:]]/';//inicia con una letra
+        $patron_texto2 = '/[\'\/~`\!@#\$%\^&\*\(\)+=\{\}\[\]\|;:"\<\>,\?\\\]]/';//caracteres especiales
+        $patron_texto3 = '/\s/';//espacios en blanco
+        $letra = preg_match($patron_texto, $nickname);
+        $especiales = preg_match($patron_texto2, $nickname);
+        $espacios = preg_match($patron_texto3, $nickname);
 
 
-
-
-        if( strpos($tipo_archivo, "image/jpeg") && $tamano_archivo<100000)
-        {
-
-            echo("
+//comprobacion nick no tenga caracteres invalidos
+        if( $letra!="1" || $especiales!="0" || $espacios!="0"){
+        echo("
+        <script>
+        window.alert(\"ERROR: El Nickname no es valido\")
+        </script>
+        ");
+        exit();
+        }
+        else{
+//comprobacion si usuario ya existe en la base
+        Conectar();
+        $nickbase="";
+        $sql = "SELECT * FROM `usuario` WHERE `IDUSUARIO`='".$nickname."'";
+        $res = $conn->query($sql);
+        foreach($res as $fila){
+        $nickbase = $fila["IDUSUARIO"];
+        }
+        Desconectar();
+            if ($nickbase==$nickname) {
+             echo("
             <script>
-            window.alert(\"ERROR: El archivo no cumple con los requisitos\")
+            window.alert(\"ERROR: El Nickname ya existe\")
             </script>
             ");
-
-
             exit();
+            }
         }
-        else
-        {
 
 
 
-
-            $emailencontrado="";
-            Conectar();
-            $sql = "SELECT * FROM `USUARIO` WHERE `EMAIL`='".$email."'";
-            $res = $conn->query($sql);
-            foreach($res as $fila)
+//comprobacion mail existente
+        $emailencontrado="";
+        Conectar();
+        $sql = "SELECT * FROM `USUARIO` WHERE `EMAIL`='".$email."'";
+        $res = $conn->query($sql);
+        foreach($res as $fila)
         {
             $emailencontrado = $fila["EMAIL"];
         }
-            Desconectar();
+        Desconectar();
+        if ($emailencontrado == $email) {
+        echo("<script>
+        window.alert(\"ERROR: Email ya Registrado\")
+        </script>
+        ");
+        exit(); 
+        }
 
 
-if ($emailencontrado == $email) {
-   
-    echo("<script>
-    window.alert(\"EMAIL YA REGISTRADO\")
-    </script>
-    ");
+//comprobacion  imagen
+        if( $tipo_archivo != "image/jpeg" && $tamano_archivo<"100000"){
+        echo("
+        <script>
+        window.alert(\"ERROR: El archivo no cumple con los requisitos\")
+        </script>
+        ");
+        exit(); 
+        }
     
-    
-}
-else{
+
+
+ //Datos de Ingreso Correctos   
     Conectar();
     $sql = "INSERT INTO `usuario` VALUES ('".$nickname."', '".$nombre."', '".$apellido."', '".$fechanacimiento."', '".$clave."', '".$sexo."', '".$email."','".$imagen."')";
     $res = $conn->query($sql); 
-
     $sql2 = "INSERT INTO `punto` VALUES ( NULL, '$nickname', 20, NULL)";
     $res2 = $conn->query($sql2); 
-
     Desconectar();
    
     echo("<script>
@@ -194,35 +192,13 @@ else{
     </script>
     ");
 
-
     echo("
-<script> 
-<!--
-window.location.replace('login.php'); 
-//-->
-</script>
-");
-
-
-}
+    <script> 
+    <!--
+    window.location.replace('login.php'); 
+    //-->
+    </script>
+    ");
 
 }
-        }else{
-
-        echo("
-        <script>
-        window.alert(\"ERROR: El Nickname ya se encuentra registrado\")
-        </script>
-        ");
-
-        }
-                    
-        }
-}
-
- echo("
-        <script>
-        window.alert(\"ERROR: El Nickname no es valido\")
-        </script>
-        ");
 ?>
