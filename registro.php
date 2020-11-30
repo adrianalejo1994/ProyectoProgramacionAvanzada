@@ -219,6 +219,10 @@ window.location.replace('login.php');
                     
         }
 }
+
+ echo("
+        <script>
+        window.alert(\"ERROR: El Nickname no es valido\")
+        </script>
+        ");
 ?>
-
-
