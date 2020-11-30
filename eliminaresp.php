@@ -16,15 +16,16 @@ session_start();
  
 extract($_GET);
 
-if(@$idborrar==2){
+if(@$idborrar==3){
  
-    $sql="DELETE FROM PREGUNTA WHERE IDPREGUNTA=$IDPREGUNTA";
+    $sql="DELETE FROM RESPUESTA WHERE IDRESPUESTA=$IDRESPUESTA";
     echo $sql;
     $res=mysqli_query($conn, $sql);
      
 }
 ?>
+
 <script type="text/javascript">
 alert("Se ha eliminado exitosamente");
-window.location.href='repositoriorpreg.php';
+window.location.href='repositorioresp.php';
 </script>
