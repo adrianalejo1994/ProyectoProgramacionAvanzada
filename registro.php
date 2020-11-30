@@ -96,9 +96,12 @@ if ( ! empty( $_POST ) ) {
       $email = $_POST['email'];
       $foto = $_POST['foto'];
 
-Conectar();
+Conectar();   
       $sql = "INSERT INTO `usuario` VALUES ('".$nickname."', '".$nombre."', '".$apellido."', '".$fechanacimiento."', '".$clave."', '".$sexo."', '".$email."','".$foto."')";
       $res = $conn->query($sql); 
+      $sql2 = "INSERT INTO `punto` VALUES ( NULL, '$nickname', 20, NULL)";
+      $res2 = $conn->query($sql2); 
 Desconectar();
 }
 ?>
+<script type="text/javascript"> alert("Se ha registrado exitosamente");
