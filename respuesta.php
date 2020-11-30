@@ -19,26 +19,51 @@ foreach ($res as $fila) {
     $fecha[$k] = $fila["FECHACREACIONRESPUESTA1"]; //almacena la fecha
     $k++;
 }
+
+
+                                               
+                                     
+                                      /////////////////////////////7
+//Para jalar la foto y el nick que es el id
+$k2=0;
+$nombreusuario=($_SESSION["usuarioactivo"]);
+$sql2 = "SELECT IDUSUARIO,FOTO FROM USUARIO WHERE `IDUSUARIO`='$nombreusuario'"; //para mostrar la imagen
+$res2 = $conn->query($sql2);
+
+
+foreach($res2 as $fila2)
+{
+    $nick[$k2] = $fila2["IDUSUARIO"];      
+    $foto = $fila2["FOTO"];
+    $k2++;
+}
+
 Desconectarco();
 
 
 
 if($number_of_rows>0) //verificacion de la existenca de respuestas
 {
-
+    //echo '<img width="100" src="data:image/jpg;base64,'.base64_encode( $foto[$i] ).'"/>';
+    
     for($i=0; $i<$number_of_rows;$i++)
     {
-    echo("
+        echo '<img src="data:image/jpeg;base64,'.base64_encode($foto).'" style="width: 100px; height:100px;">'; //////
+    
+        
+        echo("
             <div class=\"post\" style=\"border-radius:10px\">
-            <h1>$usu[$i]</h1>
+            <h1>$usu[$i]</h1> 
+            <a>$nick[$i]</span>
+ 
                 <form name=\"form\"  id=\"form\" method=\"POST\">$resp[$i]       
                 </form>
                 <form class=\"mini-post\" name=\"form\"  id=\"form\" method=\"POST\">$fecha[$i]       
                 </form>
             </div>
-
+            
     ");
-
+        
     }
 
 if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion 
