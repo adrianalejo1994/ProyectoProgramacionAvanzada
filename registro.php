@@ -195,14 +195,9 @@ else{
     window.alert(\"USUARIO CREADO\")
     </script>
     ");
-
-
 }
 
-
 }
-
-
         }else{
 
         echo("
@@ -214,7 +209,6 @@ else{
         }
                     
         }
-
 }
 ?>
 

@@ -63,6 +63,8 @@ else
 										if ( isset( $_SESSION['usuarioactivo'] ) ) {
 											
 											echo("<a href=\"perfilusuario.php\" class=\"links\">Perfil de Usuario</a>
+											<a href=\"repositoriorpreg.php\" class=\"links\">Repositorio de Preguntas</a>
+											<a href=\"repositorioresp.php\" class=\"links\">Repositorio de Respuestas</a>
 											<a href=\"\" class=\"links\">".$_SESSION['usuarioactivo']."</a>
 											
 											<a href=\"logout.php\" class=\"links\">Salir</a>");

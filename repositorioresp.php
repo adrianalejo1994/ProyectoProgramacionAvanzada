@@ -12,7 +12,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
                                 
-$sql = "SELECT *FROM USUARIO";
+$sql = "SELECT IDRESPUESTA, IDPREGUNTA, IDUSUARIO, DESCRIPCIONRESPUESTA, ESTADORESPUESTA, FECHACREACIONRESPUESTA1 FROM RESPUESTA";
 //echo $sql;
 $res=mysqli_query($conn,$sql);
 //$res = $conn->query($sql); 
@@ -80,7 +80,15 @@ session_start();
 									?>
                             </article>
                             <table>
-                            
+                            <tr class="CabeceraTR">
+                                 <td><b>IDRESPUESTA</b></td>
+                                 <td><b>IDPREGUNTA</b></td>
+                                 <td><b>IDUSUARIO</b></td>
+                                 <td><b>DESCRIPCIONRESPUESTA</b></td>
+                                 <td><b>ESTADORESPUESTA</b></td>
+                                 <td><b>FECHACREACIONRESPUESTA1</b></td>
+                                 <td><b>Eliminar</b></td>
+                            </tr>
                                               
                           <?php
                                 $nombreusuario=($_SESSION["usuarioactivo"]);
@@ -91,41 +99,14 @@ session_start();
                             ?>
                            
                           <tr>
-						  <tr>
-                                            <td>IDUSUARIO</td>
-                                            <td><?php echo($row["IDUSUARIO"]); ?><td>
-                            </tr>
-						                          
-						  <tr>
-								<td>NOMBRE</td>
-						  		<td><?php echo($row["NOMBRE"]); ?></td>
-						  </tr>
-						  <tr>
-						  		<td>APELLIDO</td>
-						 		 <td><?php echo($row["APELLIDO"]); ?></td>
-						  </tr>
-						  <tr>
-						  		<td>FECHA DE NACIMIENTO</td>
-						  		<td><?php echo($row["FECHANACIMIENTO"]); ?></td>
-						  </tr>
-						  <tr>
-						  		<td>CLAVE</td>
-						  		<td><?php echo($row["CLAVE"]); ?></td>
-						  </tr>
-						  <tr>
-						  		<td>SEXO</td>
-						  		<td><?php echo($row["SEXO"]); ?></td>
-						  </tr>
-						  <tr>
-						 		 <td>EMAIL</td>
-						  		<td><?php echo($row["EMAIL"]); ?></td>
-						  </tr>
-						  <tr>
-						  		<td>FOTO</td>
-						  		<td><?php echo($row["FOTO"]); ?></td>
-						  </tr>
+                            <td><?php echo($row["IDRESPUESTA"]); ?></td>                           
+                            <td><?php echo($row["IDPREGUNTA"]); ?></td>
+                            <td><?php echo($row["IDUSUARIO"]); ?></td>
+                            <td><?php echo($row["DESCRIPCIONRESPUESTA"]); ?></td>
+                            <td><?php echo($row["ESTADORESPUESTA"]); ?></td>
+                            <td><?php echo($row["FECHACREACIONRESPUESTA1"]); ?></td>
                             
-                            <td> <a href="Editarusuario.php?IDUSUARIO=<?php echo $row["IDUSUARIO"]?>&ideditar=3">Editar</a></td>
+                            <td> <a href="eliminaresp.php?IDRESPUESTA=<?php echo $row["IDRESPUESTA"]?>&idborrar=3">Eliminar</a></td>
                             <td>   
                             <td>
                                         
