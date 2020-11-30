@@ -14,6 +14,18 @@ $number_of_rows = $cont->fetchColumn(); //Numero de Categorias
 $sql = "SELECT IDUSUARIO, DESCRIPCIONRESPUESTA,FECHACREACIONRESPUESTA1, IDRESPUESTA, ESTADORESPUESTA FROM respuesta WHERE respuesta.IDPREGUNTA = $idpregunta"; //separa las categorias
 $res = $conn->query($sql);
 
+$nombreusuario=($_SESSION["usuarioactivo"]); //sql y la sesion de usuario 
+$sql2 = "SELECT IDUSUARIO,FOTO FROM USUARIO WHERE `IDUSUARIO`='$nombreusuario'";
+$res2 = $conn->query($sql2);
+
+foreach($res2 as $fila2)
+{
+    $nick[$k2] = $fila2["IDUSUARIO"];      
+    $foto = $fila2["FOTO"];
+    $k2++;
+}
+
+
 foreach ($res as $fila) {
     $usu[$k] = $fila["IDUSUARIO"]; //almacena la respuesta
     $resp[$k] = $fila["DESCRIPCIONRESPUESTA"]; //alamacena el usuario 
@@ -67,14 +79,20 @@ if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion
 
     ");
     }
+    $aux= '<img src="data:image/jpeg;base64,'.base64_encode($foto).'" style="width: 60px; height:60px;">'; ////// imagen mostrar en respuesta 
+    
     for($i=0; $i<$number_of_rows;$i++)
     {
-        echo '<img src="data:image/jpeg;base64,'.base64_encode($foto).'" style="width: 100px; height:100px;">'; //////
-    
+       
         
         echo("
             <div class=\"post\" style=\"border-radius:10px\">
-            <h1>$usu[$i]</h1>
+            <h1>$usu[$i]. &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$aux</h1>
+                <div class=\"mini-post\" style=\"border-radius:10px\">
+                    
+                </div>
                 <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$resp[$i] 
                 </br>    
                 </br>   
