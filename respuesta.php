@@ -5,12 +5,13 @@ Conectarco();
 $idpregunta=$_GET['var']; //obtencion del nombre de categoria
 //echo$idpregunta;
 $k=0;
+$k2=0;
 $sql = "SELECT COUNT(*) FROM respuesta WHERE IDPREGUNTA = $idpregunta"; //Conteo Categorias
 $cont = $conn->query($sql);
 $cont->execute(); 
 $number_of_rows = $cont->fetchColumn(); //Numero de Categorias
 
-$sql = "SELECT IDUSUARIO, DESCRIPCIONRESPUESTA,FECHACREACIONRESPUESTA1, IDRESPUESTA FROM respuesta WHERE respuesta.IDPREGUNTA = $idpregunta"; //separa las categorias
+$sql = "SELECT IDUSUARIO, DESCRIPCIONRESPUESTA,FECHACREACIONRESPUESTA1, IDRESPUESTA, ESTADORESPUESTA FROM respuesta WHERE respuesta.IDPREGUNTA = $idpregunta"; //separa las categorias
 $res = $conn->query($sql);
 
 foreach ($res as $fila) {
@@ -18,34 +19,69 @@ foreach ($res as $fila) {
     $resp[$k] = $fila["DESCRIPCIONRESPUESTA"]; //alamacena el usuario 
     $fecha[$k] = $fila["FECHACREACIONRESPUESTA1"]; //almacena la fecha
     $idresp[$k] = $fila["IDRESPUESTA"]; //almacena la id de respuesta
+    $votos[$k] = $fila["ESTADORESPUESTA"];  //almacena la id de respuesta
     $k++;
 }	
 
-Desconectarco();
 
+$sql3 = "SELECT MAX(ESTADORESPUESTA) Votos FROM respuesta WHERE IDPREGUNTA = $idpregunta"; //separa las categorias
+$vots = $conn->query($sql3);
+foreach ($vots as $fila) {
+$canvotos=$fila["Votos"];
+
+$sql4 = "SELECT IDUSUARIO, DESCRIPCIONRESPUESTA,FECHACREACIONRESPUESTA1, IDRESPUESTA, ESTADORESPUESTA FROM respuesta WHERE ESTADORESPUESTA = $canvotos"; //separa las categorias
+$infovots = $conn->query($sql4);
+foreach ($infovots as $fila) {
+    $usuv = $fila["IDUSUARIO"]; //almacena la respuesta
+    $respv= $fila["DESCRIPCIONRESPUESTA"]; //alamacena el usuario 
+    $fechav = $fila["FECHACREACIONRESPUESTA1"]; //almacena la fecha
+    $idrespv = $fila["IDRESPUESTA"]; //almacena la id de respuesta
+    $votosv = $fila["ESTADORESPUESTA"];  //almacena la id de respuesta
+    $k2++;
+}	
+Desconectarco();
+}	
+//SELECT MAX(ESTADORESPUESTA) Votos FROM respuesta WHERE IDPREGUNTA = 5
 
 
 if($number_of_rows>0) //verificacion de la existenca de respuestas
 {
 
+    if($canvotos>1){
+        echo("
+        <div class=\"post\" style=\"border-radius:10px\">
+        <h1>Mejor Puntuado</h1>
+        <h1>$usuv</h1>
+            <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$respv 
+            </br>    
+            </br>   
+            <form class=\"mini-post\" name=\"form\"  id=\"form\" method=\"POST\"><h4>Fecha de publicacion: $fechav</br>
+            Votos: $votosv</h4>    
+            <input id=\"prodId2\" name=\"idresp\" value=".$idrespv." type=\"hidden\">   
+            <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
+            <input type=\"submit\" name=\"idpreg1\" value=\"Votar\">
+            </form>
+        </div>
+
+    ");
+    }
     for($i=0; $i<$number_of_rows;$i++)
     {
     echo("
             <div class=\"post\" style=\"border-radius:10px\">
             <h1>$usu[$i]</h1>
-                <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$resp[$i]       
-                </form>
-                <form class=\"mini-post\" name=\"form\"  id=\"form\" method=\"POST\">$fecha[$i]    
+                <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$resp[$i] 
+                </br>    
+                </br>   
+                <form class=\"mini-post\" name=\"form\"  id=\"form\" method=\"POST\"><h4>Fecha de publicacion: $fecha[$i] </br>
+                Votos: $votos[$i]</h4>    
                 <input id=\"prodId2\" name=\"idresp\" value=".$idresp[$i]." type=\"hidden\">   
-                <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">  
+                <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
                 <input type=\"submit\" name=\"idpreg1\" value=\"Votar\">
-                </form>
-
                 </form>
             </div>
 
     ");
-
     }
 
 if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion 

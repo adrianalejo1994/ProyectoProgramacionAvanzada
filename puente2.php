@@ -12,7 +12,7 @@ isset($_POST['idpreg']);
 
 Conectarco();
 $IDUSUARIO=$_SESSION['usuarioactivo'];
-
+echo$respuesta;
 $sql = "UPDATE respuesta SET ESTADORESPUESTA=ESTADORESPUESTA+1 WHERE IDRESPUESTA=$respuesta"; //selecciona la id de la pregunta perteneciente a la categoria
 $idpre = $conn->query($sql);
 //fin de verificacion de respuestas
