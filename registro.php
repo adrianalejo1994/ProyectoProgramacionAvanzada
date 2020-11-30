@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -5,6 +7,12 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+        <script src="sweetalert2.all.min.js"></script>
+<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
+
+
 	</head>
 	<body class="single is-preload" style="background-color:#c4d2e7;">
 
@@ -96,9 +104,54 @@ if ( ! empty( $_POST ) ) {
       $email = $_POST['email'];
       $foto = $_POST['foto'];
 
-Conectar();
-      $sql = "INSERT INTO `usuario` VALUES ('".$nickname."', '".$nombre."', '".$apellido."', '".$fechanacimiento."', '".$clave."', '".$sexo."', '".$email."','".$foto."')";
-      $res = $conn->query($sql); 
-Desconectar();
+
+
+      $patron_texto = '/\b[[:alpha:]]/';//inicia con una letra
+      $patron_texto2 = '/[\'\/~`\!@#\$%\^&\*\(\)+=\{\}\[\]\|;:"\<\>,\?\\\]]/';//caracteres especiales
+      $patron_texto3 = '/\s/';//espacios en blanco
+
+
+     $letra = preg_match($patron_texto, $nickname);
+     $especiales = preg_match($patron_texto2, $nickname);
+     $espacios = preg_match($patron_texto3, $nickname);
+
+
+      if( $letra=="1" && $especiales=="0" && $espacios=="0"){
+
+        
+        Conectar();
+        $nickbase="";
+        $sql = "SELECT * FROM `usuario` WHERE `IDUSUARIO`='".$nickname."'";
+        $res = $conn->query($sql);
+        foreach($res as $fila)
+        {
+            $nickbase = $fila["IDUSUARIO"];
+        }
+        Desconectar();
+
+      
+      if ($nickbase=="") {
+    
+        Conectar();
+        $sql = "INSERT INTO `usuario` VALUES ('".$nickname."', '".$nombre."', '".$apellido."', '".$fechanacimiento."', '".$clave."', '".$sexo."', '".$email."','".$foto."')";
+        $res = $conn->query($sql); 
+        Desconectar();
+        }else{
+echo("
+
+<script>
+window.alert(\"mensaje\")
+</script>
+");
+        }
+                    
+        }else{
+                        $aErrores = "El nombre sólo puede contener letras y espacios";
+            }
+
+
+
 }
 ?>
+
+
