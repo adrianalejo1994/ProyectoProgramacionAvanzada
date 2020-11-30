@@ -78,7 +78,7 @@ session_start();
                                 
                                           <td><input class="btn-success" type="submit" name="actualizar" value="Actualizar" /></td>
                                         </tr>
-                                        <input type="hidden" name="sw" value="1" /> 
+                                        
                                         <?php
                                           }
                                         }
