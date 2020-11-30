@@ -189,12 +189,21 @@ else{
 
     Desconectar();
    
-    
-    echo("
-    <script>
-    window.alert(\"USUARIO CREADO\")
+    echo("<script>
+    window.alert(\"USUARIO CREADO CORRECTAMENTE\")
     </script>
     ");
+
+
+    echo("
+<script> 
+<!--
+window.location.replace('login.php'); 
+//-->
+</script>
+");
+
+
 }
 
 }
