@@ -1,7 +1,17 @@
 <?php
+include("functionshe.php");
+Conectarhe();
+$auxiliar=0;
 
 if(isset( $_SESSION['usuarioactivo'] ) ) {
-echo("
+	$user= $_SESSION['usuarioactivo'];
+	$sql="SELECT PUNTAJE FROM punto WHERE IDUSUARIO = '$user'";
+	$idpre = $conn->query($sql);
+	foreach ($idpre as $fila)
+	{
+		$auxiliar=$fila['PUNTAJE'];
+	} 
+	echo("
 
 
 <header id=\"header\"  style=\"background-color:#789dca;\" >
@@ -11,8 +21,7 @@ echo("
 								<li><a href=\"inicio.php\">Inicio</a></li>
 								<li><a href=\"#\">Creditos</a></li>
 							</ul>
-						</nav>
-						
+						</nav>				
 				<!-- boton preguntar  agregar link-->
 
 						<ul class=\"subtitulos\">
@@ -25,8 +34,7 @@ echo("
 							<input  type=\"search\" placeholder=\"\" >
 							<input  type=\"submit\" value=\"Buscar\"/>
 							</form>
-							
-						
+	
 							<ul class=\"subtitulos\">
 ");
 }
@@ -61,14 +69,21 @@ else
 ");
 }
 										if ( isset( $_SESSION['usuarioactivo'] ) ) {
-											
+											$user= $_SESSION['usuarioactivo'];
+											$sql1="SELECT PUNTAJE FROM punto WHERE IDUSUARIO = '$user'";
+											$idpre = $conn->query($sql1);
+											foreach ($idpre as $fila)
+											{
+												$auxiliar=$fila["PUNTAJE"];
+											} 
+
 											echo("<a href=\"perfilusuario.php\" class=\"links\">Perfil de Usuario</a>
 											<a href=\"repositoriorpreg.php\" class=\"links\">Repositorio de Preguntas</a>
 											<a href=\"repositorioresp.php\" class=\"links\">Repositorio de Respuestas</a>
-											<a href=\"\" class=\"links\">".$_SESSION['usuarioactivo']."</a>
-											
+											<a href=\"\" class=\"links\">".$user."</a>
+											Puntos: ".$auxiliar."
 											<a href=\"logout.php\" class=\"links\">Salir</a>");
-
+	
 
 										} else {
 											echo("<a href=\"registro.php\" class=\"links\">Registrarse</a>
@@ -79,4 +94,6 @@ else
 							</ul>
 						</nav>
                     </header>
- 
+ <?php
+ Desconectarche();
+ ?>
