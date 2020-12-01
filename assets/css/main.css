@@ -3239,7 +3239,7 @@ input, select, textarea {
 /* Header */
 
 	body {
-		padding-top: 3.5em;
+		padding-top: 0px;
 	}
 	
 	#header {

@@ -1,26 +1,22 @@
-<?php //include("functions.php"); 
+<?php 
 session_start();
-
-
 ?>
 
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>TELL ME HOW</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" /> <!-- directorio para usar css-->
 	</head>
-	<body class="is-preload" style="background-color:#c4d2e7;">
+	<header>
+	<?php 
+		include("header.php"); 
+		?>
+	</header>
+	<body  style="background-color:#c4d2e7;">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
-
-				<!-- Header -->
-				<?php
-				include("header.php"); 
-				?>
 
 				<!-- Main -->
 					<div id="main">

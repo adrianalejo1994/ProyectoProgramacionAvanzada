@@ -12,6 +12,8 @@
 
 				<!-- Header -->
         <?php
+        session_start();
+
 				include("header.php"); 
 				?>
 
@@ -40,7 +42,6 @@
 
 <?php
 include("functions.php");
-session_start();
 
 if ( ! empty( $_POST ) ) {
     if ( isset( $_POST['IDUSUARIO'] ) && isset( $_POST['CLAVE'] ) ) {
@@ -54,7 +55,13 @@ if ( ! empty( $_POST ) ) {
           if (  $_POST['CLAVE']==$pass && $_POST['IDUSUARIO']==$nombre  ) {
             $_SESSION['usuarioactivo'] = $nombre;
             Desconectar();
-            header('Location: inicio.php');
+            echo("
+            <script> 
+            <!--
+            window.location.replace('inicio.php'); 
+            //-->
+            </script>
+            ");
           }
       }
     echo "acceso incorrecto";
