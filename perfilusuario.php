@@ -125,7 +125,8 @@ session_start();
 						  		<td><?php echo($row["FOTO"]); ?></td>
 						  </tr>
                             
-                            <td> <a href="Editarusuario.php?id=<?php echo $row["IDUSUARIO"]?>&ideditar=3">Editar</a></td>
+							<td> <a href="Editarusuario.php?id=<?php echo $row["IDUSUARIO"]?>&ideditar=3">Editar</a></td>
+							
                             <td>   
                             <td>
                                         

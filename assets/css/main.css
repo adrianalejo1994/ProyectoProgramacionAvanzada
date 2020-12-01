@@ -9,6 +9,7 @@ a:hover.sobre{
 	border: 3px solid green;
 	font-family:impact;
   }
+
 .flexsearch--wrapper {
     height: auto;
     width: auto;
@@ -2096,6 +2097,24 @@ input, select, textarea {
 			.button:disabled:before {
 				color: rgba(24, 23, 23, 0.3) !important;
 			}
+			.boton_1{
+				text-decoration: none;
+				padding: 3px;
+				padding-left: 15px;
+				padding-right: 15px;
+				font-family: helvetica;
+				font-weight: 500;
+				font-size: 20px;
+				font-style: italic;
+				color: #800707;
+				background-color: #a76868;
+				
+				border: 3px double #4e0808;
+			  }
+			  .boton_1:hover{
+				opacity: 0.6;
+				text-decoration: none;
+			  }
 
 /* Form */
 

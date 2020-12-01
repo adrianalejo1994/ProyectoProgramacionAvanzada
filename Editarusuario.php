@@ -64,7 +64,8 @@ Desconectar();
                                             <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                                         </tr>
                                     </table>
-                                    <input type="submit" value="Editar">
+									<input type="submit" value="Editar">
+									<td><a href="CambioContraseña.php" class="boton_1">Cambiar de Contraseña</a></td>
                                         </form>
 								</header>
 								</footer>

@@ -99,8 +99,8 @@ session_start();
                                  <td><b>DESCRIPCIONPREGUNTA</b></td>
                                  <td><b>ESTADO</b></td>
                                  <td><b>FECHACREACIONPREGUNTA</b></td>
-                                 <td><b>Eliminar</b></td>
-								 <td><b>Editar</b></td>
+                                 <td><b>EliminarPregunta</b></td>
+								 <td><b>EditarPregunta</b></td>
                             </tr>
                                               
                           <?php
@@ -120,8 +120,8 @@ session_start();
                             <td><?php echo($row["ESTADO"]); ?></td>
                             
                             <td><?php echo($row["FECHACREACIONPREGUNTA"]);?></td>
-                            <td> <a href="eliminarpreg.php?IDPREGUNTA=<?php echo $row['IDPREGUNTA']?>&idborrar=2">Eliminar</a></td>
-							<td> <a href='Editarpreg.php?no=<?php echo $row['IDPREGUNTA'];?>' <button type='button' class='btn btn-success'>Modificar</button> </a></td>
+                            <td> <a   href="eliminarpreg.php?IDPREGUNTA=<?php echo $row['IDPREGUNTA'];?>&idborrar=2"><img src="images/delete.ico" width="19"height="19" />Eliminar</a></td>
+							<td> <a href='Editarpreg.php?no=<?php echo $row['IDPREGUNTA'];?>' <button type='button' class='btn btn-success'><img src="images/mod.ico" width="22"height="22" />Modificar</button> </a></td>
                             <td>   
                             <td>
                                         
