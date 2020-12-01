@@ -16,18 +16,4 @@ function DesconectarCat()
     $conn = null;
 }
 
-function buscarUsuario($id) {
-    global $conn;
-    ConectarCat();
-            $sql = 'SELECT * 
-                        FROM USUARIO 
-                        WHERE IDUSUARIO='.$id;
-      $cursor = $conn->query($sql)->fetch();
-
-    DesconectarCat();
-
-    return $cursor;
-}
-?>
-
 

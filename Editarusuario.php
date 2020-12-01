@@ -51,11 +51,12 @@ Desconectar();
                                     <table>
                                         <tr>
                                             <td>Nombre(s)</td>
-                                            <td><input type="text"  value="<?php echo $nombre; ?>" name="nombre" required/><td>
+                                            <td><?php echo $nombre ; ?></td>
+						  		
                                         </tr>
                                         <tr>
                                             <TD>Apellido(s)</td>
-                                            <TD><input type="text" value="<?php echo $apellido; ?>" name="apellido" required/><td>
+                                            <td><?php echo $apellido; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Foto</td>
