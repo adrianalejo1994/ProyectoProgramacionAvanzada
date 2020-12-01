@@ -11,11 +11,11 @@ mysqli_select_db($conn, 'proyectofinal');
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-                                
+                           
 $sql = "SELECT IDRESPUESTA, IDPREGUNTA, IDUSUARIO, DESCRIPCIONRESPUESTA, ESTADORESPUESTA, FECHACREACIONRESPUESTA1 FROM RESPUESTA";
 //echo $sql;
 $res=mysqli_query($conn,$sql);
-//$res = $conn->query($sql); 
+$res = $conn->query($sql); 
 ConectarCat();
 session_start();
 
@@ -88,6 +88,7 @@ session_start();
                                  <td><b>ESTADORESPUESTA</b></td>
                                  <td><b>FECHACREACIONRESPUESTA1</b></td>
                                  <td><b>Eliminar</b></td>
+								 <td><b>Editar</b></td>
                             </tr>
                                               
                           <?php
@@ -107,6 +108,7 @@ session_start();
                             <td><?php echo($row["FECHACREACIONRESPUESTA1"]); ?></td>
                             
                             <td> <a href="eliminaresp.php?IDRESPUESTA=<?php echo $row["IDRESPUESTA"]?>&idborrar=3">Eliminar</a></td>
+							<td> <a href='Editarresp.php?no=<?php echo $row['IDRESPUESTA'];?>' <button type='button' class='btn btn-success'>Modificar</button> </a></td>
                             <td>   
                             <td>
                                         

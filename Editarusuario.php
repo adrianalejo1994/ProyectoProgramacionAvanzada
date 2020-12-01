@@ -1,24 +1,21 @@
 <?php 
-include("functionscopy.php");
-ConectarCat();
-$conn = mysqli_connect('localhost', 'root', '');  
-if (! $conn) {  
-die("Connection failed" . mysqli_connect_error());  
-}  
-else {  
-mysqli_select_db($conn, 'proyectofinal');  
-}  
-
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-
-$sql = "SELECT IDUSUARIO,NOMBRE, CLAVE, FOTO FROM USUARIO";
-//echo $sql;
-$res=mysqli_query($conn,$sql);
-
-
+include("functions.php");
 session_start();
+
+
+Conectar();
+
+$sql = "SELECT NOMBRE, APELLIDO, FOTO FROM USUARIO WHERE IDUSUARIO='".$_SESSION['usuarioactivo']."'";
+$res = $conn->query($sql);
+foreach($res as $fila){
+$nombre = $fila["NOMBRE"];
+$apellido = $fila["APELLIDO"];
+$foto = $fila["FOTO"];
+}
+Desconectar();
+
+
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -49,38 +46,25 @@ session_start();
 										<h2><a href="#">Actualizar tu Usuario y Contraseña</a></h2>
 										<p>Modificar NickName y Clave</p>
 									</div>
-                                    <form action="" method="POST">
-                                        <table>
-                                        <?php
-                                          $nombreusuario=($_SESSION["usuarioactivo"]);
-                                          while($row=mysqli_fetch_array($res)){
-                                          if( $row["IDUSUARIO"] == $nombreusuario){
-                                          
-                                     
-                                      ?>
+
+                                    <form action="" method="POST" enctype="multipart/form-data">
+                                    <table>
                                         <tr>
                                             <td>Nombre(s)</td>
-                                            <td><input type="text"  name="nombre" value="<?php echo($row["NOMBRE"]);?>" ><td>
+                                            <td><?php echo $nombre ; ?></td>
+						  		
                                         </tr>
                                         <tr>
-                                            <td>Nickname</td>
-                                            <td><input type="text"  name="nickname" value="<?php echo ($row["IDUSUARIO"])?>" ><td>
-                                        </tr>
-                                        <tr>
-                                            <td>Clave</td>
-                                            <td><input type="text" name="clave"value="<?php echo($row["CLAVE"]);?>" ><td>
+                                            <TD>Apellido(s)</td>
+                                            <td><?php echo $apellido; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Foto</td>
-                                            <td><input type="file"  name="foto" value=" <?php echo($row["FOTO"]);?>"required/><td>
+                                            <td> <input name="userfile"  type="file" ><td>
+                                            <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                                         </tr>
-                                        
-                                        <?php
-                                          }
-                                        }
-                                        ?>
-                                        </table>
-                                        <input type="submit" value="Modificar">
+                                    </table>
+                                    <input type="submit" value="Editar">
                                         </form>
 								</header>
 								</footer>
@@ -96,23 +80,27 @@ session_start();
             
 	</body>
 </html>
+
+
 <?php
-include("functionscopy.php");
+
+if ( ! empty( $_POST ) ) {
+
+
+//carga de datos imagen
+$nombre_archivo = $_FILES['userfile']['name'];
+$tipo_archivo = $_FILES['userfile']['type'];
+$tamano_archivo = $_FILES['userfile']['size'];
+$nombre_archivo.trim(" ");
+$imagen = addslashes(file_get_contents($_FILES['userfile']['tmp_name']));
 
 
 
-      $nombre = $_POST["nombre"];
-      $nickname = $_POST["nickname"];
-      $clave = $_POST["clave"];
-      $foto = $_POST["foto"];
+//carga de datos ingresados
+        Conectar();
+        $sql = "UPDATE USUARIO SET `FOTO`='".$imagen."'";
+        $res = $conn->query($sql);
+        Desconectar();
 
-ConectarCat();   
-      $sql = "UPDATE USUARIO SET nombre='".$nombre."',nickname='".$nickname."',clave='".$clave."',foto='".$foto."'";
-      echo $sql;
-      $res = $conn->query($sql); 
-     // $sql2 = "INSERT INTO `punto` VALUES ( NULL, '$nickname', 20, NULL)";
-     // $res2 = $conn->query($sql2); 
-DesconectarCat();
-
+}
 ?>
-<script type="text/javascript"> alert("Se ha modificado exitosamente");

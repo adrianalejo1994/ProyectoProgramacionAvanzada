@@ -100,6 +100,7 @@ session_start();
                                  <td><b>ESTADO</b></td>
                                  <td><b>FECHACREACIONPREGUNTA</b></td>
                                  <td><b>Eliminar</b></td>
+								 <td><b>Editar</b></td>
                             </tr>
                                               
                           <?php
@@ -120,6 +121,7 @@ session_start();
                             
                             <td><?php echo($row["FECHACREACIONPREGUNTA"]);?></td>
                             <td> <a href="eliminarpreg.php?IDPREGUNTA=<?php echo $row['IDPREGUNTA']?>&idborrar=2">Eliminar</a></td>
+							<td> <a href='Editarpreg.php?no=<?php echo $row['IDPREGUNTA'];?>' <button type='button' class='btn btn-success'>Modificar</button> </a></td>
                             <td>   
                             <td>
                                         
