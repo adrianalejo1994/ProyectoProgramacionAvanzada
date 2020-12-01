@@ -108,7 +108,7 @@ session_start();
                             <td><?php echo($row["FECHACREACIONRESPUESTA1"]); ?></td>
                             
                             <td> <a href="eliminaresp.php?IDRESPUESTA=<?php echo $row["IDRESPUESTA"]?>&idborrar=3">Eliminar</a></td>
-							<td> <a href='Editarresp.php?no=<?php echo $row['IDRESPUESTA']?> <button type='button' class='btn btn-success'>Modificar</button> </a></td>
+							<td> <a href='Editarresp.php?no=<?php echo $row['IDRESPUESTA'];?>' <button type='button' class='btn btn-success'>Modificar</button> </a></td>
                             <td>   
                             <td>
                                         

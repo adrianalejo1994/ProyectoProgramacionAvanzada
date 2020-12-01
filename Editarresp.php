@@ -72,7 +72,8 @@ Desconectar();
                                         </tr>
                                         <tr>
                                             <td>DESCRIPCION DE RESPUESTA</td>
-                                            <td><input type="text"  value="<?php echo $descripcion; ?>" name="descripcion" required/><td>
+                                            <td> <textarea name="descripcion" rows="10" cols="40"><?php echo $descripcion; ?></textarea></td>
+                                            
                                         </tr>
                                         
                                           

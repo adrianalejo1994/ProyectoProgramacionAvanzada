@@ -5,7 +5,7 @@ session_start();
 
 Conectar();
 
-$sql ="SELECT IDPREGUNTA, IDUSUARIO, IDCATEGORIA, TITULO,  DESCRIPCIONPREGUNTA, ESTADO, FECHAPREGUNTA FROM PREGUNTA WHERE IDPREGUNTA='".$_GET['no']."'";
+$sql ="SELECT *FROM PREGUNTA WHERE IDPREGUNTA=".$_GET['no']."";
 //echo ($sql);
 $res = $conn->query($sql);
 foreach($res as $row){
@@ -15,7 +15,7 @@ $idcategoria = $row["IDCATEGORIA"];
 $TITULO = $row["TITULO"];
 $descripcionpreg = $row["DESCRIPCIONPREGUNTA"];
 $estado = $row["ESTADO"];
-$fechaPregunta = $row["FECHAPREGUNTA"];
+$fechaPregunta = $row["FECHACREACIONPREGUNTA"];
 }  
 
 Desconectar();
@@ -72,12 +72,13 @@ Desconectar();
 						  		
                                         </tr>
                                         <td>TITULO:</td>
-                                            <td><?php echo $TITULO; ?></td>
+                                        <td><input type="text"  value="<?php echo $TITULO; ?>" name="titulo" required/><td>
+                                            
 						  		
                                         </tr>
                                         <tr>
                                             <td>DESCRIPCION DE PREGUNTA</td>
-                                            <td><input type="text"  value="<?php echo $descripcionpreg; ?>" name="descripcionpreg" required/><td>
+                                            <td> <textarea name="descripcionpreg" rows="10" cols="40"><?php echo $descripcionpreg; ?></textarea></td>
                                         </tr>
                                         
                                           
@@ -121,12 +122,13 @@ if ( ! empty( $_POST ) ) {
 //$tamano_archivo = $_FILES['userfile']['size'];
 //$nombre_archivo.trim(" ");
 //$imagen = addslashes(file_get_contents($_FILES['userfile']['tmp_name']));
+$titulopreg=$_POST['titulo'];
 $descripcionpreg=$_POST['descripcionpreg'];
 
 
 //carga de datos ingresados
         Conectar();
-        $sql = "UPDATE PREGUNTA SET `DESCRIPCIONPREGUNTA`='".$descripcionpreg."' WHERE IDPREGUNTA='".$_GET['no']."'";
+        $sql = "UPDATE PREGUNTA SET `DESCRIPCIONPREGUNTA`='".$descripcionpreg."',`TITULO`='".$titulopreg."' WHERE IDPREGUNTA='".$_GET['no']."'";
         $res = $conn->query($sql);
         Desconectar();
 

@@ -121,7 +121,7 @@ session_start();
                             
                             <td><?php echo($row["FECHACREACIONPREGUNTA"]);?></td>
                             <td> <a href="eliminarpreg.php?IDPREGUNTA=<?php echo $row['IDPREGUNTA']?>&idborrar=2">Eliminar</a></td>
-							<td> <a href='Editarpreg.php?no=<?php echo $row['IDPREGUNTA']?> <button type='button' class='btn btn-success'>Modificar</button> </a></td>
+							<td> <a href='Editarpreg.php?no=<?php echo $row['IDPREGUNTA'];?>' <button type='button' class='btn btn-success'>Modificar</button> </a></td>
                             <td>   
                             <td>
                                         
