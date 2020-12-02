@@ -1,5 +1,4 @@
 <?php
-include("functions.php");
 Conectar();
 $k3=0;
 $k2=0;

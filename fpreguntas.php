@@ -1,6 +1,4 @@
 <?php
-session_start();
-include("functions.php");
 Conectar();
     $categoria=$_GET['var']; //obtencion del nombre de categoria
     $ncategoria=$_GET['id']; //obtencion de id de categoria seleccionada

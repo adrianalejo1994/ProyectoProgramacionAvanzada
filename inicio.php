@@ -1,26 +1,22 @@
-<?php //include("functions.php"); 
+<?php 
 session_start();
-
-
 ?>
 
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>TELL ME HOW</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" /> <!-- directorio para usar css-->
 	</head>
-	<body class="is-preload" style="background-color:#c4d2e7;">
+	<header>
+	<?php 
+		include("header.php"); 
+		?>
+	</header>
+	<body  style="background-color:#c4d2e7;">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
-
-				<!-- Header -->
-				<?php
-				include("header.php"); 
-				?>
 
 				<!-- Main -->
 					<div id="main">
@@ -71,33 +67,23 @@ session_start();
 								<header>
 									<h2>DIME COMO</h2>
 									<p>Un lugar para responder preguntas frecuentes</p>
-								</header>
-							</section>
-
-						<!-- Mini Posts -->
-							<section>
-								<div class="mini-posts">
-									<header>
-										<h2>Todas las Categorias</h2>
-									</header>
-								</div>
-							</section>
-
-						<!-- Categorias -->
-			
-							<?php 
+									<p><h3>Todas las Categorias</h3>
+									&nbsp
+									</p>
+									<?php 
 							include("fcategorias.php"); 
 							?> 
-							</section>
-
-						<!-- About -->
+								</header>
+								
+						
+						<!-- About 
 							<section class="blurb">
 								<h2>Acerca de la pagina</h2>
 								<p>Es un sitio web de preguntas y respuestas impulsado por una comunidad, que permite a sus usuarios tanto formular preguntas como responderlas. Para hacerlo, el usuario tiene que tener una cuenta en el sitio.</p>
 								<ul class="actions">
 									<li><a href="#" class="button">Leer mas</a></li>
 								</ul>
-							</section>
+							</section>-->
 
 						
 					</section>

@@ -3,6 +3,7 @@
 <html>
 <?php 
 $categoria=$_GET['var'];
+session_start();
 
 ?>
 <head>
@@ -12,13 +13,19 @@ $categoria=$_GET['var'];
 	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
 
+
+	<header>
+	<?php 
+		include("header.php"); 
+	?>
+	</header>
+
+
+
+
 <body class="is-preload" style="background-color:#c4d2e7;">
 	<div id="wrapper">
 
-		<!-- Header -->
-		<?php
-		include("header.php"); 
-		?>
 
 
 		<!-- Main -->
@@ -70,7 +77,7 @@ $categoria=$_GET['var'];
 
 			<!-- Footer -->
 		<?php
-		include("header.php"); 
+		include("footer.php"); 
 		?>
 
 </body>
