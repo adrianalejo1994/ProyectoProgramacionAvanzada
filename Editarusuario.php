@@ -105,7 +105,7 @@ $imagen = addslashes(file_get_contents($_FILES['userfile']['tmp_name']));
 
 //carga de datos ingresados
         Conectar();
-        $sql = "UPDATE USUARIO SET `FOTO`='".$imagen."'";
+        $sql = "UPDATE USUARIO SET `FOTO`='".$imagen."' WHERE IDUSUARIO='".$_SESSION['usuarioactivo']."'";
         $res = $conn->query($sql);
         Desconectar();
 

@@ -67,33 +67,23 @@ session_start();
 								<header>
 									<h2>DIME COMO</h2>
 									<p>Un lugar para responder preguntas frecuentes</p>
-								</header>
-							</section>
-
-						<!-- Mini Posts -->
-							<section>
-								<div class="mini-posts">
-									<header>
-										<h2>Todas las Categorias</h2>
-									</header>
-								</div>
-							</section>
-
-						<!-- Categorias -->
-			
-							<?php 
+									<p><h3>Todas las Categorias</h3>
+									&nbsp
+									</p>
+									<?php 
 							include("fcategorias.php"); 
 							?> 
-							</section>
-
-						<!-- About -->
+								</header>
+								
+						
+						<!-- About 
 							<section class="blurb">
 								<h2>Acerca de la pagina</h2>
 								<p>Es un sitio web de preguntas y respuestas impulsado por una comunidad, que permite a sus usuarios tanto formular preguntas como responderlas. Para hacerlo, el usuario tiene que tener una cuenta en el sitio.</p>
 								<ul class="actions">
 									<li><a href="#" class="button">Leer mas</a></li>
 								</ul>
-							</section>
+							</section>-->
 
 						
 					</section>
