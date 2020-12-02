@@ -9,14 +9,18 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
  
 	</head>
+
+    <header>
+	<?php 
+		include("header.php"); 
+		?>
+	</header>
+
 	<body class="single is-preload" style="background-color:#c4d2e7;">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
-				<!-- Header -->
-				<?php
-                include("header.php"); 
-				?>
+				
 				<!-- Main -->
 					<div id="main">
 
@@ -87,7 +91,6 @@
 
 <?php
 
-include("functions.php");
 
 if ( ! empty( $_POST ) ) {
 

@@ -1,3 +1,8 @@
+<?php 
+session_start();
+?>
+
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -6,17 +11,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
+
+	<!-- Header -->
+  <header>
+        <?php
+				include("header.php"); 
+				?>
+        </header>
+
+
+
+
+
 	<body class="single is-preload" style="background-color:#c4d2e7;">
 
 <div id="wrapper">
-
-				<!-- Header -->
-        <?php
-        session_start();
-
-				include("header.php"); 
-				?>
-
 
                 <div class="login">
                   <div class="form">
@@ -41,7 +50,6 @@
 </html>
 
 <?php
-include("functions.php");
 
 if ( ! empty( $_POST ) ) {
     if ( isset( $_POST['IDUSUARIO'] ) && isset( $_POST['CLAVE'] ) ) {

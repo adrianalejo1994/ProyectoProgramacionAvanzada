@@ -1,10 +1,10 @@
 <?php 
-include("functions.php");
+include("functionshe.php");
 session_start();
-Conectar();
-$idpregunta=$_GET['var']; //obtencion del nombre de categoria
+Conectarhe();
+$idpregunta=$_SESSION['usuarioactivo']; //obtencion del nombre de categoria
 //echo$idpregunta;
-$sql = "SELECT pregunta.TITULO, pregunta.DESCRIPCIONPREGUNTA  FROM pregunta WHERE pregunta.IDPREGUNTA = $idpregunta"; //selecciona la id de la pregunta perteneciente a la categoria
+$sql = "SELECT *  FROM pregunta WHERE IDUSUARIO ='".$idpregunta."'"; //selecciona la id de la pregunta perteneciente a la categoria
 $idpre = $conn->query($sql);
 
 foreach ($idpre as $fila) {
@@ -20,15 +20,19 @@ foreach ($idpre as $fila) {
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" /> <!-- directorio para usar css-->
 	</head>
+
+	<header>
+	<?php 
+		include("header.php"); 
+		?>
+	</header>
+
 	<body class="is-preload" style="background-color:#c4d2e7;">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
-				<!-- Header -->
-				<?php
-				include("header.php"); 
-				?>
+
 				<!-- Main -->
 					<div id="main">
 
