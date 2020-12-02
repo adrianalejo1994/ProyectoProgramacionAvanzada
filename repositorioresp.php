@@ -79,7 +79,7 @@ session_start();
 									}else echo "<h1>Please login first .</h1>";
 									?>
                             </article>
-                            <table>
+                            <table BORDER >
                             <tr class="CabeceraTR">
                                  <td><b>IDRESPUESTA</b></td>
                                  <td><b>IDPREGUNTA</b></td>
@@ -87,8 +87,12 @@ session_start();
                                  <td><b>DESCRIPCIONRESPUESTA</b></td>
                                  <td><b>ESTADORESPUESTA</b></td>
                                  <td><b>FECHACREACIONRESPUESTA1</b></td>
+<<<<<<< Updated upstream
                                  <td><b>Eliminar</b></td>
-								 <td><b>Editar</b></td>
+=======
+                                 <td><b>EliminarRespuesta</b></td>
+>>>>>>> Stashed changes
+								 <td><b>EditarRespuesta</b></td>
                             </tr>
                                               
                           <?php
@@ -107,8 +111,8 @@ session_start();
                             <td><?php echo($row["ESTADORESPUESTA"]); ?></td>
                             <td><?php echo($row["FECHACREACIONRESPUESTA1"]); ?></td>
                             
-                            <td> <a href="eliminaresp.php?IDRESPUESTA=<?php echo $row["IDRESPUESTA"]?>&idborrar=3">Eliminar</a></td>
-							<td> <a href='Editarresp.php?no=<?php echo $row['IDRESPUESTA'];?>' <button type='button' class='btn btn-success'>Modificar</button> </a></td>
+                            <td> <a href="eliminaresp.php?IDRESPUESTA=<?php echo $row["IDRESPUESTA"]?>&idborrar=3"><img src="images/delete.ico" width="19"height="19" />Eliminar</a></td>
+							<td> <a href='Editarresp.php?no=<?php echo $row['IDRESPUESTA'];?>' <button type='button' class='btn btn-success'><img src="images/mod.ico" width="22"height="22" />Modificar</button> </a></td>
                             <td>   
                             <td>
                                         

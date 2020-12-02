@@ -83,7 +83,7 @@ Desconectar();
 						  		
                                         </tr>
                                     </table>
-                                    <input type="submit" value="Editar">
+                                    <input type="submit" value="Actualizar">
                                         </form>
 								</header>
 								</footer>
