@@ -67,7 +67,7 @@
                                             <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                                         </tr>
                                         </table>
-                                        <input type="submit" value="Registrarse">
+                                        <input type="submit" value="Registrarse" href="login.php">
                                         </form>
 								</header>
 								</footer>
@@ -116,7 +116,9 @@ if ( ! empty( $_POST ) ) {
         $especiales = preg_match($patron_texto2, $nickname);
         $espacios = preg_match($patron_texto3, $nickname);
 
-
+        if (isset($_GET['email']) && preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/', $_GET['email'])) {
+            $email = $_GET['email'];
+        }
 //comprobacion nick no tenga caracteres invalidos
         if( $letra!="1" || $especiales!="0" || $espacios!="0"){
         echo("
