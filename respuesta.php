@@ -50,6 +50,7 @@ foreach ($infovots as $fila) {
 
 if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion 
     if($canvotos>0){
+        if($usuv!=$_SESSION['usuarioactivo'] ){ //No puede votarse aasi mismo como mvp
         echo("
         <div class=\"post\" style=\"border-radius:10px\">
         <h1>Mejor Puntuado</h1>
@@ -66,10 +67,29 @@ if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion
         </div>
 
     ");
+        }
+        else{
+            echo("
+            <div class=\"post\" style=\"border-radius:10px\">
+            <h1>Mejor Puntuado</h1>
+            <h1>$usuv</h1>
+                <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$respv 
+                </br>    
+                </br>   
+                <form class=\"mini-post\" name=\"form\"  id=\"form\" method=\"POST\"><h4>Fecha de publicacion: $fechav</br>
+                Votos: $votosv</h4>    
+                <input id=\"prodId2\" name=\"idresp\" value=".$idrespv." type=\"hidden\">   
+                <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
+                </form>
+            </div>
+    
+        "); 
+        }
+        
     }
     for($i=0; $i<$number_of_rows;$i++)
     {
-    if( $_SESSION['usuarioactivo'] != $usuv ){
+    if( $_SESSION['usuarioactivo'] == $usu[$i] ){
     echo("
             <div class=\"post\" style=\"border-radius:10px\">
             <h1>$usu[$i]</h1>
@@ -81,7 +101,7 @@ if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion
                 <input id=\"prodId2\" name=\"idresp\" value=".$idresp[$i]." type=\"hidden\">   
                 <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
                 <input id=\"prodId2\" name=\"idusu\" value=".$usuv[$i]." type=\"hidden\">   
-                <input type=\"submit\" name=\"idpreg1\" value=\"Votar\">
+                
                 </form>
             </div>
 
@@ -98,6 +118,8 @@ if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion
             Votos: $votos[$i]</h4>    
             <input id=\"prodId2\" name=\"idresp\" value=".$idresp[$i]." type=\"hidden\">   
             <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
+            <input id=\"prodId2\" name=\"idusu\" value=".$usuv[$i]." type=\"hidden\">  
+            <input type=\"submit\" name=\"idpreg1\" value=\"Votar\">
              </form>
         </div>
     ");
