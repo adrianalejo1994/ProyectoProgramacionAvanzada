@@ -21,6 +21,8 @@ $DESCRIPCIONRESPUESTA=$respuesta;
             echo$respuesta;
 echo$aux;
 
+
+
 $FECHACREACIONRESPUESTA = date("Y-m-d",$t);
 if($DESCRIPCIONRESPUESTA!=" ")
 {
