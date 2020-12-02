@@ -2111,10 +2111,13 @@ input, select, textarea {
 				
 				border: 3px double #4e0808;
 			  }
+<<<<<<< Updated upstream
 			  .boton_1:hover{
 				opacity: 0.6;
 				text-decoration: none;
 			  }
+=======
+>>>>>>> Stashed changes
 
 /* Form */
 

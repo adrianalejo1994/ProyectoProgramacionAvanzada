@@ -87,7 +87,11 @@ session_start();
                                  <td><b>DESCRIPCIONRESPUESTA</b></td>
                                  <td><b>ESTADORESPUESTA</b></td>
                                  <td><b>FECHACREACIONRESPUESTA1</b></td>
+<<<<<<< Updated upstream
                                  <td><b>Eliminar</b></td>
+=======
+                                 <td><b>EliminarRespuesta</b></td>
+>>>>>>> Stashed changes
 								 <td><b>EditarRespuesta</b></td>
                             </tr>
                                               

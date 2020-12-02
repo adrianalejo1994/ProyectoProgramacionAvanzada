@@ -64,7 +64,11 @@ Desconectar();
                                             <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                                         </tr>
                                     </table>
+<<<<<<< Updated upstream
 									<input type="submit" value="Editar">
+=======
+                                    <input type="submit" value="Editar">
+>>>>>>> Stashed changes
 									<td><a href="CambioContraseña.php" class="boton_1">Cambiar de Contraseña</a></td>
                                         </form>
 								</header>
