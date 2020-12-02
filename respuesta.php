@@ -69,7 +69,7 @@ if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion
     }
     for($i=0; $i<$number_of_rows;$i++)
     {
-    if( $_SESSION['usuarioactivo'] != $usu ){
+    if( $_SESSION['usuarioactivo'] != $usuv ){
     echo("
             <div class=\"post\" style=\"border-radius:10px\">
             <h1>$usu[$i]</h1>
@@ -124,7 +124,7 @@ if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion
 }
 
 else{ //si no esta iniciado sesion 
-    if($canvotos>1){
+    if($canvotos>0){
         echo("
         <div class=\"post\" style=\"border-radius:10px\">
         <h1>Mejor Puntuado</h1>
