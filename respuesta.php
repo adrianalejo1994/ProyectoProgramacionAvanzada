@@ -35,7 +35,7 @@ $canvotos=$fila["Votos"];
 
 if($number_of_rows>0) //verificacion de la existenca de respuestas
 {
-$sql4 = "SELECT IDUSUARIO, DESCRIPCIONRESPUESTA,FECHACREACIONRESPUESTA1, IDRESPUESTA, ESTADORESPUESTA FROM respuesta WHERE ESTADORESPUESTA = $canvotos"; //separa las categorias
+$sql4 = "SELECT IDUSUARIO, DESCRIPCIONRESPUESTA,FECHACREACIONRESPUESTA1, IDRESPUESTA, IDPREGUNTA, ESTADORESPUESTA FROM respuesta WHERE ESTADORESPUESTA = $canvotos && IDPREGUNTA = $idpregunta"; //separa las categorias
 $infovots = $conn->query($sql4);
 foreach ($infovots as $fila) {
     $usuv = $fila["IDUSUARIO"]; //almacena la respuesta
@@ -49,7 +49,7 @@ foreach ($infovots as $fila) {
     
 
 if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion 
-    if($canvotos>1){
+    if($canvotos>0){
         echo("
         <div class=\"post\" style=\"border-radius:10px\">
         <h1>Mejor Puntuado</h1>
@@ -69,6 +69,7 @@ if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion
     }
     for($i=0; $i<$number_of_rows;$i++)
     {
+    if( $_SESSION['usuarioactivo'] != $usu ){
     echo("
             <div class=\"post\" style=\"border-radius:10px\">
             <h1>$usu[$i]</h1>
@@ -79,12 +80,30 @@ if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion
                 Votos: $votos[$i]</h4>    
                 <input id=\"prodId2\" name=\"idresp\" value=".$idresp[$i]." type=\"hidden\">   
                 <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
+                <input id=\"prodId2\" name=\"idusu\" value=".$usuv[$i]." type=\"hidden\">   
                 <input type=\"submit\" name=\"idpreg1\" value=\"Votar\">
                 </form>
             </div>
 
     ");
     }  
+    else{
+        echo("
+        <div class=\"post\" style=\"border-radius:10px\">
+        <h1>$usu[$i]</h1>
+            <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$resp[$i] 
+            </br>    
+            </br>   
+            <form class=\"mini-post\" name=\"form\"  id=\"form\" method=\"POST\"><h4>Fecha de publicacion: $fecha[$i] </br>
+            Votos: $votos[$i]</h4>    
+            <input id=\"prodId2\" name=\"idresp\" value=".$idresp[$i]." type=\"hidden\">   
+            <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
+             </form>
+        </div>
+    ");
+    }
+}
+
 ?>
 
 <h2>Responde:</h2>
