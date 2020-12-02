@@ -1,9 +1,9 @@
 <?php 
-include("functions.php");
+include("functionshe.php");
 session_start();
 
 
-Conectar();
+Conectarhe();
 
 $sql ="SELECT *FROM PREGUNTA WHERE IDPREGUNTA=".$_GET['no']."";
 //echo ($sql);
@@ -18,7 +18,7 @@ $estado = $row["ESTADO"];
 $fechaPregunta = $row["FECHACREACIONPREGUNTA"];
 }  
 
-Desconectar();
+Desconectarche();
 
 
 
@@ -31,16 +31,17 @@ Desconectar();
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
+
+    <header>
+	<?php 
+		include("header.php"); 
+		?>
+	</header>
+
 	<body class="single is-preload" style="background-color:#c4d2e7;">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
-
-				<!-- Header -->
-				<?php
-				include("header.php"); 
-				?>
-
 
 				<!-- Main -->
 					<div id="main">
@@ -132,6 +133,20 @@ $descripcionpreg=$_POST['descripcionpreg'];
         $sql = "UPDATE PREGUNTA SET `DESCRIPCIONPREGUNTA`='".$descripcionpreg."',`TITULO`='".$titulopreg."' WHERE IDPREGUNTA='".$_GET['no']."'";
         $res = $conn->query($sql);
         Desconectar();
+
+        echo("<script>
+        window.alert(\"ACTUALIZADO CORRECTAMENTE\")
+        </script>
+        ");
+
+        echo("
+            <script> 
+            <!--
+            window.location.replace('repositoriorpreg.php'); 
+            //-->
+            </script>
+            ");
+
 
 }
 ?>

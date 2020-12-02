@@ -1,9 +1,9 @@
 <?php 
-include("functions.php");
+include("functionshe.php");
 session_start();
 
 
-Conectar();
+Conectarhe();
 
 $sql = "SELECT NOMBRE, APELLIDO, FOTO FROM USUARIO WHERE IDUSUARIO='".$_SESSION['usuarioactivo']."'";
 $res = $conn->query($sql);
@@ -12,7 +12,7 @@ $nombre = $fila["NOMBRE"];
 $apellido = $fila["APELLIDO"];
 $foto = $fila["FOTO"];
 }
-Desconectar();
+Desconectarche();
 
 
 
@@ -25,15 +25,21 @@ Desconectar();
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
+
+<header>
+<!-- Header -->
+<?php
+				include("header.php"); 
+				?>
+</header>
+
+
 	<body class="single is-preload" style="background-color:#c4d2e7;">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
-				<!-- Header -->
-				<?php
-				include("header.php"); 
-				?>
+				
 
 
 				<!-- Main -->
@@ -64,11 +70,7 @@ Desconectar();
                                             <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                                         </tr>
                                     </table>
-<<<<<<< Updated upstream
 									<input type="submit" value="Editar">
-=======
-                                    <input type="submit" value="Editar">
->>>>>>> Stashed changes
 									<td><a href="CambioContraseña.php" class="boton_1">Cambiar de Contraseña</a></td>
                                         </form>
 								</header>
