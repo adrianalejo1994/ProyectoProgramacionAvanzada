@@ -9,7 +9,9 @@
 	<header>
 		<div class="inner relative">
 			<a ></a>
-			<h1 class="sub-menu"><a href="inicio.php">TELL ME HOW</a></h1>
+			<h1 class="INICIO"><a href="inicio.php">TELL ME HOW</a></h1>
+			<h1 class=""><a href="ingresarpreg.php">Preguntar</a></h1>
+
 			<nav id="navigation">
 				<ul id="main-menu">
 					
@@ -284,6 +286,12 @@ margin-left: -55px;
 margin-left: -53px;
   margin-top: -10px;
   border-radius: 50%;
+}
+
+
+.INICIO {
+position: absolute;
+margin-left: -300px;
 }
 
 </style>
