@@ -62,11 +62,6 @@ if ( ! empty( $_POST ) ) {
           if (  $_POST['CLAVE']==$pass && $_POST['IDUSUARIO']==$nombre  ) {
             $_SESSION['usuarioactivo'] = $nombre;
             Desconectar();
-<<<<<<< HEAD
-            header('Location: inicio.php');
-          }else{
-            echo  "Contraseña o el Usuario no son los correctos";
-=======
             echo("
             <script> 
             <!--
@@ -74,7 +69,6 @@ if ( ! empty( $_POST ) ) {
             //-->
             </script>
             ");
->>>>>>> origin/ALejo-header-navegacion
           }
       }
     Desconectar();
