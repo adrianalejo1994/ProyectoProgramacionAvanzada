@@ -21,18 +21,16 @@ if(isset( $_SESSION['usuarioactivo'] ) ) {
 								<li><a href=\"inicio.php\">Inicio</a></li>
 								<li><a href=\"#\">Creditos</a></li>
 							</ul>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 						</nav>				
 				<!-- boton preguntar  agregar link-->
-=======
+
 						</nav>
 						
->>>>>>> main
-=======
+
 						</nav>				
 				<!-- boton preguntar  agregar link-->
->>>>>>> main
+
 
 						<ul class=\"subtitulos\">
 						<a href=\"ingresarpreg.php\"  value=\"Preguntar +\"><li>Preguntar</li></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -78,10 +76,7 @@ else
 							<ul class=\"subtitulos\">
 ");
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> main
+
 										if ( isset( $_SESSION['usuarioactivo'] ) ) {
 											$user= $_SESSION['usuarioactivo'];
 											$sql1="SELECT PUNTAJE FROM punto WHERE IDUSUARIO = '$user'";
@@ -104,12 +99,7 @@ else
 											<a href=\"login.php\" class=\"links\">Iniciar Sesión</a>");
 										}
 									
-<<<<<<< HEAD
-=======
-										
->>>>>>> main
-=======
->>>>>>> main
+
 							?>
 							</ul>
 						</nav>
