@@ -67,6 +67,7 @@ if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion
         </div>
 
     ");
+<<<<<<< Updated upstream
         }
         else{
             echo("
@@ -87,6 +88,10 @@ if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion
         }
         
     }
+=======
+
+        }
+>>>>>>> Stashed changes
     for($i=0; $i<$number_of_rows;$i++)
     {
     if( $_SESSION['usuarioactivo'] == $usu[$i] ){
@@ -160,8 +165,8 @@ else{ //si no esta iniciado sesion
             <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
             </form>
         </div>
-
     ");
+
     }
     for($i=0; $i<$number_of_rows;$i++)
     {
@@ -191,9 +196,15 @@ else{ //si no esta iniciado sesion
         </div>"    
         );
 
+
+
+
 }
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 
 }
