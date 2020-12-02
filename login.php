@@ -1,3 +1,8 @@
+<?php 
+session_start();
+?>
+
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -6,15 +11,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
-	<body class="single is-preload" style="background-color:#c4d2e7;">
 
-<div id="wrapper">
-
-				<!-- Header -->
+	<!-- Header -->
+  <header>
         <?php
 				include("header.php"); 
 				?>
+        </header>
 
+
+
+
+
+	<body class="single is-preload" style="background-color:#c4d2e7;">
+
+<div id="wrapper">
 
                 <div class="login">
                   <div class="form">
@@ -38,8 +49,6 @@
 	</body>
 </html>
 <?php
-include("functions.php");
-session_start();
 
 if ( ! empty( $_POST ) ) {
     if ( isset( $_POST['IDUSUARIO'] ) && isset( $_POST['CLAVE'] ) ) {
@@ -53,9 +62,19 @@ if ( ! empty( $_POST ) ) {
           if (  $_POST['CLAVE']==$pass && $_POST['IDUSUARIO']==$nombre  ) {
             $_SESSION['usuarioactivo'] = $nombre;
             Desconectar();
+<<<<<<< HEAD
             header('Location: inicio.php');
           }else{
             echo  "Contraseña o el Usuario no son los correctos";
+=======
+            echo("
+            <script> 
+            <!--
+            window.location.replace('inicio.php'); 
+            //-->
+            </script>
+            ");
+>>>>>>> origin/ALejo-header-navegacion
           }
       }
     Desconectar();
