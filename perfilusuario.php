@@ -47,8 +47,8 @@ session_start();
 							<article class="post">
 								<header>
 									<div class="title">
-										<h2><a href="#">Repositorio de Respuestas</a></h2>
-										<p>Todas tus Respuestas</p>
+										<h2><a href="#">PERFIL DE USUARIO</a></h2>
+										<p>Datos del Usuario</p>
 										
 									</div>
 									
@@ -125,7 +125,8 @@ session_start();
 						  		<td><?php echo($row["FOTO"]); ?></td>
 						  </tr>
                             
-                            <td> <a href="Editarusuario.php?IDUSUARIO=<?php echo $row["IDUSUARIO"]?>&ideditar=3">Editar</a></td>
+							<td> <a href="Editarusuario.php?id=<?php echo $row["IDUSUARIO"]?>&ideditar=3">Editar</a></td>
+							
                             <td>   
                             <td>
                                         

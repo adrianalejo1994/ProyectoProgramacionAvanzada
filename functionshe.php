@@ -2,7 +2,7 @@
 $PathImg = "http://localhost/web/crud/Imagenes"; //para usar el pat de imagenes cuando se deba... 
 
 
-function ConectarCat()
+function Conectarhe()
 {
     global $conn; 
     $usuario = "root";
@@ -10,10 +10,11 @@ function ConectarCat()
     $conn = new PDO('mysql:host=localhost;dbname=proyectofinal',$usuario,$clave);
 }
 
-function DesconectarCat()
+function Desconectarche()
 {
     global $conn;
     $conn = null;
 }
+?>
 
 

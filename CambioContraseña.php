@@ -5,15 +5,14 @@ session_start();
 
 Conectar();
 
-$sql = "SELECT NOMBRE, APELLIDO, FOTO FROM USUARIO WHERE IDUSUARIO='".$_SESSION['usuarioactivo']."'";
+$sql = "SELECT NOMBRE, APELLIDO, CLAVE FROM USUARIO WHERE IDUSUARIO='".$_SESSION['usuarioactivo']."'";
 $res = $conn->query($sql);
 foreach($res as $fila){
 $nombre = $fila["NOMBRE"];
 $apellido = $fila["APELLIDO"];
-$foto = $fila["FOTO"];
+$clave = $fila["CLAVE"];
 }
 Desconectar();
-
 
 
 ?>
@@ -43,8 +42,8 @@ Desconectar();
 							<article class="post">
 								<header>
 									<div class="title">
-										<h2><a href="#">Actualizar tu Usuario y Contraseña</a></h2>
-										<p>Modificar NickName y Clave</p>
+										<h2><a href="#">Cambio de Contraseña</a></h2>
+										<p>Modificar Contraseña</p>
 									</div>
 
                                     <form action="" method="POST" enctype="multipart/form-data">
@@ -58,18 +57,21 @@ Desconectar();
                                             <TD>Apellido(s)</td>
                                             <td><?php echo $apellido; ?></td>
                                         </tr>
+										<tr>
+                                            <td>Clave Actual</td>
+											<td><?php echo $clave; ?></td>
+                                        </tr>
                                         <tr>
-                                            <td>Foto</td>
-                                            <td> <input name="userfile"  type="file" ><td>
-                                            <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+                                            <td>Ingresa tu Nueva Clave:</td>
+											<td><input type="password"  value="<?php echo $clave; ?>" name="CLAVE" required/>
+											
+
+
+                                             </td>
                                         </tr>
                                     </table>
-<<<<<<< Updated upstream
-									<input type="submit" value="Editar">
-=======
-                                    <input type="submit" value="Editar">
->>>>>>> Stashed changes
-									<td><a href="CambioContraseña.php" class="boton_1">Cambiar de Contraseña</a></td>
+											<input  type="submit" value="Editar" >
+										
                                         </form>
 								</header>
 								</footer>
@@ -93,17 +95,21 @@ if ( ! empty( $_POST ) ) {
 
 
 //carga de datos imagen
-$nombre_archivo = $_FILES['userfile']['name'];
-$tipo_archivo = $_FILES['userfile']['type'];
-$tamano_archivo = $_FILES['userfile']['size'];
-$nombre_archivo.trim(" ");
-$imagen = addslashes(file_get_contents($_FILES['userfile']['tmp_name']));
+//$nombre_archivo = $_FILES['userfile']['name'];
+//$tipo_archivo = $_FILES['userfile']['type'];
+//$tamano_archivo = $_FILES['userfile']['size'];
+//$nombre_archivo.trim(" ");
+//$imagen = addslashes(file_get_contents($_FILES['userfile']['tmp_name']));
 
-
+$clave=$_POST['CLAVE'];
+if (isset($_GET['CLAVE']) && (strlen($_GET['CLAVE']) == 6)) {
+    $clave = $_GET['CLAVE'];
+}
 
 //carga de datos ingresados
         Conectar();
-        $sql = "UPDATE USUARIO SET `FOTO`='".$imagen."'";
+		$sql = "UPDATE USUARIO SET `CLAVE`='".$clave."'WHERE IDUSUARIO='".$_SESSION['usuarioactivo']."'";
+		echo($sql);
         $res = $conn->query($sql);
         Desconectar();
 

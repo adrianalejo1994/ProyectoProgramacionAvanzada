@@ -37,7 +37,6 @@
             
 	</body>
 </html>
-
 <?php
 include("functions.php");
 session_start();
@@ -55,9 +54,10 @@ if ( ! empty( $_POST ) ) {
             $_SESSION['usuarioactivo'] = $nombre;
             Desconectar();
             header('Location: inicio.php');
+          }else{
+            echo  "Contraseña o el Usuario no son los correctos";
           }
       }
-    echo "acceso incorrecto";
     Desconectar();
     }
 }
