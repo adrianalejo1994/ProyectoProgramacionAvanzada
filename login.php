@@ -48,7 +48,6 @@ session_start();
             
 	</body>
 </html>
-
 <?php
 
 if ( ! empty( $_POST ) ) {
@@ -72,7 +71,6 @@ if ( ! empty( $_POST ) ) {
             ");
           }
       }
-    echo "acceso incorrecto";
     Desconectar();
     }
 }
