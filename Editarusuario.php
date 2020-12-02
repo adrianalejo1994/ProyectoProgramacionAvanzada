@@ -5,11 +5,12 @@ session_start();
 
 Conectarhe();
 
-$sql = "SELECT NOMBRE, APELLIDO, FOTO FROM USUARIO WHERE IDUSUARIO='".$_SESSION['usuarioactivo']."'";
+$sql = "SELECT NOMBRE, APELLIDO, EMAIL, FOTO FROM USUARIO WHERE IDUSUARIO='".$_SESSION['usuarioactivo']."'";
 $res = $conn->query($sql);
 foreach($res as $fila){
 $nombre = $fila["NOMBRE"];
 $apellido = $fila["APELLIDO"];
+$email = $fila["EMAIL"];
 $foto = $fila["FOTO"];
 }
 Desconectarche();
@@ -64,6 +65,11 @@ Desconectarche();
                                             <TD>Apellido(s)</td>
                                             <td><?php echo $apellido; ?></td>
                                         </tr>
+										<tr>
+                                            <td>Email:</td>
+											
+                                            <td> <input type="text" name="email" placeholder="ejemplo@um.es"  ></td>
+                                        </tr>
                                         <tr>
                                             <td>Foto</td>
                                             <td> <input name="userfile"  type="file" ><td>
@@ -95,17 +101,20 @@ if ( ! empty( $_POST ) ) {
 
 
 //carga de datos imagen
+$email=$_POST['email'];
 $nombre_archivo = $_FILES['userfile']['name'];
 $tipo_archivo = $_FILES['userfile']['type'];
 $tamano_archivo = $_FILES['userfile']['size'];
 $nombre_archivo.trim(" ");
 $imagen = addslashes(file_get_contents($_FILES['userfile']['tmp_name']));
 
-
+if (isset($_GET['email']) && preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/', $_GET['email'])) {
+	$email = $_GET['email'];
+}
 
 //carga de datos ingresados
         Conectar();
-        $sql = "UPDATE USUARIO SET `FOTO`='".$imagen."' WHERE IDUSUARIO='".$_SESSION['usuarioactivo']."'";
+        $sql = "UPDATE USUARIO SET `FOTO`='".$imagen."', `EMAIL`='".$email."' WHERE IDUSUARIO='".$_SESSION['usuarioactivo']."'";
         $res = $conn->query($sql);
         Desconectar();
 
