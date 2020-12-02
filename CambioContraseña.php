@@ -69,6 +69,10 @@ Desconectarche();
 											<td><input type="password"  name="txtClaveAc" placeholder="Contraseña actual"required /></td>
 											
                                         </tr>
+										<tr>
+                                            <TD><p>Tu Contraseña debe contener mayusculas,Minusculas y números para ser segura:<p></td>
+                                            
+                                        </tr>
 
                                         <tr>
                                             <td>Ingresa tu Nueva Contraseña:</td>

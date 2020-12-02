@@ -68,7 +68,7 @@ Desconectarche();
 										<tr>
                                             <td>Email:</td>
 											
-                                            <td> <input type="text" name="email" placeholder="ejemplo@um.es"  ></td>
+                                            <td> <input type="text" name="email" placeholder="ejemplo@um.es" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" ></td>
                                         </tr>
                                         <tr>
                                             <td>Foto</td>
