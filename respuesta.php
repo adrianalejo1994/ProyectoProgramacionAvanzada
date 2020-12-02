@@ -152,13 +152,7 @@ else{ //si no esta iniciado sesion
 
 }
 
-$sql4 = "SELECT IDUSUARIO FROM respuesta WHERE ESTADORESPUESTA = $canvotos"; //separa las categorias
-$ptos = $conn->query($sql4);
-foreach ($ptos as $fila) {
-$idmvp=$fila["IDUSUARIO"];
-}	
-$sql2 = "UPDATE punto SET PUNTAJE= PUNTAJE+8 WHERE IDUSUARIO='$idmvp'";
-$res2 = $conn->query($sql2); 
+
 
 
 }
