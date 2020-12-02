@@ -21,8 +21,13 @@ if(isset( $_SESSION['usuarioactivo'] ) ) {
 								<li><a href=\"inicio.php\">Inicio</a></li>
 								<li><a href=\"#\">Creditos</a></li>
 							</ul>
+<<<<<<< HEAD
 						</nav>				
 				<!-- boton preguntar  agregar link-->
+=======
+						</nav>
+						
+>>>>>>> main
 
 						<ul class=\"subtitulos\">
 						<a href=\"ingresarpreg.php\"  value=\"Preguntar +\"><li>Preguntar</li></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -36,6 +41,16 @@ if(isset( $_SESSION['usuarioactivo'] ) ) {
 							</form>
 	
 							<ul class=\"subtitulos\">
+
+
+
+
+							<a href=\"repositoriorpreg.php\" class=\"links\">Repositorio de Preguntas</a>
+							<a href=\"repositorioresp.php\" class=\"links\">Repositorio de Respuestas</a>
+							<a href=\"perfilusuario.php\" class=\"links\">".$_SESSION['usuarioactivo']."</a>
+							
+							<a href=\"logout.php\" class=\"links\">Salir</a>
+
 ");
 }
 else
@@ -66,8 +81,16 @@ else
 							
 						
 							<ul class=\"subtitulos\">
+
+
+							<a href=\"registro.php\" class=\"links\">Registrarse</a>
+							<a href=\"login.php\" class=\"links\">Iniciar Sesión</a>
+
+
+
 ");
 }
+<<<<<<< HEAD
 										if ( isset( $_SESSION['usuarioactivo'] ) ) {
 											$user= $_SESSION['usuarioactivo'];
 											$sql1="SELECT PUNTAJE FROM punto WHERE IDUSUARIO = '$user'";
@@ -90,6 +113,9 @@ else
 											<a href=\"login.php\" class=\"links\">Iniciar Sesión</a>");
 										}
 									
+=======
+										
+>>>>>>> main
 							?>
 							</ul>
 						</nav>
