@@ -127,7 +127,11 @@ session_start();
 						  </tr>
 						  <tr>
 						  		<td>FOTO</td>
-						  		<td><?php echo($row["FOTO"]); ?></td>
+								  <td><?php 
+								  $foto = $fila["FOTO"];
+								  echo '<img width="150" height="150" src="data:image/jpg;base64,'.base64_encode($foto).'">'; 
+								  ?></td>
+
 						  </tr>
                             
 							<td> <a href="Editarusuario.php?id=<?php echo $row["IDUSUARIO"]?>&ideditar=3">Editar</a></td>
@@ -142,12 +146,10 @@ session_start();
                     }
                         ?>
                      </table>
-			</div>
-            
-				<!-- Footer -->
-					<section id="footer" class="final" >
-								<p class="copyright" style="color:white">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
-					</section>
-
+			</div>				
 	</body>
+	<!-- Footer -->
+	<?php
+	include("footer.php"); 
+	?>
 </html> 

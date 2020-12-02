@@ -9,7 +9,9 @@
 	<header>
 		<div class="inner relative">
 			<a ></a>
-			<h1 class="sub-menu"><a href="inicio.php">TELL ME HOW</a></h1>
+			<h1 class="INICIO"><a href="inicio.php">TELL ME HOW</a></h1>
+			<h1 class=""><a href="ingresarpreg.php">Preguntar</a></h1>
+
 			<nav id="navigation">
 				<ul id="main-menu">
 					
@@ -30,7 +32,23 @@
 						{
 							$auxiliar=$fila['PUNTAJE'];
 						}
-					Desconectar(); 
+						Desconectar();
+
+
+
+
+						Conectar();
+					
+						$sql = "SELECT FOTO FROM USUARIO WHERE IDUSUARIO='".$_SESSION['usuarioactivo']."'";
+						$ress = $conn->query($sql);
+						foreach($ress as $fila)
+						{
+							$foto = $fila["FOTO"];
+						}
+						echo '<img class="imag" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto).'">';
+						Desconectar();
+				
+				
 
 					echo("<li><a href=\"perfilusuario.php\">".$_SESSION['usuarioactivo']."</a></li>");
 
@@ -69,6 +87,7 @@
 				</ul>
 			
 			</nav>
+
 			<div class="clear"></div>
 		</div>
 	</header>	
@@ -251,6 +270,28 @@ ul.sub-menu > li > a.parent {
 
 #main-menu li:hover > ul.sub-menu {
 	display: block; /* show the submenu */
+}
+
+.imag {
+	position: absolute;
+margin-left: -55px;
+  margin-top: -30px;
+  border-radius: 50%;
+}
+
+
+
+.imag2 {
+	position: absolute;
+margin-left: -53px;
+  margin-top: -10px;
+  border-radius: 50%;
+}
+
+
+.INICIO {
+position: absolute;
+margin-left: -300px;
 }
 
 </style>

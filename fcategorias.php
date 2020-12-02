@@ -22,16 +22,16 @@ ConectarCat();
         }
 
        echo("<section>
-            <ul border-radius:10px class=\"posts\">
-                <li>
+            <ul  class=\"posts\">
                     <article>
                         <header>
+                        
                         <h3><a href=\"pcategoria.php?var=$categoria&id=$ncategoria\">".($categoria)."</a></h3>
+
                         </header>
-                        <a href=\"pcategoria.php?var=$categoria&id=$ncategoria\" class=\"image\"><img src=\"images/pic08.jpg\" alt=\"\" /></a>
+                        <p><a href=\"pcategoria.php?var=$categoria&id=$ncategoria\" class=\"image\"><img src=\"images/imagen$ncategoria.png\" alt=\"\" /></a></p>
                         <form action=\"pcategoria.php\" method=\"get\">
-                        </article>
-                </li>
+                    </article>
             </ul>");
     }
     DesconectarCat();

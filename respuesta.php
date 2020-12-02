@@ -46,6 +46,10 @@ foreach ($infovots as $fila) {
     $k2++;
 }	
 
+
+
+
+
     
 
 if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion 
@@ -90,10 +94,41 @@ if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion
     for($i=0; $i<$number_of_rows;$i++)
     {
     if( $_SESSION['usuarioactivo'] == $usu[$i] ){
+
+        
+//////////////////////////////////sacar foto
+
+
+
+
+$sql = "SELECT FOTO FROM USUARIO WHERE `IDUSUARIO`= '$usu[$i]'";
+$res = $conn->query($sql);
+foreach($res as $fila)
+{
+    $foto1 = $fila["FOTO"];
+}
+
+
+
+
+////////////////////////////////////
+
     echo("
+    
             <div class=\"post\" style=\"border-radius:10px\">
+
+            ");
+
+
+            echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+
+            echo("
+
             <h1>$usu[$i]</h1>
-                <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$resp[$i] 
+                <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$resp[$i]
+
+                
+    
                 </br>    
                 </br>   
                 <form class=\"mini-post\" name=\"form\"  id=\"form\" method=\"POST\"><h4>Fecha de publicacion: $fecha[$i] </br>
@@ -106,6 +141,12 @@ if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion
             </div>
 
     ");
+
+
+
+
+
+
     }  
     else{
         echo("
