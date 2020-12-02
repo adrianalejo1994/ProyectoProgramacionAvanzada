@@ -2,9 +2,9 @@
 include("functionshe.php");
 session_start();
 Conectarhe();
-$idpregunta=$_SESSION['usuarioactivo']; //obtencion del nombre de categoria
+$idpregunta=$_GET{"var"}; //obtencion del nombre de categoria
 //echo$idpregunta;
-$sql = "SELECT *  FROM pregunta WHERE IDUSUARIO ='".$idpregunta."'"; //selecciona la id de la pregunta perteneciente a la categoria
+$sql = "SELECT *  FROM pregunta WHERE IDPREGUNTA ='".$idpregunta."'"; //selecciona la id de la pregunta perteneciente a la categoria
 $idpre = $conn->query($sql);
 
 foreach ($idpre as $fila) {

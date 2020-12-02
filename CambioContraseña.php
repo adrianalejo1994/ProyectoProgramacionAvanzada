@@ -1,9 +1,9 @@
 <?php 
-include("functions.php");
+include("functionshe.php");
 session_start();
 
 
-Conectar();
+Conectarhe();
 
 $sql = "SELECT NOMBRE, APELLIDO, CLAVE FROM USUARIO WHERE IDUSUARIO='".$_SESSION['usuarioactivo']."'";
 $res = $conn->query($sql);
@@ -12,7 +12,7 @@ $nombre = $fila["NOMBRE"];
 $apellido = $fila["APELLIDO"];
 $clave = $fila["CLAVE"];
 }
-Desconectar();
+Desconectarche();
 
 
 ?>
@@ -24,15 +24,21 @@ Desconectar();
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
+
+
+	<header>
+	<?php 
+		include("header.php"); 
+		?>
+	</header>
+
+	
 	<body class="single is-preload" style="background-color:#c4d2e7;">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
-				<!-- Header -->
-				<?php
-				include("header.php"); 
-				?>
+	
 
 
 				<!-- Main -->

@@ -1,3 +1,4 @@
+
 <html>
 	<head>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -42,8 +43,8 @@
 						<li>
 						<a href=\"\">Menu ▽</a>
 						<ul class=\"sub-menu\">
-							<li><a href=\"\"> Mis Preguntas</a></li>
-							<li><a href=\"\"> Mis Respuestas</a></li>
+							<li><a href=\"repositoriorpreg.php\"> Mis Preguntas</a></li>
+							<li><a href=\"repositorioresp.php\"> Mis Respuestas</a></li>
 							<li><a href=\"logout.php\"> Salir</a></li>
 					
 						</ul>

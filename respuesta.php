@@ -2,16 +2,16 @@
 include("functionsco.php");
 Conectarco();
 
-$idpregunta=$_SESSION['usuarioactivo'];; //obtencion del nombre de categoria
+$idpregunta=$_GET['var']; //obtencion del nombre de categoria
 //echo$idpregunta;
 $k=0;
 $k2=0;
-$sql = "SELECT COUNT(*) FROM respuesta WHERE IDUSUARIO= '".$idpregunta."'"; //Conteo Categorias
+$sql = "SELECT COUNT(*) FROM respuesta WHERE IDPREGUNTA = $idpregunta"; //Conteo Categorias
 $cont = $conn->query($sql);
 $cont->execute(); 
 $number_of_rows = $cont->fetchColumn(); //Numero de Categorias
 
-$sql = "SELECT IDUSUARIO, DESCRIPCIONRESPUESTA,FECHACREACIONRESPUESTA1, IDRESPUESTA, ESTADORESPUESTA FROM respuesta WHERE respuesta.IDUSUARIO = '".$idpregunta."'"; //separa las categorias
+$sql = "SELECT IDUSUARIO, DESCRIPCIONRESPUESTA,FECHACREACIONRESPUESTA1, IDRESPUESTA, ESTADORESPUESTA FROM respuesta WHERE respuesta.IDPREGUNTA = $idpregunta"; //separa las categorias
 $res = $conn->query($sql);
 
 foreach ($res as $fila) {
@@ -24,7 +24,7 @@ foreach ($res as $fila) {
 }	
 
 
-$sql3 = "SELECT MAX(ESTADORESPUESTA) Votos FROM respuesta WHERE IDUSUARIO = '".$idpregunta."'";; //separa las categorias
+$sql3 = "SELECT MAX(ESTADORESPUESTA) Votos FROM respuesta WHERE IDPREGUNTA = $idpregunta"; //separa las categorias
 $vots = $conn->query($sql3);
 foreach ($vots as $fila) {
 $canvotos=$fila["Votos"];

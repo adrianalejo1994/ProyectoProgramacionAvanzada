@@ -3,6 +3,7 @@
 <html>
 <?php 
 $categoria=$_GET['var'];
+session_start();
 
 ?>
 <head>
@@ -16,7 +17,7 @@ $categoria=$_GET['var'];
 	<header>
 	<?php 
 		include("header.php"); 
-		?>
+	?>
 	</header>
 
 

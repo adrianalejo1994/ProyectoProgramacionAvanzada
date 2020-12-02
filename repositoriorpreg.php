@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
 include("functionscopy.php");
 $conn = mysqli_connect('localhost', 'root', '');  
 if (! $conn) {  
@@ -17,7 +19,6 @@ $sql = "SELECT IDPREGUNTA, IDUSUARIO, IDCATEGORIA,TITULO, DESCRIPCIONPREGUNTA, E
 $res=mysqli_query($conn,$sql);
 //$res = $conn->query($sql); 
 ConectarCat();
-session_start();
 
 ?>
 
@@ -29,28 +30,19 @@ session_start();
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
+
+	<header>
+	<?php 
+		include("header.php"); 
+		?>
+	</header>
+
 	<body class="single is-preload" style="background-color:#c4d2e7;">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
-				<!-- Header -->
-					<header id="header" style="background-color:#789dca;">
-						<h1><a>TELL ME HOW</a></h1>
-						<nav class="links">
-							<ul class="subtitulos">
-								<li><a href="inicio.php">Inicio</a></li>
-							</ul>
-							
-						</nav>
-						<nav >
-							<ul class="subtitulos">
-								<a href="logout.php" class="links">SALIR</a>
-							</ul>
-						</nav>
-					</header>
-
-
+				
 				<!-- Main -->
 					<div id="main">
 
@@ -120,11 +112,7 @@ session_start();
                             <td><?php echo($row["ESTADO"]); ?></td>
                             
                             <td><?php echo($row["FECHACREACIONPREGUNTA"]);?></td>
-<<<<<<< Updated upstream
                             <td> <a   href="eliminarpreg.php?IDPREGUNTA=<?php echo $row['IDPREGUNTA'];?>&idborrar=2"><img src="images/delete.ico" width="19"height="19" />Eliminar</a></td>
-=======
-                            <td> <a href="eliminarpreg.php?IDPREGUNTA=<?php echo $row['IDPREGUNTA']?>&idborrar=2"><img src="images/delete.ico" width="19"height="19" />Eliminar</a></td>
->>>>>>> Stashed changes
 							<td> <a href='Editarpreg.php?no=<?php echo $row['IDPREGUNTA'];?>' <button type='button' class='btn btn-success'><img src="images/mod.ico" width="22"height="22" />Modificar</button> </a></td>
                             <td>   
                             <td>
