@@ -89,10 +89,7 @@ session_start();
                                                 <option value="0">No tiene Respuesta</option>
                                                 </select><td>*/ ?>
                                         </tr>
-                                        <tr>
-                                            <td>Fecha Creación de Pregunta:</td>
-                                            <td><time class="published" datetime="2020-11-20"><?php $t=time(); echo(date("Y-m-d",$t)) ?></time></td>
-                                        </tr>
+
                                         
                                         </table>
                                         <input type="submit" value="Ingresar">
@@ -116,7 +113,6 @@ session_start();
 <?php
 ConectarCat();
 $NombreUsuario=$_SESSION["usuarioactivo"];
-$FECHACREACIONPREGUNTA=date("Y-m-d",$t);
 if ( ! empty( $_POST ) ) {
 
 
