@@ -46,6 +46,8 @@
 						}
 
 
+
+						echo '<img class="imag" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto).'">';
 						Desconectar();
 				
 				
@@ -308,7 +310,6 @@ margin-left: -53px;
   border-radius: 50%;
 }
 
-
 .imag5 {
   position: absolute;
   margin-left: 150px;
@@ -322,8 +323,6 @@ margin-left: -53px;
   margin-top: 30px;
 
 }
-
-
 
 .INICIO {
 position: absolute;
