@@ -12,10 +12,15 @@ foreach ($idpre as $fila) {
 	$descri = $fila["DESCRIPCIONPREGUNTA"];
 	$idusuario = $fila["IDUSUARIO"];
 	$fecha = $fila["FECHACREACIONPREGUNTA"];
-
-
+	$IDCATEGORIA = $fila["IDCATEGORIA"];
 }
 
+
+$sql = "SELECT *  FROM CATEGORIA WHERE IDCATEGORIA =".$IDCATEGORIA; //selecciona la id de la pregunta perteneciente a la categoria
+$idCAT = $conn->query($sql);
+foreach ($idCAT as $fila) {
+	$idcatego = $fila["NAMECATEGORIA"];
+}
 
 
 //////////////////////////////////sacar foto
@@ -46,6 +51,7 @@ foreach($res as $fila)
 	</header>
 
 	<body class="is-preload" style="background-color:#c4d2e7;">
+	<a href="inicio.php"><img src="images/regreso.png" class="imag4" width="70" height="60"/></a>
 
 		<!-- Wrapper -->
 			<div id="wrapper">

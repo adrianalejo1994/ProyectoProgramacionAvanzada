@@ -1,8 +1,8 @@
 <?php
 
 echo("
-<section id=\"footer\" class=\"final\"  >
-								<p class=\"copyright\" style=\"color:white\">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- \"Proyecto Final\" -- </a>.</p>
+<section id=\"\" class=\"final\"  >
+								<p class=\"copyright\" style=\"color:white\">&copy; Arroyo - Arteaga - Herrera - Guanuche - López</p>
 					</section>
 
 ");

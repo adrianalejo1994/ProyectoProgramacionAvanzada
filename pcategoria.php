@@ -24,6 +24,8 @@ session_start();
 
 
 <body class="is-preload" style="background-color:#c4d2e7;">
+<a href="inicio.php" ><img src="images/regreso.png" class="imag4" width="70" height="60"/></a>
+
 	<div id="wrapper">
 
 
