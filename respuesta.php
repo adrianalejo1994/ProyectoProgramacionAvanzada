@@ -129,7 +129,7 @@ foreach($res as $fila)
 }
 
 
-$sql = "SELECT FECHACREACIONRESPUESTA1 FROM RESPUESTA WHERE `IDUSUARIO`= '$usu[$i]'";
+$sql = "SELECT FECHACREACIONRESPUESTA1 FROM RESPUESTA WHERE `IDRESPUESTA`= '$idresp[$i]'";
 $res = $conn->query($sql);
 foreach($res as $fila)
 {
@@ -158,7 +158,12 @@ foreach($res as $fila)
                 Votos: $votos[$i]</h4>    
                 <input id=\"prodId2\" name=\"idresp\" value=".$idresp[$i]." type=\"hidden\">   
                 <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
+<<<<<<< HEAD
                 <input id=\"prodId2\" name=\"idusu\" value=".$usuv[$i]." type=\"hidden\">       
+=======
+                <input id=\"prodId2\" name=\"idusu\" value=".$usu[$i]." type=\"hidden\">   
+                
+>>>>>>> origin/ALejo-header-navegacion
                 </form>
             </div>
     ");
@@ -230,7 +235,12 @@ $menosCincoDias = date ('Y-m-d', strtotime ('- 5 day', strtotime($fechaservidor)
 
 
 if ($menosCincoDias <= $fechacomparacion) {
+<<<<<<< HEAD
     echo("<h2>Responde:</h2>");
+=======
+    echo("<h2>Responde:</h2>
+    ");
+>>>>>>> origin/ALejo-header-navegacion
 
 //////////////////////////////////sacar foto
 
@@ -249,8 +259,15 @@ echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.ba
 			<form name="form" action="puente.php?<?php echo$idpregunta; ?>" id="form" method="post">
 					<textarea required style="border-radius:10px" name="comments" placeholder="Insertar tu respuesta aqui..." id="comment" style="width:635px; height:100px;"> </textarea></br></br>
                     <input type="hidden" id="oculto" name="ocultoID" value="<?php echo$idpregunta ?>">
+<<<<<<< HEAD
                     <button name="respuesta" id="submit" class="button" style="outline: none;border:none;">Responder</button></br>               
             </form>           
+=======
+                    <button name="respuesta" id="submit" class="button" style="outline: none;border:none;">Responder</button></br>
+            </form>
+        
+    
+>>>>>>> origin/ALejo-header-navegacion
 <?php 
 
 }
@@ -357,10 +374,43 @@ else
 
     if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion 
         {
+
+
+
+
+
+
+            $fechaservidor=date('d-m-Y H:i:s');
+            $menosCincoDias = date ('Y-m-d', strtotime ('- 5 day', strtotime($fechaservidor))); 
+            
+            
+            $sql = "SELECT FECHACREACIONPREGUNTA  FROM pregunta WHERE IDPREGUNTA = $idpregunta"; 
+$idpre = $conn->query($sql);
+foreach($idpre as $fila)
+
+{
+
+
+
+
+
+
+?>
+
+
+
+<div style="border-radius:10px" id="container">	
+	<div style="border-radius:10px" id="demo"></div>
+        <div class="post" style="border-radius:10px">
+<?php 
+
+    $fechacomparacion = $fila["FECHACREACIONPREGUNTA"];
+}
+            if ($menosCincoDias <= $fechacomparacion) {
+
            ?>
-           <h2>Se el primero en responder</h2>
-            <div style="border-radius:10px" id="container">	
-                <div style="border-radius:10px" id="demo"></div>
+            
+                <h2>Se el primero en responder</h2>
 
                     <?php
 
@@ -398,14 +448,26 @@ foreach($res as $fila)
                                 <button name="respuesta" id="submit" class="button" style="outline: none;border:none;">Responder</button></br>
                             
                         </form>
-                    </div>
-                </div>
-            </div>
+
            <?php
         }
 
     }
 
+<<<<<<< HEAD
+=======
+
+
+
+    echo('
+</div>
+</div>
+</div>
+
+
+');
+}
+>>>>>>> origin/ALejo-header-navegacion
     else
     echo(
         "<div style=\"border-radius:10px\" id=\"container\"><h1>Registrate o Inicia Sesión para poder responder</h1>
