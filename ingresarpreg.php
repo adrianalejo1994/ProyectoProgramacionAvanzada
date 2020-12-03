@@ -15,7 +15,6 @@ ConectarCat();
             $categoria[$k] = $fila["NAMECATEGORIA"];
             $k++;
         }
-
     }
 session_start();
 
@@ -31,22 +30,20 @@ session_start();
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
+    </head>
+    
+	<!-- Header -->
+    <?php
+				include("header.php"); 
+	?>
+
+
 	<body class="single is-preload" style="background-color:#c4d2e7;">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
-				<!-- Header -->
-					<header id="header" style="background-color:#789dca;">
-						<h1><a>TELL ME HOW</a></h1>
-
-						<nav class="links">
-							<ul class="subtitulos">
-								<li><a href="inicio.php">Inicio</a></li>
-							</ul>
-						</nav>
-					</header>
+			
 
 
 				<!-- Main -->
@@ -105,18 +102,19 @@ session_start();
 							</article>
 					</div>
 
-				<!-- Footer -->
-					<section id="footer" class="final"  > 
-						<p class="copyright" style="color:white"><font size="3">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</font></p>
-					</section>
+				
 
 			</div>
 
-	</body>
+    </body>
+    <!-- Footer -->
+    <section id="footer" class="final"  > 
+						<p class="copyright" style="color:white"><font size="3">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</font></p>
+					</section>
 </html>
 
 <?php
-
+ConectarCat();
 $NombreUsuario=$_SESSION["usuarioactivo"];
 $FECHACREACIONPREGUNTA=date("Y-m-d",$t);
 if ( ! empty( $_POST ) ) {
@@ -136,7 +134,7 @@ if ( ! empty( $_POST ) ) {
 
     if($puntaje>10)
     {
-      $sql = "INSERT INTO `pregunta` VALUES ( null,'".$IDUSUARIO ."', '".$IDCATEGORIA."', '".$TITULO."', '".$DESCRIPCIONPREGUNTA."', '0', '".$FECHACREACIONPREGUNTA."')";
+      $sql = "INSERT INTO `pregunta` VALUES ( null,'".$IDUSUARIO ."', '".$IDCATEGORIA."', '".$TITULO."', '".$DESCRIPCIONPREGUNTA."', '0', now())";
       echo $sql;
 
       $sql2 = "UPDATE punto SET PUNTAJE= PUNTAJE-10 WHERE IDUSUARIO='$IDUSUARIO'"; //selecciona la id de la pregunta perteneciente a la categoria

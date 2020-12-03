@@ -61,7 +61,7 @@ foreach($res as $fila)
 									<h2><?php echo$idusuario ?></h2>
 									</div>
 									<div class="title" >
-									<?php echo(' <img class="imag3" width="100" height="100" src="data:image/jpg;base64,'.base64_encode($foto2).'">'); ?>
+									<?php echo(' <img class="imag3" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto2).'">'); ?>
 									</div>
 								
 
