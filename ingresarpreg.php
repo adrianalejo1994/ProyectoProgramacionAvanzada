@@ -39,6 +39,7 @@ session_start();
 
 
 	<body class="single is-preload" style="background-color:#c4d2e7;">
+	<a href="inicio.php"><img src="images/regreso.png" class="imag5" width="70" height="60"/></a>
 
 		<!-- Wrapper -->
 			<div id="wrapper">
