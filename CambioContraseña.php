@@ -11,6 +11,7 @@ foreach($res as $fila){
 $nombre = $fila["NOMBRE"];
 $apellido = $fila["APELLIDO"];
 $clave = $fila["CLAVE"];
+$mensajerror="Hola";
 }
 Desconectarche();
 
@@ -60,24 +61,59 @@ Desconectarche();
 						  		
                                         </tr>
                                         <tr>
-                                            <TD>Apellido(s)</td>
+                                            <td>Apellido(s)</td>
                                             <td><?php echo $apellido; ?></td>
                                         </tr>
 										<tr>
-                                            <td>Clave Actual</td>
-											<td><?php echo $clave; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ingresa tu Nueva Clave:</td>
-											<td><input type="password"  value="<?php echo $clave; ?>" name="CLAVE" required/>
+                                            <td>Contraseña Actual</td>
+											<td><input type="password"  name="txtClaveAc" placeholder="Contraseña actual"required /></td>
 											
-
-
-                                             </td>
                                         </tr>
+										<tr>
+                                            <TD><p>Tu Contraseña debe contener mayusculas,Minusculas y números para ser segura:<p></td>
+                                            
+                                        </tr>
+
+                                        <tr>
+                                            <td>Ingresa tu Nueva Contraseña:</td>
+											<td><input class="newPass" type="password" name="txtClaveNueva" placeholder=" Nueva Contraseña" minlength="3" pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$"required/>
+											
+                                             </td>
+											 </tr>
+											 <tr>
+                                            <td>Confirmar Contraseña:</td>
+											<td><input class="newPass" type="password"   name="txtClaveConfirma" placeholder="Confirmar Contraseña" minlength="3" pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$"required/></td>
+   
+                                        </tr>
+										<tr>
+										<td><input type="submit"  value="Cambiar Contraseña"></td>
+										<td></td>
+										</tr>
+										<tr>
+										<td>
+										<?php	
+												if (! empty($_POST)) {
+													if ($_POST['txtClaveAc'] ==$clave) {
+													
+														if ($_POST['txtClaveNueva'] == $_POST['txtClaveConfirma']) {
+															$clave=$_POST['txtClaveConfirma'];
+															Conectar();
+															$sql = "UPDATE USUARIO SET `CLAVE`='".$clave."'WHERE IDUSUARIO='".$_SESSION['usuarioactivo']."'";
+															$res = $conn->query($sql);
+															Desconectar();
+														} else {
+															echo'No coincide la Nueva Contraseña';
+														}
+													}else{
+													 echo'Compruebe que la contraseña Actual sea la correcta';
+													}
+												}
+												?>
+										</td>
+										</tr>
                                     </table>
-											<input  type="submit" value="Editar" >
-										
+											
+											
                                         </form>
 								</header>
 								</footer>
@@ -93,31 +129,3 @@ Desconectarche();
             
 	</body>
 </html>
-
-
-<?php
-
-if ( ! empty( $_POST ) ) {
-
-
-//carga de datos imagen
-//$nombre_archivo = $_FILES['userfile']['name'];
-//$tipo_archivo = $_FILES['userfile']['type'];
-//$tamano_archivo = $_FILES['userfile']['size'];
-//$nombre_archivo.trim(" ");
-//$imagen = addslashes(file_get_contents($_FILES['userfile']['tmp_name']));
-
-$clave=$_POST['CLAVE'];
-if (isset($_GET['CLAVE']) && (strlen($_GET['CLAVE']) == 6)) {
-    $clave = $_GET['CLAVE'];
-}
-
-//carga de datos ingresados
-        Conectar();
-		$sql = "UPDATE USUARIO SET `CLAVE`='".$clave."'WHERE IDUSUARIO='".$_SESSION['usuarioactivo']."'";
-		echo($sql);
-        $res = $conn->query($sql);
-        Desconectar();
-
-}
-?>

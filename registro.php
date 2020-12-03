@@ -71,7 +71,7 @@
                                             <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                                         </tr>
                                         </table>
-                                        <input type="submit" value="Registrarse" href="login.php">
+                                        <input type="submit" value="Registrarse">
                                         </form>
 								</header>
 								</footer>
@@ -113,7 +113,7 @@ if ( ! empty( $_POST ) ) {
 
 //expresiones regualres
         $patron_texto = '/\b[[:alpha:]]/';//inicia con una letra
-        $patron_texto2 = '/[\'\/~`\!@#\$%\^&\*\(\)+=\{\}\[\]\|;:"\<\>,\?\\\]]/';//caracteres especiales
+        $patron_texto2 = '/[!@¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ]/';//caracteres especiales
         $patron_texto3 = '/\s/';//espacios en blanco
         $letra = preg_match($patron_texto, $nickname);
         $especiales = preg_match($patron_texto2, $nickname);
