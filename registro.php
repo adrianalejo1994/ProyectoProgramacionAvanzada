@@ -71,7 +71,7 @@
                                             <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                                         </tr>
                                         </table>
-                                        <input type="submit" value="Registrarse" href="login.php">
+                                        <input type="submit" value="Registrarse">
                                         </form>
 								</header>
 								</footer>
