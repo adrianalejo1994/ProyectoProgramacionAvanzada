@@ -55,10 +55,32 @@ foreach ($infovots as $fila) {
 if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion 
     if($canvotos>0){
         if($usuv!=$_SESSION['usuarioactivo'] ){ //No puede votarse aasi mismo como mvp
-        echo("
-        <div class=\"post\" style=\"border-radius:10px\">
-        <h1>Mejor Puntuado</h1>
-        <h1>$usuv</h1>
+        
+        
+//////////////////////////////////sacar foto
+
+$sql = "SELECT FOTO FROM USUARIO WHERE `IDUSUARIO`= '$usuv'";
+$res = $conn->query($sql);
+foreach($res as $fila)
+{
+    $foto1 = $fila["FOTO"];
+}
+
+////////////////////////////////////
+
+    echo("
+    
+            <div class=\"post\" style=\"border-radius:10px\">
+
+            ");
+
+
+            echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+
+            echo("
+
+            <h1>$usuv</h1>
+    
             <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$respv 
             </br>    
             </br>   
@@ -73,6 +95,10 @@ if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion
     ");
         }
         else{
+
+
+
+
             echo("
             <div class=\"post\" style=\"border-radius:10px\">
             <h1>Mejor Puntuado</h1>
@@ -98,18 +124,12 @@ if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion
         
 //////////////////////////////////sacar foto
 
-
-
-
 $sql = "SELECT FOTO FROM USUARIO WHERE `IDUSUARIO`= '$usu[$i]'";
 $res = $conn->query($sql);
 foreach($res as $fila)
 {
     $foto1 = $fila["FOTO"];
 }
-
-
-
 
 ////////////////////////////////////
 
@@ -149,8 +169,25 @@ foreach($res as $fila)
 
     }  
     else{
+//////////////////////////////////sacar foto
+
+$sql = "SELECT FOTO FROM USUARIO WHERE `IDUSUARIO`= '$usu[$i]'";
+$res = $conn->query($sql);
+foreach($res as $fila)
+{
+    $foto1 = $fila["FOTO"];
+}
+
+////////////////////////////////////
+
+
+
         echo("
         <div class=\"post\" style=\"border-radius:10px\">
+        ");
+        echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+
+        echo("
         <h1>$usu[$i]</h1>
             <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$resp[$i] 
             </br>    
@@ -169,10 +206,43 @@ foreach($res as $fila)
 
 ?>
 
+
+
+
+
+
+
+
+
 <h2>Responde:</h2>
 <div style="border-radius:10px" id="container">	
 	<div style="border-radius:10px" id="demo"></div>
         <div class="post" style="border-radius:10px">
+
+
+
+
+        <?php
+
+
+//////////////////////////////////sacar foto
+
+$sql = "SELECT FOTO FROM USUARIO WHERE `IDUSUARIO`= '".$_SESSION['usuarioactivo']."'";
+$res = $conn->query($sql);
+foreach($res as $fila)
+{
+$foto1 = $fila["FOTO"];
+}
+
+////////////////////////////////////
+
+
+
+echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+
+
+
+?>
         <h1><?php echo$_SESSION['usuarioactivo']?></h1>
 			<form name="form" action="puente.php?<?php echo$idpregunta; ?>" id="form" method="post">
 					<textarea required style="border-radius:10px" name="comments" placeholder="Insertar tu respuesta aqui..." id="comment" style="width:635px; height:100px;"> </textarea></br></br>
@@ -188,10 +258,33 @@ foreach($res as $fila)
 
 else{ //si no esta iniciado sesion 
     if($canvotos>0){
-        echo("
-        <div class=\"post\" style=\"border-radius:10px\">
-        <h1>Mejor Puntuado</h1>
-        <h1>$usuv</h1>
+
+
+
+        //////////////////////////////////sacar foto
+
+        $sql = "SELECT FOTO FROM USUARIO WHERE `IDUSUARIO`= '$usuv'";
+        $res = $conn->query($sql);
+        foreach($res as $fila)
+        {
+            $foto1 = $fila["FOTO"];
+        }
+        
+        ////////////////////////////////////
+        
+            echo("
+            
+                    <div class=\"post\" style=\"border-radius:10px\">
+        
+                    ");
+        
+        
+                    echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+        
+                    echo("
+        
+                    <h1>$usuv</h1>
+
             <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$respv 
             </br>    
             </br>   
@@ -206,8 +299,28 @@ else{ //si no esta iniciado sesion
     }
     for($i=0; $i<$number_of_rows;$i++)
     {
+    //////////////////////////////////sacar foto
+
+$sql = "SELECT FOTO FROM USUARIO WHERE `IDUSUARIO`= '$usu[$i]'";
+$res = $conn->query($sql);
+foreach($res as $fila)
+{
+    $foto1 = $fila["FOTO"];
+}
+
+////////////////////////////////////
+
     echo("
+    
             <div class=\"post\" style=\"border-radius:10px\">
+
+            ");
+
+
+            echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+
+            echo("
+
             <h1>$usu[$i]</h1>
                 <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$resp[$i] 
                 </br>    
@@ -248,8 +361,37 @@ else
            <h2>Se el primero en responder</h2>
             <div style="border-radius:10px" id="container">	
                 <div style="border-radius:10px" id="demo"></div>
-                    <div class="post" style="border-radius:10px">
-                    <h1><?php echo$_SESSION['usuarioactivo']?></h1>
+
+                    <?php
+
+
+                    //////////////////////////////////sacar foto
+
+$sql = "SELECT FOTO FROM USUARIO WHERE `IDUSUARIO`= '".$_SESSION['usuarioactivo']."'";
+$res = $conn->query($sql);
+foreach($res as $fila)
+{
+    $foto1 = $fila["FOTO"];
+}
+
+////////////////////////////////////
+
+    echo("
+    
+            <div class=\"post\" style=\"border-radius:10px\">
+
+            ");
+
+
+            echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+
+
+
+            ?>
+
+
+
+                        <h1><?php echo$_SESSION['usuarioactivo']?></h1>
                         <form name="form" action="puente.php?<?php echo$idpregunta; ?>" id="form" method="post">
                                 <textarea required style="border-radius:10px" name="comments" placeholder="Insertar tu respuesta aqui..." id="comment" style="width:635px; height:100px;"> </textarea></br></br>
                                 <input type="hidden" id="oculto" name="ocultoID" value="<?php echo$idpregunta ?>">

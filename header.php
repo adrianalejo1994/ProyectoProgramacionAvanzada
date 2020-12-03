@@ -289,6 +289,15 @@ margin-left: -53px;
 }
 
 
+.imag3 {
+  position: absolute;
+  margin-left: 110px;
+  margin-top: -100px;
+  border-radius: 50%;
+}
+
+
+
 .INICIO {
 position: absolute;
 margin-left: -300px;
