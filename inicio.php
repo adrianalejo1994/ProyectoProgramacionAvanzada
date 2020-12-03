@@ -15,6 +15,9 @@ session_start();
 	</header>
 	<body  style="background-color:#c4d2e7;">
 
+
+	
+
 		<!-- Wrapper -->
 			<div id="wrapper">
 
@@ -32,10 +35,6 @@ session_start();
 										<time class="published" datetime="2020-11-20"><?php $t=time(); echo(date("Y-m-d",$t)) ?></time> <!-- Programar la fecha desde el servidor para que sea automatica XD -->
 									</div>
 								</header>
-
-								<footer>
-
-								</footer>
 							</article>
 
 
@@ -63,7 +62,6 @@ session_start();
 
 						<!-- Intro -->
 							<section id="intro">
-								<a href="#" ><img src="images/pensando.png" alt="" class="logo"/></a> <!-- agregar la clase logo si se quiere redimencionar--->
 								<header>
 									<h2>DIME COMO</h2>
 									<p>Un lugar para responder preguntas frecuentes</p>

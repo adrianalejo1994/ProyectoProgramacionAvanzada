@@ -10,7 +10,6 @@
 		<div class="inner relative">
 			<a ></a>
 			<h1 class="INICIO"><a href="inicio.php">TELL ME HOW</a></h1>
-			<h1 class=""><a href="ingresarpreg.php">Preguntar</a></h1>
 
 			<nav id="navigation">
 				<ul id="main-menu">
@@ -45,12 +44,18 @@
 						{
 							$foto = $fila["FOTO"];
 						}
+
+
+
 						echo '<img class="imag" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto).'">';
 						Desconectar();
 				
 				
 
 					echo("<li><a href=\"perfilusuario.php\">".$_SESSION['usuarioactivo']."</a></li>");
+
+					echo('<li><a href="ingresarpreg.php">Preguntar</a></li>');
+
 
 						echo("
 						
@@ -116,6 +121,7 @@ ol, ul {
 }
 #wrap {
 	margin: 0 auto;
+
 }
 
 .inner {
@@ -275,7 +281,7 @@ ul.sub-menu > li > a.parent {
 .imag {
 	position: absolute;
 margin-left: -55px;
-  margin-top: -30px;
+  margin-top: -20px;
   border-radius: 50%;
 }
 
@@ -297,9 +303,30 @@ margin-left: -53px;
 }
 
 
+.imag4 {
+  position: absolute;
+  margin-left: 630px;
+  margin-top: 30px;
+  border-radius: 50%;
+}
+
+.imag5 {
+  position: absolute;
+  margin-left: 150px;
+  margin-top: 30px;
+  border-radius: 50%;
+}
+
+.imag6 {
+  position: absolute;
+  margin-left: 150px;
+  margin-top: 30px;
+
+}
 
 .INICIO {
 position: absolute;
+margin-top: -20px;
 margin-left: -300px;
 }
 
