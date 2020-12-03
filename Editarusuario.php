@@ -68,16 +68,18 @@ Desconectarche();
 										<tr>
                                             <td>Email:</td>
 											
-                                            <td> <input type="text" name="email" placeholder="ejemplo@um.es" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" ></td>
+                                            <td> <input type="text" name="email"  required placeholder="ejemplo@um.es" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" ></td>
                                         </tr>
                                         <tr>
                                             <td>Foto</td>
-                                            <td> <input name="userfile"  type="file" ><td>
+                                            <td> <input name="userfile" required type="file" ><td>
                                             <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                                         </tr>
                                     </table>
-									<input type="submit" value="Editar">
-									<td><a href="CambioContraseña.php" class="boton_1">Cambiar de Contraseña</a></td>
+									<input type="submit" value="Actualizar">
+										<div>
+										<a href="CambioContraseña.php" class="button">Cambiar de Contraseña</a>
+										</div>
                                         </form>
 								</header>
 								</footer>

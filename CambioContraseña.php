@@ -76,13 +76,13 @@ Desconectarche();
 
                                         <tr>
                                             <td>Ingresa tu Nueva Contraseña:</td>
-											<td><input class="newPass" type="password" name="txtClaveNueva" placeholder=" Nueva Contraseña" minlength="6" pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$"required/>
+											<td><input class="newPass" type="password" name="txtClaveNueva" placeholder=" Nueva Contraseña" minlength="3" pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$"required/>
 											
                                              </td>
 											 </tr>
 											 <tr>
                                             <td>Confirmar Contraseña:</td>
-											<td><input class="newPass" type="password"   name="txtClaveConfirma" placeholder="Confirmar Contraseña" minlength="6" pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$"required/></td>
+											<td><input class="newPass" type="password"   name="txtClaveConfirma" placeholder="Confirmar Contraseña" minlength="3" pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$"required/></td>
    
                                         </tr>
 										<tr>

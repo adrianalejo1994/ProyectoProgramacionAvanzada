@@ -291,8 +291,8 @@ margin-left: -53px;
 
 .imag3 {
   position: absolute;
-  margin-left: 110px;
-  margin-top: -100px;
+  margin-left: -55px;
+  margin-top: -77px;
   border-radius: 50%;
 }
 

@@ -11,6 +11,8 @@ foreach ($idpre as $fila) {
     $pregunta = $fila["TITULO"]; //almacena las ids de las preguntas
 	$descri = $fila["DESCRIPCIONPREGUNTA"];
 	$idusuario = $fila["IDUSUARIO"];
+	$fecha = $fila["FECHACREACIONPREGUNTA"];
+
 
 }
 
@@ -57,11 +59,11 @@ foreach($res as $fila)
 									<div class="title" >
 										<h2><?php echo$pregunta ?></h2>
 										<p><?php echo$descri ?></p>
-										<time class="published" datetime="2020-11-20"><?php $t=time(); echo(date("Y-m-d",$t)) ?></time>
+										<time class="published" datetime="2020-11-20"><?php echo($fecha) ?></time>
 									<h2><?php echo$idusuario ?></h2>
 									</div>
 									<div class="title" >
-									<?php echo(' <img class="imag3" width="100" height="100" src="data:image/jpg;base64,'.base64_encode($foto2).'">'); ?>
+									<?php echo(' <img class="imag3" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto2).'">'); ?>
 									</div>
 								
 
