@@ -150,30 +150,18 @@ foreach($res as $fila)
             echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
 
             echo("
-
             <h1>$usu[$i]</h1>
                 <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$resp[$i]
-
-                
-    
                 </br>    
                 </br>   
                 <form class=\"mini-post\" name=\"form\"  id=\"form\" method=\"POST\"><h4>Fecha de publicacion: $FECHALEJO </br>
                 Votos: $votos[$i]</h4>    
                 <input id=\"prodId2\" name=\"idresp\" value=".$idresp[$i]." type=\"hidden\">   
                 <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
-                <input id=\"prodId2\" name=\"idusu\" value=".$usuv[$i]." type=\"hidden\">   
-                
+                <input id=\"prodId2\" name=\"idusu\" value=".$usuv[$i]." type=\"hidden\">       
                 </form>
             </div>
-
     ");
-
-
-
-
-
-
     }  
     else{
 //////////////////////////////////sacar foto
@@ -193,7 +181,6 @@ foreach($res as $fila)
         <div class=\"post\" style=\"border-radius:10px\">
         ");
         echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
-
         echo("
         <h1>$usu[$i]</h1>
             <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$resp[$i] 
@@ -242,9 +229,8 @@ $fechaservidor=date('d-m-Y H:i:s');
 $menosCincoDias = date ('Y-m-d', strtotime ('- 5 day', strtotime($fechaservidor))); 
 
 
-if ($menosCincoDias >= $fechacomparacion) {
-    echo("<h2>Responde:</h2>
-    ");
+if ($menosCincoDias <= $fechacomparacion) {
+    echo("<h2>Responde:</h2>");
 
 //////////////////////////////////sacar foto
 
@@ -257,37 +243,18 @@ $foto1 = $fila["FOTO"];
 
 ////////////////////////////////////
 
-
-
 echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
-
-
-
 ?>
         <h1><?php echo$_SESSION['usuarioactivo']?></h1>
 			<form name="form" action="puente.php?<?php echo$idpregunta; ?>" id="form" method="post">
 					<textarea required style="border-radius:10px" name="comments" placeholder="Insertar tu respuesta aqui..." id="comment" style="width:635px; height:100px;"> </textarea></br></br>
                     <input type="hidden" id="oculto" name="ocultoID" value="<?php echo$idpregunta ?>">
-                    <button name="respuesta" id="submit" class="button" style="outline: none;border:none;">Responder</button></br>
-                
-            </form>
-        
-    
+                    <button name="respuesta" id="submit" class="button" style="outline: none;border:none;">Responder</button></br>               
+            </form>           
 <?php 
-}
-
-echo('
-</div>
-</div>
-</div>
-
-
-');
-
-
 
 }
-
+}
 else{ //si no esta iniciado sesion 
     if($canvotos>0){
 
@@ -329,6 +296,7 @@ else{ //si no esta iniciado sesion
 
     ");
     }
+    
     for($i=0; $i<$number_of_rows;$i++)
     {
     //////////////////////////////////sacar foto
@@ -437,7 +405,7 @@ foreach($res as $fila)
         }
 
     }
-    
+
     else
     echo(
         "<div style=\"border-radius:10px\" id=\"container\"><h1>Registrate o Inicia Sesión para poder responder</h1>
