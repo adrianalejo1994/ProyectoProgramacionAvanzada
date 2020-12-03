@@ -9,8 +9,24 @@ $idpre = $conn->query($sql);
 
 foreach ($idpre as $fila) {
     $pregunta = $fila["TITULO"]; //almacena las ids de las preguntas
-    $descri = $fila["DESCRIPCIONPREGUNTA"];
+	$descri = $fila["DESCRIPCIONPREGUNTA"];
+	$idusuario = $fila["IDUSUARIO"];
+
 }
+
+
+
+//////////////////////////////////sacar foto
+
+$sql = "SELECT FOTO FROM USUARIO WHERE `IDUSUARIO`= '$idusuario'";
+$res = $conn->query($sql);
+foreach($res as $fila)
+{
+    $foto2 = $fila["FOTO"];
+}
+
+////////////////////////////////////
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -38,15 +54,16 @@ foreach ($idpre as $fila) {
 
 						<!-- Post -->
 							<article class="post"  style="border-radius:10px">
-								<header>
 									<div class="title" >
 										<h2><?php echo$pregunta ?></h2>
 										<p><?php echo$descri ?></p>
+										<time class="published" datetime="2020-11-20"><?php $t=time(); echo(date("Y-m-d",$t)) ?></time>
+									<h2><?php echo$idusuario ?></h2>
 									</div>
-									<div class="meta">
-										<time class="published" datetime="2020-11-20"><?php $t=time(); echo(date("Y-m-d",$t)) ?></time> <!-- Programar la fecha desde el servidor para que sea automatica XD -->
+									<div class="title" >
+									<?php echo(' <img class="imag3" width="100" height="100" src="data:image/jpg;base64,'.base64_encode($foto2).'">'); ?>
 									</div>
-								</header>
+								
 
 							</article>
 
