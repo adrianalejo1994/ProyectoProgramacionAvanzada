@@ -78,9 +78,9 @@ foreach($res as $fila)
             echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
 
             echo("
-
+            <h1>Mejor Puntuado</h1>
             <h1>$usuv</h1>
-    
+
             <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$respv 
             </br>    
             </br>   
