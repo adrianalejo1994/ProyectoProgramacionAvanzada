@@ -1,7 +1,6 @@
 <?php 
 include("functionsco.php");
 Conectarco();
-
 $idpregunta=$_GET['var']; //obtencion del nombre de categoria
 //echo$idpregunta;
 $k=0;
@@ -45,8 +44,6 @@ foreach ($infovots as $fila) {
     $votosv = $fila["ESTADORESPUESTA"];  //almacena la id de respuesta
     $k2++;
 }	
-
-
 
 
 
@@ -415,5 +412,7 @@ foreach($res as $fila)
     
         );
 }
+
+
 Desconectarco();
 ?>
