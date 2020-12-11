@@ -109,8 +109,8 @@ ConectarCat();
                             <td><?php echo($row["TITULO"]); ?></td>
                             <td><?php echo($row["DESCRIPCIONPREGUNTA"]); ?></td>
                             <td><?php echo($row["FECHACREACIONPREGUNTA"]);?></td>
-                            <td> <a   href="eliminarpreg.php?IDPREGUNTA=<?php echo $row['IDPREGUNTA'];?>&idborrar=2"><img src="images/delete.ico" width="19"height="19" />Eliminar Pregunta</a></td>
-							<td> <a href='Editarpreg.php?no=<?php echo $row['IDPREGUNTA'];?>' <button type='button' class='btn btn-success'><img src="images/mod.ico" width="22"height="22" />Modificar Pregunta</button> </a></td>
+                            <td> <a   href="eliminarpreg.php?IDPREGUNTA=<?php echo $row['IDPREGUNTA'];?>&idborrar=2"><img src="images/delete.ico" width="15"height="15" />Eliminar Pregunta</a></td>
+							<td> <a href='Editarpreg.php?no=<?php echo $row['IDPREGUNTA'];?>' <button type='button' class='btn btn-success'><img src="images/mod.ico" width="15"height="15" />Modificar Pregunta</button> </a></td>
                             <td>   
                             <td>
                                         
