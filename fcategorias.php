@@ -33,10 +33,12 @@ ConectarCat();
                         <form action=\"pcategoria.php\" method=\"get\">
                     </article>
             </ul>");
+
     }
     DesconectarCat();
 
 ?>
+
 
 
 </form>

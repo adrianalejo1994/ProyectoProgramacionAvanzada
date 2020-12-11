@@ -64,8 +64,15 @@ session_start();
 							<section id="intro">
 								<header>
 									<h2>DIME COMO</h2>
+
+
+
 									<p>Un lugar para responder preguntas frecuentes</p>
+
+									<td><h1><a href="preguntones.php">Más Preguntones</a></h1></td>
+
 									<p><h3>Todas las Categorias</h3>
+									
 									&nbsp
 									</p>
 									<?php 
