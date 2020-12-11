@@ -1939,12 +1939,12 @@ button:disabled:before,
     border: 3px double #4e0808;
 }
 
-<<<<<<< Updated upstream .boton_1:hover {
+.boton_1:hover {
     opacity: 0.6;
     text-decoration: none;
 }
 
-=======>>>>>>>Stashed changes
+
 /* Form */
 
 form {
@@ -2831,7 +2831,7 @@ ul.posts article header> :last-child {
     margin-right: 0.75em;
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 1000px) {
     .post {
         border-left: 0;
         border-right: 0;
