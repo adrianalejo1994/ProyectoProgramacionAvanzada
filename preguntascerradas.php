@@ -52,7 +52,7 @@ ConectarCat();
 							<article class="post">
 								<header>
 									<div class="title">
-										<h2><a href="#">Repositorio de Preguntas</a></h2>
+										<h2><a href="#">Repositorio de Preguntas Cerradas</a></h2>
 										<p>Todas tus preguntas</p>
 										
 									</div>
