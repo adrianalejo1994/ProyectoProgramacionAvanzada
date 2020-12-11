@@ -91,7 +91,7 @@ session_start();
 									}else echo "<h1>Please login first .</h1>";
 									?>
                             </article>
-                            <table BORDER >
+                            <table BORDER class="post" >
                             <tr class="CabeceraTR">
 								<td><b>USUARIO</b></td>
                                  <td><b>PREGUNTA</b></td>
