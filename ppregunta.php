@@ -4,7 +4,7 @@ session_start();
 
 
 Conectarhe();
-$idpregunta=$_GET{"var"}; //obtencion del nombre de categoria
+$idpregunta=$_GET["var"]; //obtencion del nombre de categoria
 //echo$idpregunta;
 $sql = "SELECT *  FROM pregunta WHERE IDPREGUNTA ='".$idpregunta."'"; //selecciona la id de la pregunta perteneciente a la categoria
 $idpre = $conn->query($sql);
