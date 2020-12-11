@@ -418,6 +418,13 @@ foreach($res as $fila)
     $foto1 = $fila["FOTO"];
 }
 
+$sql = "SELECT FECHACREACIONRESPUESTA1 FROM RESPUESTA WHERE `IDRESPUESTA`= '$idresp[$i]'";
+$res = $conn->query($sql);
+foreach($res as $fila)
+{
+    $FECHALEJO = $fila["FECHACREACIONRESPUESTA1"];
+}
+
 ////////////////////////////////////
 
     echo("
@@ -435,7 +442,7 @@ foreach($res as $fila)
                 <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$resp[$i] 
                 </br>    
                 </br>   
-                <form class=\"mini-post\" name=\"form\"  id=\"form\" method=\"POST\"><h4>Fecha de publicacion: $fecha[$i] </br>
+                <form class=\"mini-post\" name=\"form\"  id=\"form\" method=\"POST\"><h4>Fecha de publicacion: $FECHALEJO </br>
                 Votos: $votos[$i]</h4>    
                 <input id=\"prodId2\" name=\"idresp\" value=".$idresp[$i]." type=\"hidden\">   
                 <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
