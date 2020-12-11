@@ -64,7 +64,7 @@
                                         </tr>
                                         <tr>
                                             <td>Email</td>
-                                            <td><input type="email" value="" name="email" maxlength=255 required/><td>
+                                            <td><input type="email" value="" name="email" maxlength=255 pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required/><td>
                                         </tr>
                                         <tr>
                                             <td>Foto</td>
@@ -111,6 +111,22 @@ if ( ! empty( $_POST ) ) {
         $tamano_archivo = $_FILES['userfile']['size'];
         $nombre_archivo.trim(" ");
         $imagen = addslashes(file_get_contents($_FILES['userfile']['tmp_name']));
+
+
+
+
+/*expresiones regualres nombre y apellido
+$patron_texto = "[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]\s";//inicia con una letra
+$letra = preg_match($patron_texto, $nombre);
+$especiales = preg_match($patron_texto, $apellido);
+if( $letra!="1" || $especiales!="1"){
+    echo("
+    <script>
+    window.alert(\"ERROR: El Nombre o Apellido no es valido\")
+    </script>
+    ");
+    exit();
+}*/
 
 //expresiones regualres
         $patron_texto = '/\b[[:alpha:]]/';//inicia con una letra

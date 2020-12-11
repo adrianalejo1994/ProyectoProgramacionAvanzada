@@ -117,6 +117,21 @@ Desconectarche();
 															$sql = "UPDATE USUARIO SET `CLAVE`='".$clave."'WHERE IDUSUARIO='".$_SESSION['usuarioactivo']."'";
 															$res = $conn->query($sql);
 															Desconectar();
+															echo("
+															<script>
+															window.alert(\"Correcto\")
+															</script>
+															");
+															echo("
+															<script> 
+															<!--
+															window.location.replace('perfilusuario.php'); 
+															//-->
+															</script>
+															");
+
+
+
 														} else {
 															echo'No coincide la Nueva Contraseña';
 														}

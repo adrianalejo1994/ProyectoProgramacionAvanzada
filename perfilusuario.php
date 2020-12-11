@@ -38,7 +38,6 @@ $sql = "SELECT *FROM USUARIO";
 $res=mysqli_query($conn,$sql);
 //$res = $conn->query($sql); 
 ConectarCat();
-session_start();
 
 ?>
 
