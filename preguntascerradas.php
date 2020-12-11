@@ -42,11 +42,11 @@ ConectarCat();
 	<body class="single is-preload" style="background-color:#c4d2e7;">
 
 		<!-- Wrapper -->
-			<div id="wrapper">
+			<div id="wrapper" >
 
 				
 				<!-- Main -->
-					<div id="main">
+					<div id="main" class="post">
 
 						<!-- Post -->
 							<article class="post">
