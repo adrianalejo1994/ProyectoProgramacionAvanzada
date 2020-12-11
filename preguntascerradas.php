@@ -91,8 +91,9 @@ ConectarCat();
                                  <td><b>IDCATEGORIA</b></td>
                                  <td><b>TITULO</b></td>
                                  <td><b>DESCRIPCIONPREGUNTA</b></td>
- 
                                  <td><b>FECHACREACIONPREGUNTA</b></td>
+                                 <td><b>MEJOR_RESPUESTA</b></td>
+
 
                             </tr>
                                               
@@ -111,6 +112,11 @@ ConectarCat();
                             <td><?php echo($row["TITULO"]); ?></td>
                             <td><?php echo($row["DESCRIPCIONPREGUNTA"]); ?></td>
                             <td><?php echo($row["FECHACREACIONPREGUNTA"]);?></td>
+
+                            <?php
+                            $pagina = $row["IDPREGUNTA"];
+                            ?>
+                            <td><a href="ppregunta.php?var=<?php echo$pagina;?>">VER</a></td>
                             <td>   
                             <td>
                                         
