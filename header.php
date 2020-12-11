@@ -68,6 +68,7 @@
 						<ul class=\"sub-menu\">
 							<li><a href=\"repositoriorpreg.php\"> Mis Preguntas</a></li>
 							<li><a href=\"repositorioresp.php\"> Mis Respuestas</a></li>
+							<li><a href=\"preguntascerradas.php\"> Mis Respuestas</a></li>
 							<li><a href=\"logout.php\"> Salir</a></li>
 					
 						</ul>
