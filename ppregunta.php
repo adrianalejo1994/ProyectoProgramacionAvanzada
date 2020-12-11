@@ -79,7 +79,6 @@ foreach ($idpre as $fila) {
 
 				<!-- Sidebar izquierdo -->
 					<section id="sidebar">
-
 						<!-- Intro -->
 							<section id="intro">
 								<a href="#" ><img src="images/pensando.png" alt="" class="logo"/></a> <!-- agregar la clase logo si se quiere redimencionar--->
