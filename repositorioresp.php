@@ -162,9 +162,9 @@ session_start();
 			</div>
             
 				<!-- Footer -->
-					<section id="footer" class="final" >
-								<p class="copyright" style="color:white">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
-					</section>
+				<?php
+			include("footer.php"); 
+            ?>
 
 	</body>
 </html> 
