@@ -129,7 +129,7 @@ if ( ! empty( $_POST ) ) {
             $puntaje = $fila["PUNTAJE"]; //almacena el puntaje
         }
 
-    if($puntaje>10)
+    if($puntaje>=10)
     {
       $sql = "INSERT INTO `pregunta` VALUES ( null,'".$IDUSUARIO ."', '".$IDCATEGORIA."', '".$TITULO."', '".$DESCRIPCIONPREGUNTA."', '0', now())";
       echo $sql;

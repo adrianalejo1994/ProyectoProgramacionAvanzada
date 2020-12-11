@@ -462,6 +462,7 @@ foreach($res as $fila)
                         <form name="form" action="puente.php?<?php echo$idpregunta; ?>" id="form" method="post">
                                 <textarea required style="border-radius:10px" name="comments" placeholder="Insertar tu respuesta aqui..." id="comment" style="width:635px; height:100px;"> </textarea></br></br>
                                 <input type="hidden" id="oculto" name="ocultoID" value="<?php echo$idpregunta ?>">
+                                <input type="hidden" id="oculto2" name="Primares" value="pr">
                                 <button name="respuesta" id="submit" class="button" style="outline: none;border:none;">Responder</button></br>
                             
                         </form>
