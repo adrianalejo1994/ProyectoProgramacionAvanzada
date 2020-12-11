@@ -77,6 +77,12 @@ foreach($res as $fila)
 
             echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
 
+
+
+
+
+
+
             echo("
             <h1>Mejor Puntuado</h1>
             <h1>$usuv</h1>
@@ -87,12 +93,30 @@ foreach($res as $fila)
             <form class=\"mini-post\" name=\"form\"  id=\"form\" method=\"POST\"><h4>Fecha de publicacion: $fechav</br>
             Votos: $votosv</h4>    
             <input id=\"prodId2\" name=\"idresp\" value=".$idrespv." type=\"hidden\">   
-            <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
-            <input type=\"submit\" name=\"idpreg1\" value=\"Votar\">
-            </form>
-        </div>
+            <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">");
 
-    ");
+
+
+            $fechaservidor=date('d-m-Y H:i:s');
+            $menosCincoDias = date ('Y-m-d', strtotime ('- 5 day', strtotime($fechaservidor))); 
+                                                    
+                                                    
+            $sql = "SELECT FECHACREACIONPREGUNTA  FROM pregunta WHERE IDPREGUNTA = $idpregunta"; 
+            $idpre = $conn->query($sql);
+            foreach($idpre as $fila){
+                $fechacomparacion = $fila["FECHACREACIONPREGUNTA"];
+            }
+            if ($menosCincoDias <= $fechacomparacion) {
+            
+            
+                    echo("
+                        <input type=\"submit\" name=\"idpreg1\" value=\"Votar\">
+                        </form>
+                         "); 
+            
+                        }
+                         echo(" </div>");
+
         }
         else{
 
@@ -197,6 +221,16 @@ foreach($res as $fila)
         ");
         echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
 
+
+
+
+
+
+
+
+
+
+
         echo("
         <h1>$usu[$i]</h1>
             <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$resp[$i] 
@@ -206,11 +240,31 @@ foreach($res as $fila)
             Votos: $votos[$i]</h4>    
             <input id=\"prodId2\" name=\"idresp\" value=".$idresp[$i]." type=\"hidden\">   
             <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
-            <input id=\"prodId2\" name=\"idusu\" value=".$usuv[$i]." type=\"hidden\">  
+            <input id=\"prodId2\" name=\"idusu\" value=".$usuv[$i]." type=\"hidden\">");  
+
+
+//funcion mas de 5 dias
+
+$fechaservidor=date('d-m-Y H:i:s');
+$menosCincoDias = date ('Y-m-d', strtotime ('- 5 day', strtotime($fechaservidor))); 
+										
+										
+$sql = "SELECT FECHACREACIONPREGUNTA  FROM pregunta WHERE IDPREGUNTA = $idpregunta"; 
+$idpre = $conn->query($sql);
+foreach($idpre as $fila){
+	$fechacomparacion = $fila["FECHACREACIONPREGUNTA"];
+}
+if ($menosCincoDias <= $fechacomparacion) {
+
+
+        echo("
             <input type=\"submit\" name=\"idpreg1\" value=\"Votar\">
              </form>
-        </div>
-    ");
+             "); 
+
+            }
+             echo(" </div>"); 
+        
     }
 }
 
