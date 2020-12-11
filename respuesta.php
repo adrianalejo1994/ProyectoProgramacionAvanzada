@@ -71,11 +71,10 @@ foreach($res as $fila)
     echo("
     
             <div class=\"post\" style=\"border-radius:10px\">
-
             ");
 
 
-            echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+            echo('<h1 align=right><img class="imag2" width="70" height="70" src="data:image/jpg;base64,'.base64_encode($foto1).'"></h1>');
 
 
 
@@ -175,7 +174,7 @@ foreach($res as $fila)
             ");
 
 
-            echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+            echo('<h1 align=right><img class="imag2" width="70" height="70" src="data:image/jpg;base64,'.base64_encode($foto1).'"></h1>');
 
             echo("
 
@@ -242,7 +241,7 @@ foreach($res as $fila)
         echo("
         <div class=\"post\" style=\"border-radius:10px\">
         ");
-        echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+        echo('<h1 align=right><img class="imag2" width="70" height="70" src="data:image/jpg;base64,'.base64_encode($foto1).'"></h1>');
 
 
 
@@ -339,7 +338,7 @@ $foto1 = $fila["FOTO"];
 
 
 
-echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+echo('<h1 align=right><img class="imag2" width="70" height="70" src="data:image/jpg;base64,'.base64_encode($foto1).'"></h1>');
 
 
 
@@ -390,7 +389,7 @@ else{ //si no esta iniciado sesion
                     ");
         
         
-                    echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+                    echo('<h1 align="right"><img class="imag2" width="70" height="70" src="data:image/jpg;base64,'.base64_encode($foto1).'"></h1>');
         
                     echo("
         
@@ -428,7 +427,7 @@ foreach($res as $fila)
             ");
 
 
-            echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+            echo('<h1 align="right"><img class="imag2" width="70" height="70" src="data:image/jpg;base64,'.base64_encode($foto1).'"></h1>');
 
             echo("
 
@@ -520,7 +519,7 @@ foreach($res as $fila)
 
 ////////////////////////////////////
 
-            echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+            echo('<h1 align="right"><img class="imag2" width="70px" height="70px" src="data:image/jpg;base64,'.base64_encode($foto1).'"></h1>');
 
 
 
