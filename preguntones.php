@@ -1,34 +1,4 @@
 <?php 
-session_start();
-
-if ( isset( $_SESSION['usuarioactivo'] ) ) {	
-	
-} else {
-	echo("
-	<script>
-	window.alert(\"DEBE INICIAR SESIÓN\")
-	</script>
-	");
-	echo("
-    <script> 
-    <!--
-    window.location.replace('login.php'); 
-    //-->
-    </script>
-    ");
-}
-										
-
-
-
-
-
-
-
-
-
-
-
 
 
 include("functionscopy.php");
@@ -83,33 +53,9 @@ ConectarCat();
 										<h2><a href="#">LOS MAS PREGUNTONES</a></h2>
 										
 									</div>
-									
-                                    <div class="meta">
-                                    <!-- Programar la hora automatica con el servidor y la imagen con el nombre del nick name -->
-										<a href="#" class="author"><span class="name"><?php echo $_SESSION['usuarioactivo']; ?></span><img src="images/avatar.jpg" alt="" /></a>
-									</div>
+	
                                            
-                                        
-									<?php
-										//session_start();
 
-										if ( isset( $_SESSION['usuarioactivo'] ) ) {
-											
-										} else {
-											header("Location: login.php");
-										}
-										//commit probar 6
-										// el macho digo yo-.....
-									?>
-
-
-									<?php
-									if($_SESSION["usuarioactivo"]) {
-									?>
-									
-									<?php
-									}else echo "<h1>Please login first .</h1>";
-									?>
                             </article>
                             <table>
                             <tr class="CabeceraTR">
@@ -119,7 +65,6 @@ ConectarCat();
                             </tr>
                                               
                           <?php
-                                $nombreusuario=($_SESSION["usuarioactivo"]);
                                 while($row=mysqli_fetch_array($res)){
                                 
                             
