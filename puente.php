@@ -40,6 +40,6 @@ if($primres=="pr")
 //fin de verificacion de respuestas
 $respuesta="";
 Desconectarco();
-//header("Location: ppregunta.php?var=$idpregunta"); 
+header("Location: ppregunta.php?var=$idpregunta"); 
 
 ?>

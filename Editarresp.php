@@ -1,9 +1,9 @@
 <?php 
-include("functions.php");
+include("functionshe.php");
 session_start();
 
 
-Conectar();
+Conectarhe();
 
 $sql ="SELECT IDRESPUESTA, IDPREGUNTA, IDUSUARIO, DESCRIPCIONRESPUESTA, ESTADORESPUESTA, FECHACREACIONRESPUESTA1 FROM RESPUESTA WHERE IDRESPUESTA='".$_GET['no']."'";
 //echo ($sql);
@@ -17,7 +17,7 @@ $estado = $row["ESTADORESPUESTA"];
 $fecha = $row["FECHACREACIONRESPUESTA1"];
 }  
 
-Desconectar();
+Desconectarche();
 
 
 
@@ -30,15 +30,21 @@ Desconectar();
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
+
+<header>
+<!-- Header -->
+<?php
+				include("header.php"); 
+				?>
+
+</header>
+
 	<body class="single is-preload" style="background-color:#c4d2e7;">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
-				<!-- Header -->
-				<?php
-				include("header.php"); 
-				?>
+				
 
 
 				<!-- Main -->
@@ -120,6 +126,16 @@ $descripcion=$_POST['descripcion'];
         $sql = "UPDATE RESPUESTA SET `DESCRIPCIONRESPUESTA`='".$descripcion."' WHERE IDRESPUESTA='".$_GET['no']."'";
         $res = $conn->query($sql);
         Desconectar();
+
+        echo("
+        <script> 
+        <!--
+        window.location.replace('repositorioresp.php'); 
+        //-->
+        </script>
+        ");
+
+
 
 }
 ?>
