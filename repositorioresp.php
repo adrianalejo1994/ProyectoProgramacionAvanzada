@@ -12,7 +12,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
                            
-$sql = "SELECT RESPUESTA.IDRESPUESTA, PREGUNTA.TITULO, RESPUESTA.IDUSUARIO, RESPUESTA.DESCRIPCIONRESPUESTA, RESPUESTA.ESTADORESPUESTA, RESPUESTA.FECHACREACIONRESPUESTA1 FROM RESPUESTA INNER JOIN PREGUNTA ON RESPUESTA.IDPREGUNTA = PREGUNTA.IDPREGUNTA";
+$sql = "SELECT RESPUESTA.IDRESPUESTA, RESPUESTA.IDPREGUNTA, PREGUNTA.TITULO, RESPUESTA.IDUSUARIO, RESPUESTA.DESCRIPCIONRESPUESTA, RESPUESTA.ESTADORESPUESTA, RESPUESTA.FECHACREACIONRESPUESTA1 FROM RESPUESTA INNER JOIN PREGUNTA ON RESPUESTA.IDPREGUNTA = PREGUNTA.IDPREGUNTA";
 //echo $sql;
 $res=mysqli_query($conn,$sql);
 $res = $conn->query($sql); 
@@ -108,9 +108,9 @@ session_start();
                                 if( $row["IDUSUARIO"] == $nombreusuario){
                                 
                            
-                            ?>
-                           
+                            ?>                        
                           <tr>
+							  
 						  	<td><?php echo($row["IDUSUARIO"]); ?></td>             
                             <td><?php echo($row["TITULO"]); ?></td>
                             <td><?php echo($row["DESCRIPCIONRESPUESTA"]); ?></td>
@@ -118,21 +118,20 @@ session_start();
                             <td><?php echo($row["FECHACREACIONRESPUESTA1"]); ?></td>
                             
 							<?php
-
-$idpregunta=$row["IDPREGUNTA"];									
-$fechaservidor=date('d-m-Y H:i:s');
-$menosCincoDias = date ('Y-m-d', strtotime ('- 5 day', strtotime($fechaservidor))); 
+							ConectarCat();
+							$idpregunta=$row["IDPREGUNTA"];	
+														
+							$fechaservidor=date('d-m-Y H:i:s');
+							$menosCincoDias = date ('Y-m-d', strtotime ('- 5 day', strtotime($fechaservidor))); 
 										
-ConectarCat();
-										
-$sql = "SELECT FECHACREACIONPREGUNTA  FROM pregunta WHERE IDPREGUNTA = $idpregunta"; 
-$idpre = $conn->query($sql);
-foreach($idpre as $fila){
-	$fechacomparacion = $fila["FECHACREACIONPREGUNTA"];
-}
-DesconectarCat();
-if ($menosCincoDias <= $fechacomparacion) {
-?>
+							$sql3 = "SELECT FECHACREACIONPREGUNTA  FROM pregunta WHERE IDPREGUNTA = $idpregunta"; 
+							$idpre3 = $conn->query($sql3);
+							foreach($idpre3 as $fila){
+								$fechacomparacion = $fila["FECHACREACIONPREGUNTA"];
+							}
+							
+							if ($menosCincoDias <= $fechacomparacion) {
+							?>
                             <td> <a href="eliminaresp.php?IDRESPUESTA=<?php echo $row["IDRESPUESTA"]?>&idborrar=3"><img src="images/delete.ico" width="19"height="19" />Eliminar</a></td>
 							<td> <a href='Editarresp.php?no=<?php echo $row['IDRESPUESTA'];?>' <button type='button' class='btn btn-success'><img src="images/mod.ico" width="22"height="22" />Modificar</button> </a></td>
                             <td>   
@@ -141,6 +140,7 @@ if ($menosCincoDias <= $fechacomparacion) {
                             </tr>
                             
 							<?php
+							DesconectarCat();
 						}
 						else{
 							?>
