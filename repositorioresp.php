@@ -113,6 +113,22 @@ session_start();
                             <td><?php echo($row["ESTADORESPUESTA"]); ?></td>
                             <td><?php echo($row["FECHACREACIONRESPUESTA1"]); ?></td>
                             
+							<?php
+
+$idpregunta=$row["IDPREGUNTA"];									
+$fechaservidor=date('d-m-Y H:i:s');
+$menosCincoDias = date ('Y-m-d', strtotime ('- 5 day', strtotime($fechaservidor))); 
+										
+ConectarCat();
+										
+$sql = "SELECT FECHACREACIONPREGUNTA  FROM pregunta WHERE IDPREGUNTA = $idpregunta"; 
+$idpre = $conn->query($sql);
+foreach($idpre as $fila){
+	$fechacomparacion = $fila["FECHACREACIONPREGUNTA"];
+}
+DesconectarCat();
+if ($menosCincoDias <= $fechacomparacion) {
+?>
                             <td> <a href="eliminaresp.php?IDRESPUESTA=<?php echo $row["IDRESPUESTA"]?>&idborrar=3"><img src="images/delete.ico" width="19"height="19" />Eliminar</a></td>
 							<td> <a href='Editarresp.php?no=<?php echo $row['IDRESPUESTA'];?>' <button type='button' class='btn btn-success'><img src="images/mod.ico" width="22"height="22" />Modificar</button> </a></td>
                             <td>   
@@ -120,6 +136,20 @@ session_start();
                                         
                             </tr>
                             
+							<?php
+						}
+						else{
+							?>
+							 <td><b>CERRADA</b></td>
+								 <td><b>CERRADA</b></td>
+							<?php
+
+
+						}
+						
+                        ?>
+
+
                         <?php
                         }
                     }
