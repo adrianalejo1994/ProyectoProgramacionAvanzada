@@ -99,47 +99,43 @@ foreach($res as $fila)
 								<li><a href="" class="disabled button large previous">Anterior Pagina</a></li>
 								<li><a href="#" class="button large next">Siguiente Pagina</a></li>
 							</ul>
+
+
+							
 					</div>
 
 
 				<!-- Sidebar izquierdo -->
-					<section id="sidebar">
+				<section id="sidebar">
 
-						<!-- Intro -->
-							<section id="intro">
-								<a href="#" ><img src="images/pensando.png" alt="" class="logo"/></a> <!-- agregar la clase logo si se quiere redimencionar--->
-								<header>
-									<h2>DIME COMO</h2>
-									<p>Un lugar para responder preguntas frecuentes</p>
-								</header>
-							</section>
+<!-- Intro -->
+	<section id="intro">
+		<a href="#" ><img src="images/pensando.png" alt="" class="logo"/></a> <!-- agregar la clase logo si se quiere redimencionar--->
+		<header>
+			<h2>DIME COMO</h2>
+			<p>Un lugar para responder preguntas frecuentes</p>
+		</header>
+	</section>
 
-						<!-- Mini Posts -->
-							<section>
-								<div class="mini-posts">
-									<header>
-										<h2>Todas las Categorias</h2>
-									</header>
-								</div>
-							</section>
+<!-- Mini Posts -->
+	<section>
+		<div class="mini-posts">
+			<header>
+				<h2>Todas las Categorias</h2>
+			</header>
+		</div>
+	</section>
 
-						<!-- Categorias -->
-						<section>			
-							<?php 
-							include("fcategorias.php"); 
-							?> 
-						</section>
+<!-- Categorias -->
+<section>			
+	<?php 
+	include("fcategorias.php"); 
+	?> 
+</section>
 
-						<!-- About -->
-							<section class="blurb">
-								<h2>Acerca de la pagina</h2>
-								<p>Es un sitio web de preguntas y respuestas impulsado por una comunidad, que permite a sus usuarios tanto formular preguntas como responderlas. Para hacerlo, el usuario tiene que tener una cuenta en el sitio.</p>
-								<ul class="actions">
-									<li><a href="#" class="button">Leer mas</a></li>
-								</ul>
-							</section>
-					</section>
+</section>
 			    </div>
+				
 			</div>
 			<!-- Footer -->
 
