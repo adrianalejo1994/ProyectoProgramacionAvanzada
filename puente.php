@@ -9,6 +9,8 @@ echo$respuesta;
 $idpregunta=$_POST['ocultoID'];
 $DESCRIPCIONRESPUESTA="";
 $aux=$_POST['comments'];
+$primres=$_POST['Primares'];
+echo$primres;
 Conectarco();
 $t=time();
 $IDPREGUNTA=$idpregunta;
@@ -21,8 +23,6 @@ $DESCRIPCIONRESPUESTA=$respuesta;
             echo$respuesta;
 echo$aux;
 
-
-
 $FECHACREACIONRESPUESTA = date("Y-m-d",$t);
 if($DESCRIPCIONRESPUESTA!=" ")
 {
@@ -30,6 +30,12 @@ $sql = "INSERT INTO respuesta VALUES ( null,'".$IDPREGUNTA ."', '".$IDUSUARIO."'
 $idpre = $conn->query($sql);
 $sql2 = "UPDATE punto SET PUNTAJE= PUNTAJE+2 WHERE IDUSUARIO='$IDUSUARIO'"; //selecciona la id de la pregunta perteneciente a la categoria
 $idpre2 = $conn->query($sql2);
+}
+
+if($primres=="pr")
+{
+    $sql3 = "UPDATE punto SET PUNTAJE= PUNTAJE+1 WHERE IDUSUARIO='$IDUSUARIO'"; //selecciona la id de la pregunta perteneciente a la categoria
+    $idpre3 = $conn->query($sql3);
 }
 //fin de verificacion de respuestas
 $respuesta="";

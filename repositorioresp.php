@@ -12,10 +12,16 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
                            
-$sql = "SELECT IDRESPUESTA, IDPREGUNTA, IDUSUARIO, DESCRIPCIONRESPUESTA, ESTADORESPUESTA, FECHACREACIONRESPUESTA1 FROM RESPUESTA";
+$sql = "SELECT RESPUESTA.IDRESPUESTA, RESPUESTA.IDPREGUNTA, PREGUNTA.TITULO, RESPUESTA.IDUSUARIO, RESPUESTA.DESCRIPCIONRESPUESTA, RESPUESTA.ESTADORESPUESTA, RESPUESTA.FECHACREACIONRESPUESTA1 FROM RESPUESTA INNER JOIN PREGUNTA ON RESPUESTA.IDPREGUNTA = PREGUNTA.IDPREGUNTA";
 //echo $sql;
 $res=mysqli_query($conn,$sql);
 $res = $conn->query($sql); 
+
+$sql2 = "SELECT TITULO FROM pregunta";
+//echo $sql;
+$res2 = mysqli_query($conn,$sql2);
+$res2 = $conn->query($sql2); 
+
 ConectarCat();
 session_start();
 
@@ -29,15 +35,21 @@ session_start();
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
+<header>
+	<!-- Header -->
+	<?php
+				include("header.php"); 
+				?>
+
+</header>
+
 	<body class="single is-preload" style="background-color:#c4d2e7;">
+	<a href="inicio.php" ><img src="images/regreso.png" class="imag5" width="70" height="60"/></a>
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
-				<!-- Header -->
-                <?php
-				include("header.php"); 
-				?>
+			
 
 
 				<!-- Main -->
@@ -79,16 +91,15 @@ session_start();
 									}else echo "<h1>Please login first .</h1>";
 									?>
                             </article>
-                            <table BORDER >
+                            <table BORDER class="post" >
                             <tr class="CabeceraTR">
-                                 <td><b>IDRESPUESTA</b></td>
-                                 <td><b>IDPREGUNTA</b></td>
-                                 <td><b>IDUSUARIO</b></td>
-                                 <td><b>DESCRIPCIONRESPUESTA</b></td>
-                                 <td><b>ESTADORESPUESTA</b></td>
-                                 <td><b>FECHACREACIONRESPUESTA1</b></td>
-                                 <td><b>EliminarRespuesta</b></td>
-								 <td><b>EditarRespuesta</b></td>
+								<td><b>USUARIO</b></td>
+                                 <td><b>PREGUNTA</b></td>
+                                 <td><b>RESPUESTA</b></td>
+                                 <td><b>VOTOS</b></td>
+                                 <td><b>FECHA</b></td>
+                                 <td><b></b></td>
+								 <td><b></b></td>
                             </tr>
                                               
                           <?php
@@ -97,23 +108,52 @@ session_start();
                                 if( $row["IDUSUARIO"] == $nombreusuario){
                                 
                            
-                            ?>
-                           
+                            ?>                        
                           <tr>
-                            <td><?php echo($row["IDRESPUESTA"]); ?></td>                           
-                            <td><?php echo($row["IDPREGUNTA"]); ?></td>
-                            <td><?php echo($row["IDUSUARIO"]); ?></td>
+							  
+						  	<td><?php echo($row["IDUSUARIO"]); ?></td>             
+                            <td><?php echo($row["TITULO"]); ?></td>
                             <td><?php echo($row["DESCRIPCIONRESPUESTA"]); ?></td>
                             <td><?php echo($row["ESTADORESPUESTA"]); ?></td>
                             <td><?php echo($row["FECHACREACIONRESPUESTA1"]); ?></td>
                             
-                            <td> <a href="eliminaresp.php?IDRESPUESTA=<?php echo $row["IDRESPUESTA"]?>&idborrar=3"><img src="images/delete.ico" width="19"height="19" />Eliminar</a></td>
-							<td> <a href='Editarresp.php?no=<?php echo $row['IDRESPUESTA'];?>' <button type='button' class='btn btn-success'><img src="images/mod.ico" width="22"height="22" />Modificar</button> </a></td>
+							<?php
+							ConectarCat();
+							$idpregunta=$row["IDPREGUNTA"];	
+														
+							$fechaservidor=date('d-m-Y H:i:s');
+							$menosCincoDias = date ('Y-m-d', strtotime ('- 5 day', strtotime($fechaservidor))); 
+										
+							$sql3 = "SELECT FECHACREACIONPREGUNTA  FROM pregunta WHERE IDPREGUNTA = $idpregunta"; 
+							$idpre3 = $conn->query($sql3);
+							foreach($idpre3 as $fila){
+								$fechacomparacion = $fila["FECHACREACIONPREGUNTA"];
+							}
+							
+							if ($menosCincoDias <= $fechacomparacion) {
+							?>
+                            <td> <a href="eliminaresp.php?IDRESPUESTA=<?php echo $row["IDRESPUESTA"]?>&idborrar=3"><img src="images/delete.ico" width="19"height="19" />Eliminar Respuesta</a></td>
+							<td> <a href='Editarresp.php?no=<?php echo $row['IDRESPUESTA'];?>' <button type='button' class='btn btn-success'><img src="images/mod.ico" width="22"height="22" />Modificar Respuesta</button> </a></td>
                             <td>   
                             <td>
                                         
                             </tr>
                             
+							<?php
+							DesconectarCat();
+						}
+						else{
+							?>
+							 <td><b>CERRADA</b></td>
+								 <td><b>CERRADA</b></td>
+							<?php
+
+
+						}
+						
+                        ?>
+
+
                         <?php
                         }
                     }

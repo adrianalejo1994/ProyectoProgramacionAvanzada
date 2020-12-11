@@ -17,6 +17,7 @@
 	</header>
 
 	<body class="single is-preload" style="background-color:#c4d2e7;">
+	<a href="inicio.php" ><img src="images/regreso.png" class="imag5" width="70" height="60"/></a>
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -113,7 +114,7 @@ if ( ! empty( $_POST ) ) {
 
 //expresiones regualres
         $patron_texto = '/\b[[:alpha:]]/';//inicia con una letra
-        $patron_texto2 = '/[\'\/~`\!@#\$%\^&\*\(\)+=\{\}\[\]\|;:"\<\>,\?\\\]]/';//caracteres especiales
+        $patron_texto2 = '/[!@¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ]/';//caracteres especiales
         $patron_texto3 = '/\s/';//espacios en blanco
         $letra = preg_match($patron_texto, $nickname);
         $especiales = preg_match($patron_texto2, $nickname);

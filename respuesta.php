@@ -55,24 +55,75 @@ foreach ($infovots as $fila) {
 if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion 
     if($canvotos>0){
         if($usuv!=$_SESSION['usuarioactivo'] ){ //No puede votarse aasi mismo como mvp
-        echo("
-        <div class=\"post\" style=\"border-radius:10px\">
-        <h1>Mejor Puntuado</h1>
-        <h1>$usuv</h1>
+        
+        
+//////////////////////////////////sacar foto
+
+$sql = "SELECT FOTO FROM USUARIO WHERE `IDUSUARIO`= '$usuv'";
+$res = $conn->query($sql);
+foreach($res as $fila)
+{
+    $foto1 = $fila["FOTO"];
+}
+
+////////////////////////////////////
+
+    echo("
+    
+            <div class=\"post\" style=\"border-radius:10px\">
+
+            ");
+
+
+            echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+
+
+
+
+
+
+
+            echo("
+            <h1>Mejor Puntuado</h1>
+            <h1>$usuv</h1>
+
             <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$respv 
             </br>    
             </br>   
             <form class=\"mini-post\" name=\"form\"  id=\"form\" method=\"POST\"><h4>Fecha de publicacion: $fechav</br>
             Votos: $votosv</h4>    
             <input id=\"prodId2\" name=\"idresp\" value=".$idrespv." type=\"hidden\">   
-            <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
-            <input type=\"submit\" name=\"idpreg1\" value=\"Votar\">
-            </form>
-        </div>
+            <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">");
 
-    ");
+
+
+            $fechaservidor=date('d-m-Y H:i:s');
+            $menosCincoDias = date ('Y-m-d', strtotime ('- 5 day', strtotime($fechaservidor))); 
+                                                    
+                                                    
+            $sql = "SELECT FECHACREACIONPREGUNTA  FROM pregunta WHERE IDPREGUNTA = $idpregunta"; 
+            $idpre = $conn->query($sql);
+            foreach($idpre as $fila){
+                $fechacomparacion = $fila["FECHACREACIONPREGUNTA"];
+            }
+            if ($menosCincoDias <= $fechacomparacion) {
+            
+            
+                    echo("
+                        <input type=\"submit\" name=\"idpreg1\" value=\"Votar\">
+                        </form>
+                         "); 
+            
+                        }
+        
+                         echo(" </div>");
+
         }
         else{
+
+
+
+
             echo("
             <div class=\"post\" style=\"border-radius:10px\">
             <h1>Mejor Puntuado</h1>
@@ -98,9 +149,6 @@ if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion
         
 //////////////////////////////////sacar foto
 
-
-
-
 $sql = "SELECT FOTO FROM USUARIO WHERE `IDUSUARIO`= '$usu[$i]'";
 $res = $conn->query($sql);
 foreach($res as $fila)
@@ -108,6 +156,13 @@ foreach($res as $fila)
     $foto1 = $fila["FOTO"];
 }
 
+
+$sql = "SELECT FECHACREACIONRESPUESTA1 FROM RESPUESTA WHERE `IDRESPUESTA`= '$idresp[$i]'";
+$res = $conn->query($sql);
+foreach($res as $fila)
+{
+    $FECHALEJO = $fila["FECHACREACIONRESPUESTA1"];
+}
 
 
 
@@ -131,16 +186,38 @@ foreach($res as $fila)
     
                 </br>    
                 </br>   
-                <form class=\"mini-post\" name=\"form\"  id=\"form\" method=\"POST\"><h4>Fecha de publicacion: $fecha[$i] </br>
+                <form class=\"mini-post\" name=\"form\"  id=\"form\" method=\"POST\"><h4>Fecha de publicacion: $FECHALEJO </br>
                 Votos: $votos[$i]</h4>    
                 <input id=\"prodId2\" name=\"idresp\" value=".$idresp[$i]." type=\"hidden\">   
                 <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
-                <input id=\"prodId2\" name=\"idusu\" value=".$usuv[$i]." type=\"hidden\">   
-                
-                </form>
-            </div>
+                <input id=\"prodId2\" name=\"idusu\" value=".$usu[$i]." type=\"hidden\">");
 
-    ");
+
+
+
+
+                $fechaservidor=date('d-m-Y H:i:s');
+            $menosCincoDias = date ('Y-m-d', strtotime ('- 5 day', strtotime($fechaservidor))); 
+                                                    
+                                                    
+            $sql = "SELECT FECHACREACIONPREGUNTA  FROM pregunta WHERE IDPREGUNTA = $idpregunta"; 
+            $idpre = $conn->query($sql);
+            foreach($idpre as $fila){
+                $fechacomparacion = $fila["FECHACREACIONPREGUNTA"];
+            }
+            if ($menosCincoDias <= $fechacomparacion) {
+            
+            
+                    echo("
+                        <input type=\"submit\" name=\"idpreg1\" value=\"Votar\">
+                        </form>
+                         "); 
+            
+                        }
+        
+             echo(" </div>");
+
+    
 
 
 
@@ -149,8 +226,35 @@ foreach($res as $fila)
 
     }  
     else{
+//////////////////////////////////sacar foto
+
+$sql = "SELECT FOTO FROM USUARIO WHERE `IDUSUARIO`= '$usu[$i]'";
+$res = $conn->query($sql);
+foreach($res as $fila)
+{
+    $foto1 = $fila["FOTO"];
+}
+
+////////////////////////////////////
+
+
+
         echo("
         <div class=\"post\" style=\"border-radius:10px\">
+        ");
+        echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+
+
+
+
+
+
+
+
+
+
+
+        echo("
         <h1>$usu[$i]</h1>
             <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$resp[$i] 
             </br>    
@@ -159,39 +263,139 @@ foreach($res as $fila)
             Votos: $votos[$i]</h4>    
             <input id=\"prodId2\" name=\"idresp\" value=".$idresp[$i]." type=\"hidden\">   
             <input id=\"prodId\" name=\"idpreg\" value=".$idpregunta." type=\"hidden\">
-            <input id=\"prodId2\" name=\"idusu\" value=".$usuv[$i]." type=\"hidden\">  
+            <input id=\"prodId2\" name=\"idusu\" value=".$usuv[$i]." type=\"hidden\">");  
+
+
+//funcion mas de 5 dias
+
+$fechaservidor=date('d-m-Y H:i:s');
+$menosCincoDias = date ('Y-m-d', strtotime ('- 5 day', strtotime($fechaservidor))); 
+										
+										
+$sql = "SELECT FECHACREACIONPREGUNTA  FROM pregunta WHERE IDPREGUNTA = $idpregunta"; 
+$idpre = $conn->query($sql);
+foreach($idpre as $fila){
+	$fechacomparacion = $fila["FECHACREACIONPREGUNTA"];
+}
+if ($menosCincoDias <= $fechacomparacion) {
+
+
+        echo("
             <input type=\"submit\" name=\"idpreg1\" value=\"Votar\">
              </form>
-        </div>
-    ");
+             "); 
+
+            }
+             echo(" </div>"); 
+        
     }
 }
 
 ?>
 
-<h2>Responde:</h2>
+
+
+
+
+
+
+
+
 <div style="border-radius:10px" id="container">	
 	<div style="border-radius:10px" id="demo"></div>
         <div class="post" style="border-radius:10px">
+
+
+
+
+<?php
+
+
+$sql = "SELECT FECHACREACIONPREGUNTA  FROM pregunta WHERE IDPREGUNTA = $idpregunta"; 
+$idpre = $conn->query($sql);
+foreach($idpre as $fila)
+{
+    $fechacomparacion = $fila["FECHACREACIONPREGUNTA"];
+}
+
+$fechaservidor=date('d-m-Y H:i:s');
+$menosCincoDias = date ('Y-m-d', strtotime ('- 5 day', strtotime($fechaservidor))); 
+
+
+if ($menosCincoDias <= $fechacomparacion) {
+    echo("<h2>Responde:</h2>
+    ");
+
+//////////////////////////////////sacar foto
+
+$sql = "SELECT FOTO FROM USUARIO WHERE `IDUSUARIO`= '".$_SESSION['usuarioactivo']."'";
+$res = $conn->query($sql);
+foreach($res as $fila)
+{
+$foto1 = $fila["FOTO"];
+}
+
+////////////////////////////////////
+
+
+
+echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+
+
+
+?>
         <h1><?php echo$_SESSION['usuarioactivo']?></h1>
 			<form name="form" action="puente.php?<?php echo$idpregunta; ?>" id="form" method="post">
 					<textarea required style="border-radius:10px" name="comments" placeholder="Insertar tu respuesta aqui..." id="comment" style="width:635px; height:100px;"> </textarea></br></br>
                     <input type="hidden" id="oculto" name="ocultoID" value="<?php echo$idpregunta ?>">
                     <button name="respuesta" id="submit" class="button" style="outline: none;border:none;">Responder</button></br>
-                
             </form>
-        </div>
-    </div>
-</div>
+        
+    
 <?php 
+}
+
+echo('
+</div>
+</div>
+</div>
+
+
+');
+
+
+
 }
 
 else{ //si no esta iniciado sesion 
     if($canvotos>0){
-        echo("
-        <div class=\"post\" style=\"border-radius:10px\">
-        <h1>Mejor Puntuado</h1>
-        <h1>$usuv</h1>
+
+
+
+        //////////////////////////////////sacar foto
+
+        $sql = "SELECT FOTO FROM USUARIO WHERE `IDUSUARIO`= '$usuv'";
+        $res = $conn->query($sql);
+        foreach($res as $fila)
+        {
+            $foto1 = $fila["FOTO"];
+        }
+        
+        ////////////////////////////////////
+        
+            echo("
+            
+                    <div class=\"post\" style=\"border-radius:10px\">
+        
+                    ");
+        
+        
+                    echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+        
+                    echo("
+        
+                    <h1>$usuv</h1>
+
             <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$respv 
             </br>    
             </br>   
@@ -206,8 +410,28 @@ else{ //si no esta iniciado sesion
     }
     for($i=0; $i<$number_of_rows;$i++)
     {
+    //////////////////////////////////sacar foto
+
+$sql = "SELECT FOTO FROM USUARIO WHERE `IDUSUARIO`= '$usu[$i]'";
+$res = $conn->query($sql);
+foreach($res as $fila)
+{
+    $foto1 = $fila["FOTO"];
+}
+
+////////////////////////////////////
+
     echo("
+    
             <div class=\"post\" style=\"border-radius:10px\">
+
+            ");
+
+
+            echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+
+            echo("
+
             <h1>$usu[$i]</h1>
                 <form name=\"form\" action=\"puente2.php\" id=\"form\" method=\"POST\">$resp[$i] 
                 </br>    
@@ -244,24 +468,91 @@ else
 
     if(isset( $_SESSION['usuarioactivo'] ) ){ //si esta iniciado sesion 
         {
+
+
+
+
+
+
+            $fechaservidor=date('d-m-Y H:i:s');
+            $menosCincoDias = date ('Y-m-d', strtotime ('- 5 day', strtotime($fechaservidor))); 
+            
+            
+            $sql = "SELECT FECHACREACIONPREGUNTA  FROM pregunta WHERE IDPREGUNTA = $idpregunta"; 
+$idpre = $conn->query($sql);
+foreach($idpre as $fila)
+
+{
+
+
+
+
+
+
+?>
+
+
+
+<div style="border-radius:10px" id="container">	
+	<div style="border-radius:10px" id="demo"></div>
+        <div class="post" style="border-radius:10px">
+<?php 
+
+    $fechacomparacion = $fila["FECHACREACIONPREGUNTA"];
+}
+            if ($menosCincoDias <= $fechacomparacion) {
+
            ?>
-           <h2>Se el primero en responder</h2>
-            <div style="border-radius:10px" id="container">	
-                <div style="border-radius:10px" id="demo"></div>
-                    <div class="post" style="border-radius:10px">
-                    <h1><?php echo$_SESSION['usuarioactivo']?></h1>
+            
+                <h2>Se el primero en responder</h2>
+
+                    <?php
+
+
+                    //////////////////////////////////sacar foto
+
+$sql = "SELECT FOTO FROM USUARIO WHERE `IDUSUARIO`= '".$_SESSION['usuarioactivo']."'";
+$res = $conn->query($sql);
+foreach($res as $fila)
+{
+    $foto1 = $fila["FOTO"];
+}
+
+////////////////////////////////////
+
+            echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
+
+
+
+            ?>
+
+
+
+                        <h1><?php echo$_SESSION['usuarioactivo']?></h1>
                         <form name="form" action="puente.php?<?php echo$idpregunta; ?>" id="form" method="post">
                                 <textarea required style="border-radius:10px" name="comments" placeholder="Insertar tu respuesta aqui..." id="comment" style="width:635px; height:100px;"> </textarea></br></br>
                                 <input type="hidden" id="oculto" name="ocultoID" value="<?php echo$idpregunta ?>">
+                                <input type="hidden" id="oculto2" name="Primares" value="pr">
                                 <button name="respuesta" id="submit" class="button" style="outline: none;border:none;">Responder</button></br>
                             
                         </form>
-                    </div>
-                </div>
-            </div>
+
            <?php
         }
+
     }
+
+
+
+
+    echo('
+</div>
+</div>
+</div>
+
+
+');
+}
     else
     echo(
         "<div style=\"border-radius:10px\" id=\"container\"><h1>Registrate o Inicia Sesión para poder responder</h1>

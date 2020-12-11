@@ -9,8 +9,31 @@ $idpre = $conn->query($sql);
 
 foreach ($idpre as $fila) {
     $pregunta = $fila["TITULO"]; //almacena las ids de las preguntas
-    $descri = $fila["DESCRIPCIONPREGUNTA"];
+	$descri = $fila["DESCRIPCIONPREGUNTA"];
+	$idusuario = $fila["IDUSUARIO"];
+	$fecha = $fila["FECHACREACIONPREGUNTA"];
+	$IDCATEGORIA = $fila["IDCATEGORIA"];
 }
+
+
+$sql = "SELECT *  FROM CATEGORIA WHERE IDCATEGORIA =".$IDCATEGORIA; //selecciona la id de la pregunta perteneciente a la categoria
+$idCAT = $conn->query($sql);
+foreach ($idCAT as $fila) {
+	$idcatego = $fila["NAMECATEGORIA"];
+}
+
+
+//////////////////////////////////sacar foto
+
+$sql = "SELECT FOTO FROM USUARIO WHERE `IDUSUARIO`= '$idusuario'";
+$res = $conn->query($sql);
+foreach($res as $fila)
+{
+    $foto2 = $fila["FOTO"];
+}
+
+////////////////////////////////////
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -28,6 +51,7 @@ foreach ($idpre as $fila) {
 	</header>
 
 	<body class="is-preload" style="background-color:#c4d2e7;">
+	<a href="inicio.php"><img src="images/regreso.png" class="imag4" width="70" height="60"/></a>
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -38,15 +62,16 @@ foreach ($idpre as $fila) {
 
 						<!-- Post -->
 							<article class="post"  style="border-radius:10px">
-								<header>
 									<div class="title" >
 										<h2><?php echo$pregunta ?></h2>
 										<p><?php echo$descri ?></p>
+										<time class="published" datetime="2020-11-20"><?php echo($fecha) ?></time>
+									<h2><?php echo$idusuario ?></h2>
 									</div>
-									<div class="meta">
-										<time class="published" datetime="2020-11-20"><?php $t=time(); echo(date("Y-m-d",$t)) ?></time> <!-- Programar la fecha desde el servidor para que sea automatica XD -->
+									<div class="title" >
+									<?php echo(' <img class="imag3" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto2).'">'); ?>
 									</div>
-								</header>
+								
 
 							</article>
 
@@ -74,46 +99,41 @@ foreach ($idpre as $fila) {
 								<li><a href="" class="disabled button large previous">Anterior Pagina</a></li>
 								<li><a href="#" class="button large next">Siguiente Pagina</a></li>
 							</ul>
+
+
+							
 					</div>
 
+				<section id="sidebar">
 
-				<!-- Sidebar izquierdo -->
-					<section id="sidebar">
-						<!-- Intro -->
-							<section id="intro">
-								<a href="#" ><img src="images/pensando.png" alt="" class="logo"/></a> <!-- agregar la clase logo si se quiere redimencionar--->
-								<header>
-									<h2>DIME COMO</h2>
-									<p>Un lugar para responder preguntas frecuentes</p>
-								</header>
-							</section>
+<!-- Intro -->
+	<section id="intro">
+		<a href="#" ><img src="images/pensando.png" alt="" class="logo"/></a> <!-- agregar la clase logo si se quiere redimencionar--->
+		<header>
+			<h2>DIME COMO</h2>
+			<p>Un lugar para responder preguntas frecuentes</p>
+		</header>
+	</section>
 
-						<!-- Mini Posts -->
-							<section>
-								<div class="mini-posts">
-									<header>
-										<h2>Todas las Categorias</h2>
-									</header>
-								</div>
-							</section>
+<!-- Mini Posts -->
+	<section>
+		<div class="mini-posts">
+			<header>
+				<h2>Todas las Categorias</h2>
+			</header>
+		</div>
+	</section>
 
-						<!-- Categorias -->
-						<section>			
-							<?php 
-							include("fcategorias.php"); 
-							?> 
-						</section>
+<!-- Categorias -->
+<section>			
+	<?php 
+	include("fcategorias.php"); 
+	?> 
+</section>
 
-						<!-- About -->
-							<section class="blurb">
-								<h2>Acerca de la pagina</h2>
-								<p>Es un sitio web de preguntas y respuestas impulsado por una comunidad, que permite a sus usuarios tanto formular preguntas como responderlas. Para hacerlo, el usuario tiene que tener una cuenta en el sitio.</p>
-								<ul class="actions">
-									<li><a href="#" class="button">Leer mas</a></li>
-								</ul>
-							</section>
-					</section>
+</section>
 			    </div>
+				
 			</div>
 			<!-- Footer -->
 

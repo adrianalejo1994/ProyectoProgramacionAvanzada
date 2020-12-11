@@ -14,7 +14,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
                                 
-$sql = "SELECT IDPREGUNTA, IDUSUARIO, IDCATEGORIA,TITULO, DESCRIPCIONPREGUNTA, ESTADO, FECHACREACIONPREGUNTA FROM PREGUNTA";
+$sql = "SELECT PREGUNTA.IDPREGUNTA, CATEGORIA.NAMECATEGORIA, PREGUNTA.IDUSUARIO, PREGUNTA.TITULO, PREGUNTA.DESCRIPCIONPREGUNTA, PREGUNTA.ESTADO, PREGUNTA.FECHACREACIONPREGUNTA FROM PREGUNTA INNER JOIN CATEGORIA ON PREGUNTA.IDCATEGORIA = CATEGORIA.IDCATEGORIA";
 //echo $sql;
 $res=mysqli_query($conn,$sql);
 //$res = $conn->query($sql); 
@@ -38,6 +38,7 @@ ConectarCat();
 	</header>
 
 	<body class="single is-preload" style="background-color:#c4d2e7;">
+	<a href="inicio.php" ><img src="images/regreso.png" class="imag5" width="70" height="60"/></a>
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -82,17 +83,15 @@ ConectarCat();
 									}else echo "<h1>Please login first .</h1>";
 									?>
                             </article>
-                            <table>
+                            <table class="post">
                             <tr class="CabeceraTR">
-                                 <td><b>IDPREGUNTA</b></td>
-                                 <td><b>IDUSUARIO</b></td>
-                                 <td><b>IDCATEGORIA</b></td>
-                                 <td><b>TITULO</b></td>
-                                 <td><b>DESCRIPCIONPREGUNTA</b></td>
-                                 <td><b>ESTADO</b></td>
-                                 <td><b>FECHACREACIONPREGUNTA</b></td>
-                                 <td><b>EliminarPregunta</b></td>
-								 <td><b>EditarPregunta</b></td>
+                                 <td><b>USUARIO</b></td>
+                                 <td><b>CATEGORIA</b></td>
+                                 <td><b>PREGUNTA</b></td>
+                                 <td><b>DESCRIPCION</b></td>
+								 <td><b>FECHA</b></td>
+								 <td><b></b></td>
+                                 <td><b></b></td>
                             </tr>
                                               
                           <?php
@@ -104,16 +103,14 @@ ConectarCat();
                             ?>
                            
                           <tr>
-                            <td><?php echo($row["IDPREGUNTA"]); ?></td>                           
+                          
                             <td><?php echo($row["IDUSUARIO"]); ?></td>
-                            <td><?php echo($row["IDCATEGORIA"]); ?></td>
+                            <td><?php echo($row["NAMECATEGORIA"]); ?></td>
                             <td><?php echo($row["TITULO"]); ?></td>
                             <td><?php echo($row["DESCRIPCIONPREGUNTA"]); ?></td>
-                            <td><?php echo($row["ESTADO"]); ?></td>
-                            
                             <td><?php echo($row["FECHACREACIONPREGUNTA"]);?></td>
-                            <td> <a   href="eliminarpreg.php?IDPREGUNTA=<?php echo $row['IDPREGUNTA'];?>&idborrar=2"><img src="images/delete.ico" width="19"height="19" />Eliminar</a></td>
-							<td> <a href='Editarpreg.php?no=<?php echo $row['IDPREGUNTA'];?>' <button type='button' class='btn btn-success'><img src="images/mod.ico" width="22"height="22" />Modificar</button> </a></td>
+                            <td> <a   href="eliminarpreg.php?IDPREGUNTA=<?php echo $row['IDPREGUNTA'];?>&idborrar=2"><img src="images/delete.ico" width="19"height="19" />Eliminar Pregunta</a></td>
+							<td> <a href='Editarpreg.php?no=<?php echo $row['IDPREGUNTA'];?>' <button type='button' class='btn btn-success'><img src="images/mod.ico" width="22"height="22" />Modificar Pregunta</button> </a></td>
                             <td>   
                             <td>
                                         
