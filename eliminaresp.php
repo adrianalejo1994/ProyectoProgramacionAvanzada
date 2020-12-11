@@ -1,4 +1,25 @@
 <?php
+session_start();
+
+if ( isset( $_SESSION['usuarioactivo'] ) ) {	
+	
+} else {
+	echo("
+	<script>
+	window.alert(\"DEBE INICIAR SESIÓN\")
+	</script>
+	");
+	echo("
+    <script> 
+    <!--
+    window.location.replace('login.php'); 
+    //-->
+    </script>
+    ");
+}
+
+
+
 include("functionscopy.php");
 $conn = mysqli_connect('localhost', 'root', '');  
 if (! $conn) {  
@@ -12,7 +33,6 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-session_start();
  
 extract($_GET);
 

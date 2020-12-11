@@ -1,4 +1,25 @@
 <?php 
+
+
+session_start();
+
+if ( isset( $_SESSION['usuarioactivo'] ) ) {	
+	
+} else {
+	echo("
+	<script>
+	window.alert(\"DEBE INICIAR SESIÓN\")
+	</script>
+	");
+	echo("
+    <script> 
+    <!--
+    window.location.replace('login.php'); 
+    //-->
+    </script>
+    ");
+}
+
 include("functionscopy.php");
 $conn = mysqli_connect('localhost', 'root', '');  
 if (! $conn) {  
@@ -23,7 +44,6 @@ $res2 = mysqli_query($conn,$sql2);
 $res2 = $conn->query($sql2); 
 
 ConectarCat();
-session_start();
 
 ?>
 
@@ -71,15 +91,13 @@ session_start();
                                            
                                         
 									<?php
-										//session_start();
 
 										if ( isset( $_SESSION['usuarioactivo'] ) ) {
 											
 										} else {
 											header("Location: login.php");
 										}
-										//commit probar 6
-										// el macho digo yo-.....
+										
 									?>
 
 

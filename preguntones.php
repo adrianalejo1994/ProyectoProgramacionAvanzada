@@ -17,6 +17,19 @@ if ( isset( $_SESSION['usuarioactivo'] ) ) {
     </script>
     ");
 }
+										
+
+
+
+
+
+
+
+
+
+
+
+
 
 include("functionscopy.php");
 $conn = mysqli_connect('localhost', 'root', '');  
@@ -31,9 +44,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
                                 
-$fechaservidor=date('d-m-Y H:i:s');
- $menosCincoDias = date ('Y-m-d', strtotime ('- 5 day', strtotime($fechaservidor)));                        
-$sql = "SELECT *  FROM pregunta WHERE FECHACREACIONPREGUNTA <= '$menosCincoDias'";
+$sql = "SELECT * FROM PUNTO ORDER BY PUNTAJE DESC";
 //echo $sql;
 $res=mysqli_query($conn,$sql);
 //$res = $conn->query($sql); 
@@ -69,8 +80,7 @@ ConectarCat();
 							<article class="post">
 								<header>
 									<div class="title">
-										<h2><a href="#">Repositorio de Preguntas</a></h2>
-										<p>Todas tus preguntas</p>
+										<h2><a href="#">LOS MAS PREGUNTONES</a></h2>
 										
 									</div>
 									
@@ -103,44 +113,29 @@ ConectarCat();
                             </article>
                             <table>
                             <tr class="CabeceraTR">
-                                 <td><b>IDPREGUNTA</b></td>
-                                 <td><b>IDUSUARIO</b></td>
-                                 <td><b>IDCATEGORIA</b></td>
-                                 <td><b>TITULO</b></td>
-                                 <td><b>DESCRIPCIONPREGUNTA</b></td>
-                                 <td><b>FECHACREACIONPREGUNTA</b></td>
-                                 <td><b>MEJOR_RESPUESTA</b></td>
-
+                                 <td><b>USUARIO</b></td>
+								 <td><b>PUNTAJE</b></td>
 
                             </tr>
                                               
                           <?php
                                 $nombreusuario=($_SESSION["usuarioactivo"]);
                                 while($row=mysqli_fetch_array($res)){
-                                if( $row["IDUSUARIO"] == $nombreusuario){
                                 
                             
                             ?>
                            
-                          <tr>
-                            <td><?php echo($row["IDPREGUNTA"]); ?></td>                           
+                          <tr>                    
                             <td><?php echo($row["IDUSUARIO"]); ?></td>
-                            <td><?php echo($row["IDCATEGORIA"]); ?></td>
-                            <td><?php echo($row["TITULO"]); ?></td>
-                            <td><?php echo($row["DESCRIPCIONPREGUNTA"]); ?></td>
-                            <td><?php echo($row["FECHACREACIONPREGUNTA"]);?></td>
+							<td><?php echo($row["PUNTAJE"]); ?></td>
 
-                            <?php
-                            $pagina = $row["IDPREGUNTA"];
-                            ?>
-                            <td><a href="ppregunta.php?var=<?php echo$pagina;?>">VER</a></td>
                             <td>   
                             <td>
                                         
                             </tr>
                             
                         <?php
-                        }
+                        
                     }
                         ?>
                      </table>
