@@ -20,13 +20,13 @@ if ( isset( $_SESSION['usuarioactivo'] ) ) {
 
 Conectarhe();
 
-$sql ="SELECT *FROM PREGUNTA WHERE IDPREGUNTA=".$_GET['no']."";
+$sql ="SELECT PREGUNTA.IDPREGUNTA, PREGUNTA.IDUSUARIO, CATEGORIA.NAMECATEGORIA, PREGUNTA.TITULO, PREGUNTA.DESCRIPCIONPREGUNTA, PREGUNTA.ESTADO, PREGUNTA.FECHACREACIONPREGUNTA FROM PREGUNTA INNER JOIN CATEGORIA ON PREGUNTA.IDCATEGORIA=CATEGORIA.IDCATEGORIA WHERE PREGUNTA.IDPREGUNTA=".$_GET['no']."";
 //echo ($sql);
 $res = $conn->query($sql);
 foreach($res as $row){
 $idpregunta = $row["IDPREGUNTA"];
 $idusuario = $row["IDUSUARIO"];
-$idcategoria = $row["IDCATEGORIA"];
+$idcategoria = $row["NAMECATEGORIA"];
 $TITULO = $row["TITULO"];
 $descripcionpreg = $row["DESCRIPCIONPREGUNTA"];
 $estado = $row["ESTADO"];
@@ -71,11 +71,6 @@ Desconectarche();
 
                                     <form action="" method="POST" enctype="multipart/form-data">
                                     <table>
-                                      <tr>
-                                            <td>IDPREGUNTA:</td>
-                                            <td><?php echo $idpregunta; ?></td>
-						  		
-                                        </tr>
                                         <tr>
                                         <tr>
                                             <td>IDUSUARIO:</td>
@@ -96,14 +91,8 @@ Desconectarche();
                                             <td>DESCRIPCION DE PREGUNTA</td>
                                             <td> <textarea name="descripcionpreg" rows="10" cols="40"><?php echo $descripcionpreg; ?></textarea></td>
                                         </tr>
-                                        
-                                          
-                                        <tr>
-                                            <td>ESTADO PREGUNTA:</td>
-                                            <td><?php echo $estado; ?></td>
-						  		
-                                        </tr>
-                                        <tr>
+                                      
+                                          <tr>
                                             <td>Fecha Modificaciónn:</td>
                                             <td><?php echo $fechaPregunta; ?></td>
 						  		

@@ -62,18 +62,18 @@ session_start();
 	<a href="inicio.php" ><img src="images/regreso.png" class="imag5" width="70" height="60"/></a>
 
 		<!-- Wrapper -->
-			<div id="wrapper">
+			<div id="wrapper" class="mini-post">
 
 			
 
 
 				<!-- Main -->
-					<div id="main">
+					<div id="mini-post">
 
 						<!-- Post -->
-							<article class="post">
+							<article class="box">
 								<header>
-									<div class="title">
+									<div class="mini-post">
 										<h2><a href="#">PERFIL DE USUARIO</a></h2>
 										<p>Datos del Usuario</p>
 										

@@ -93,11 +93,11 @@ ConectarCat();
                                             </select><td>
                                         </tr>
                                         <tr>
-                                            <td>Titulo:</td>
+                                            <td>Pregunta:</td>
                                             <td><input type="text" value="" name="TITULO" required/><td>
                                         </tr>
                                         <tr>
-                                            <td>Descripción de Pregunta:</td>
+                                            <td>Detalles de la pregunta:</td>
                                             <td><input type="text" value="" name="DESCRIPCIONPREGUNTA" required/><td>
                                         </tr>
                                         <tr>

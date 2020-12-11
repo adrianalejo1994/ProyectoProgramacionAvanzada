@@ -59,16 +59,17 @@ ConectarCat();
 	<body class="single is-preload" style="background-color:#c4d2e7;">
 	<a href="inicio.php" ><img src="images/regreso.png" class="imag5" width="70" height="60"/></a>
 		<!-- Wrapper -->
-			<div id="wrapper">
+			<div id="wrapper" >
 
 				
 				<!-- Main -->
-					<div id="main">
+					<div id="main" class="post">
 
 						<!-- Post -->
 							<article class="post">
 								<header>
 									<div class="title">
+
 										<h2><a href="#">Preguntas Cerradas</a></h2>
 										<p>Todas tus preguntas</p>
 										
