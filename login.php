@@ -71,7 +71,13 @@ if ( ! empty( $_POST ) ) {
             ");
           }
       }
+      echo("
+      <script>
+      window.alert(\"DATOS INCORRECTOS\")
+      </script>
+      ");
     Desconectar();
     }
+    
 }
 ?>
