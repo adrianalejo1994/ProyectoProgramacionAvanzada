@@ -519,7 +519,7 @@ foreach($res as $fila)
 
 ////////////////////////////////////
 
-            echo('<h1 align="right"><img class="imag2" width="70px" height="70px" src="data:image/jpg;base64,'.base64_encode($foto1).'"></h1>');
+            echo('<h1 align="right"><img class="imag2" width="70" height="70" src="data:image/jpg;base64,'.base64_encode($foto1).'"></h1>');
 
 
 

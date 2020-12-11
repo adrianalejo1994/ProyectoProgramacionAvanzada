@@ -40,22 +40,19 @@ ConectarCat();
 	<body class="single is-preload" style="background-color:#c4d2e7;">
 
 		<!-- Wrapper -->
-			<div id="wrapper">
+			<div id="wrapper" class="mini-post">
 
 				
 				<!-- Main -->
 					<div id="main">
 
 						<!-- Post -->
-							<article class="post">
+							<article class="">
 								<header>
-									<div class="title">
+									<div class="">
 										<h2><a href="#">LOS MAS PREGUNTONES</a></h2>
 										
 									</div>
-	
-                                           
-
                             </article>
                             <table>
                             <tr class="CabeceraTR">
@@ -87,9 +84,9 @@ ConectarCat();
 			</div>
             
 				<!-- Footer -->
-					<section id="footer" class="final" >
-								<p class="copyright" style="color:white">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
-					</section>
+				<?php
+	include("footer.php"); 
+	?>
 
 	</body>
 </html> 

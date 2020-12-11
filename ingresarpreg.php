@@ -122,10 +122,9 @@ ConectarCat();
 			</div>
 
     </body>
-    <!-- Footer -->
-    <section id="footer" class="final"  > 
-						<p class="copyright" style="color:white"><font size="3">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</font></p>
-					</section>
+	<?php
+	include("footer.php"); 
+	?>
 </html>
 
 <?php
