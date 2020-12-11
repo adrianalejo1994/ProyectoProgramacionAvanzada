@@ -1,5 +1,23 @@
 <?php 
 include("functionscopy.php");
+session_start();
+
+if ( isset( $_SESSION['usuarioactivo'] ) ) {	
+	
+} else {
+	echo("
+	<script>
+	window.alert(\"DEBE INICIAR SESIÓN\")
+	</script>
+	");
+	echo("
+    <script> 
+    <!--
+    window.location.replace('login.php'); 
+    //-->
+    </script>
+    ");
+}
 ConectarCat();
     $k=1;
     $sql = "SELECT COUNT(*) FROM categoria"; //Conteo Categorias
@@ -16,7 +34,6 @@ ConectarCat();
             $k++;
         }
     }
-session_start();
 
 ?>
 

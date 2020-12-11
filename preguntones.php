@@ -1,5 +1,4 @@
 <?php 
-
 session_start();
 
 if ( isset( $_SESSION['usuarioactivo'] ) ) {	
@@ -18,6 +17,18 @@ if ( isset( $_SESSION['usuarioactivo'] ) ) {
     </script>
     ");
 }
+										
+
+
+
+
+
+
+
+
+
+
+
 
 
 include("functionscopy.php");
@@ -33,12 +44,11 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
                                 
-$sql = "SELECT *FROM USUARIO";
+$sql = "SELECT * FROM PUNTO ORDER BY PUNTAJE DESC";
 //echo $sql;
 $res=mysqli_query($conn,$sql);
 //$res = $conn->query($sql); 
 ConectarCat();
-session_start();
 
 ?>
 
@@ -57,25 +67,20 @@ session_start();
 		?>
 	</header>
 
-
 	<body class="single is-preload" style="background-color:#c4d2e7;">
-	<a href="inicio.php" ><img src="images/regreso.png" class="imag5" width="70" height="60"/></a>
 
 		<!-- Wrapper -->
-			<div id="wrapper" class="mini-post">
+			<div id="wrapper">
 
-			
-
-
+				
 				<!-- Main -->
-					<div id="mini-post">
+					<div id="main">
 
 						<!-- Post -->
-							<article class="box">
+							<article class="post">
 								<header>
-									<div class="mini-post">
-										<h2><a href="#">PERFIL DE USUARIO</a></h2>
-										<p>Datos del Usuario</p>
+									<div class="title">
+										<h2><a href="#">LOS MAS PREGUNTONES</a></h2>
 										
 									</div>
 									
@@ -107,71 +112,39 @@ session_start();
 									?>
                             </article>
                             <table>
-                            
+                            <tr class="CabeceraTR">
+                                 <td><b>USUARIO</b></td>
+								 <td><b>PUNTAJE</b></td>
+
+                            </tr>
                                               
                           <?php
                                 $nombreusuario=($_SESSION["usuarioactivo"]);
                                 while($row=mysqli_fetch_array($res)){
-                                if( $row["IDUSUARIO"] == $nombreusuario){
                                 
-                           
+                            
                             ?>
                            
-                          <tr>
-						  <tr>
-                                            <td>IDUSUARIO</td>
-                                            <td><?php echo($row["IDUSUARIO"]); ?><td>
-                            </tr>
-						                          
-						  <tr>
-								<td>NOMBRE</td>
-						  		<td><?php echo($row["NOMBRE"]); ?></td>
-						  </tr>
-						  <tr>
-						  		<td>APELLIDO</td>
-						 		 <td><?php echo($row["APELLIDO"]); ?></td>
-						  </tr>
-						  <tr>
-						  		<td>FECHA DE NACIMIENTO</td>
-						  		<td><?php echo($row["FECHANACIMIENTO"]); ?></td>
-						  </tr>
-						  <tr>
-						  		<td>CLAVE</td>
-						  		<td><?php echo($row["CLAVE"]); ?></td>
-						  </tr>
-						  <tr>
-						  		<td>SEXO</td>
-						  		<td><?php echo($row["SEXO"]); ?></td>
-						  </tr>
-						  <tr>
-						 		 <td>EMAIL</td>
-						  		<td><?php echo($row["EMAIL"]); ?></td>
-						  </tr>
-						  <tr>
-						  		<td>FOTO</td>
-								  <td><?php 
-								  $foto = $fila["FOTO"];
-								  echo '<img width="150" height="150" src="data:image/jpg;base64,'.base64_encode($foto).'">'; 
-								  ?></td>
+                          <tr>                    
+                            <td><?php echo($row["IDUSUARIO"]); ?></td>
+							<td><?php echo($row["PUNTAJE"]); ?></td>
 
-						  </tr>
-                            
-							<td> <a href="Editarusuario.php?id=<?php echo $row["IDUSUARIO"]?>&ideditar=3">Editar</a></td>
-							
                             <td>   
                             <td>
                                         
                             </tr>
                             
                         <?php
-                        }
+                        
                     }
                         ?>
                      </table>
-			</div>				
+			</div>
+            
+				<!-- Footer -->
+					<section id="footer" class="final" >
+								<p class="copyright" style="color:white">&copy; Arroyo - Arteaga - Guanuche - López </a>.  -- "Proyecto Final" -- </a>.</p>
+					</section>
+
 	</body>
-	<!-- Footer -->
-	<?php
-	include("footer.php"); 
-	?>
 </html> 

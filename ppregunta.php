@@ -1,6 +1,23 @@
 <?php 
 include("functionshe.php");
 session_start();
+
+if ( isset( $_SESSION['usuarioactivo'] ) ) {	
+	
+} else {
+	echo("
+	<script>
+	window.alert(\"DEBE INICIAR SESIÓN\")
+	</script>
+	");
+	echo("
+    <script> 
+    <!--
+    window.location.replace('login.php'); 
+    //-->
+    </script>
+    ");
+}
 Conectarhe();
 $idpregunta=$_GET{"var"}; //obtencion del nombre de categoria
 //echo$idpregunta;
