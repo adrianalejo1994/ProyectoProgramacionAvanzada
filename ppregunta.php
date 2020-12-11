@@ -65,13 +65,13 @@ foreach($res as $fila)
 									<div class="title" >
 										<h2><?php echo$pregunta ?></h2>
 										<p><?php echo$descri ?></p>
-										<time class="published" datetime="2020-11-20"><?php echo($fecha) ?></time>
-									<h2><?php echo$idusuario ?></h2>
 									</div>
-									<div class="title" >
-									<?php echo(' <img class="imag3" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto2).'">'); ?>
+									<div class="mini-post">
+									<?php echo('<h1 align="right"><img class="imag3" width="85" height="85" src="data:image/jpg;base64,'.base64_encode($foto2).'"></h1>'); ?>
+									<h3><time class="published" datetime="2020-11-20"><?php echo($fecha) ?></time></h3>
+									<h1 align="left"><?php echo$idusuario; ?></h1>									
+									
 									</div>
-								
 
 							</article>
 
