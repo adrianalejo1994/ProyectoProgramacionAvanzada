@@ -48,12 +48,12 @@ session_start();
 
 
 				<!-- Main -->
-					<div id="main" style="background-color:#c4d2e7;">
+					<div id="mini-post" style="background-color:#c4d2e7;">
 
 						<!-- Post -->
-							<article >
+							<article class="mini-post" >
 								<header>
-									<div class="title" >
+									<div class="box" >
 										<h2><a href="#">Ingresa tu pregunta</a></h2>
 										<p>Estos campos son necesarios para ingresar tu pregunta</p>
 									</div>
