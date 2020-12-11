@@ -443,13 +443,6 @@ foreach($res as $fila)
 
 ////////////////////////////////////
 
-    echo("
-    
-            <div class=\"post\" style=\"border-radius:10px\">
-
-            ");
-
-
             echo(' <img class="imag2" width="50" height="50" src="data:image/jpg;base64,'.base64_encode($foto1).'">');
 
 
