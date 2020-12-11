@@ -104,8 +104,6 @@ foreach($res as $fila)
 							
 					</div>
 
-
-				<!-- Sidebar izquierdo -->
 				<section id="sidebar">
 
 <!-- Intro -->
